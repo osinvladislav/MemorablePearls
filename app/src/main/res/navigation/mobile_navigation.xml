@@ -3,23 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_main">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="ru.thevlados.memorable.pearls.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_main"
+        android:name="ru.thevlados.memorable.pearls.ui.main.MainFragment"
+        android:label="@string/navigation_main"
+        tools:layout="@layout/main_fragment" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="ru.thevlados.memorable.pearls.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_archive"
+        android:name="ru.thevlados.memorable.pearls.ui.archive.ArchiveFragment"
+        android:label="@string/navigation_archive"
+        tools:layout="@layout/archive_fragment" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="ru.thevlados.memorable.pearls.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_tests"
+        android:name="ru.thevlados.memorable.pearls.ui.tests.TestsFragment"
+        android:label="@string/navigation_tests"
+        tools:layout="@layout/tests_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="ru.thevlados.memorable.pearls.ui.settings.SettingsFragment"
+        android:label="@string/navigation_settings"
+        tools:layout="@layout/settings_fragment" />
 </navigation>

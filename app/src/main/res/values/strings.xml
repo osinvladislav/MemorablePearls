@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">MemorablePearls</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="app_name">Памятные Жемчужины</string>
+    <string name="navigation_main">Главная</string>
+    <string name="navigation_archive">Архив</string>
+    <string name="navigation_tests">Тесты</string>
+    <string name="navigation_settings">Настройки</string>
 </resources>
