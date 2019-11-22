@@ -1,4 +1,4 @@
-package ru.thevlados.memorable.pearls.ui.tests
+package ru.thevlados.memorable.pearls.ui.menu.tests
 
 import androidx.lifecycle.ViewModel
 

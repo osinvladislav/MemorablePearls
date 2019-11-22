@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_main"
-        android:name="ru.thevlados.memorable.pearls.ui.main.MainFragment"
+        android:name="ru.thevlados.memorable.pearls.ui.menu.main.MainFragment"
         android:label="@string/navigation_main"
         tools:layout="@layout/main_fragment" />
 
     <fragment
         android:id="@+id/navigation_archive"
-        android:name="ru.thevlados.memorable.pearls.ui.archive.ArchiveFragment"
+        android:name="ru.thevlados.memorable.pearls.ui.menu.archive.ArchiveFragment"
         android:label="@string/navigation_archive"
         tools:layout="@layout/archive_fragment" />
 
     <fragment
         android:id="@+id/navigation_tests"
-        android:name="ru.thevlados.memorable.pearls.ui.tests.TestsFragment"
+        android:name="ru.thevlados.memorable.pearls.ui.menu.tests.TestsFragment"
         android:label="@string/navigation_tests"
         tools:layout="@layout/tests_fragment" />
 
     <fragment
         android:id="@+id/navigation_settings"
-        android:name="ru.thevlados.memorable.pearls.ui.settings.SettingsFragment"
+        android:name="ru.thevlados.memorable.pearls.ui.menu.settings.SettingsFragment"
         android:label="@string/navigation_settings"
         tools:layout="@layout/settings_fragment" />
 </navigation>

@@ -1,4 +1,4 @@
-package ru.thevlados.memorable.pearls.ui.tests
+package ru.thevlados.memorable.pearls.ui.menu.archive
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -9,24 +9,24 @@ import android.view.ViewGroup
 
 import ru.thevlados.memorable.pearls.R
 
-class TestsFragment : Fragment() {
+class ArchiveFragment : Fragment() {
 
     companion object {
-        fun newInstance() = TestsFragment()
+        fun newInstance() = ArchiveFragment()
     }
 
-    private lateinit var viewModel: TestsViewModel
+    private lateinit var viewModel: ArchiveViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.tests_fragment, container, false)
+        return inflater.inflate(R.layout.archive_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(TestsViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(ArchiveViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

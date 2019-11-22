@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.main.MainFragment">
+    tools:context=".ui.menu.main.MainFragment">
 
     <ScrollView
         android:id="@+id/scroll_main"
@@ -18,10 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="8dp"
-            android:paddingTop="8dp"
-            android:paddingRight="8dp"
-            android:paddingBottom="8dp">
+            android:padding="8dp">
 
             <TextView
                 android:id="@+id/text_headline"
@@ -35,10 +32,15 @@
                 android:textStyle="bold" />
 
             <androidx.cardview.widget.CardView
+                style="@style/Widget.MaterialComponents.CardView"
                 android:id="@+id/card_mp_today"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/roboto_medium"
+                android:foreground="?android:attr/selectableItemBackground"
                 app:cardBackgroundColor="@color/color_01"
                 app:cardCornerRadius="8dp"
                 app:cardUseCompatPadding="true"
@@ -120,7 +122,7 @@
                 android:padding="8dp" />
 
             <TextView
-                android:id="@+id/text_trane_now"
+                android:id="@+id/text_trans_now"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"

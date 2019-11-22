@@ -1,4 +1,4 @@
-package ru.thevlados.memorable.pearls.ui.main
+package ru.thevlados.memorable.pearls.ui.menu.main
 
 import androidx.lifecycle.ViewModel
 

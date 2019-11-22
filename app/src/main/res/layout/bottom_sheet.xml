@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/text_select_translate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_condensed_bold"
+        android:layout_marginBottom="8dp"
+        android:text="Выберите перевод Библии:"
+        android:textSize="22sp"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/radio_rst"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Синодальный перевод" />
+
+        <RadioButton
+            android:id="@+id/radio_bti"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Институт перевода Библии" />
+    </RadioGroup>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_close"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginEnd="6dp"
+        android:fontFamily="@font/roboto_medium"
+        android:insetTop="0dp"
+        android:letterSpacing="0"
+        android:text="Закрыть" />
+
+</LinearLayout>
