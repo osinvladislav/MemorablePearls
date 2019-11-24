@@ -1,17 +1,15 @@
 package ru.thevlados.memorable.pearls
 
-import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import ru.thevlados.memorable.pearls.ui.detail.DetailActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,5 +26,13 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    fun resetActionBar(childAction: Boolean) {
+        if (childAction) { // [Undocumented?] trick to get up button icon to show
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        } else {
+            supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        }
     }
 }
