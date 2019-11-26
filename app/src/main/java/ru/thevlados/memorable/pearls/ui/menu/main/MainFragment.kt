@@ -2,10 +2,13 @@ package ru.thevlados.memorable.pearls.ui.menu.main
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.SharedPreferences
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -21,31 +24,34 @@ import java.util.*
 
 class MainFragment : Fragment() {
     private lateinit var viewModel: MainViewModel
+    lateinit var pref: SharedPreferences
 
-    @SuppressLint("SimpleDateFormat")
+    @SuppressLint("SimpleDateFormat", "SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val v: View = inflater.inflate(R.layout.main_fragment, container, false)
+        pref = activity!!.getSharedPreferences("settings", AppCompatActivity.MODE_PRIVATE)
 
         val sdfh = SimpleDateFormat("HH")
         val currentHour = sdfh.format(Date())
+        val name = pref.getString("name", "")
         when {
             currentHour.toInt() < 6 -> {
-                v.text_headline.text = "Доброй ночи, Владислав!"
+                v.text_headline.text = "Доброй ночи, $name!"
             }
             currentHour.toInt() in 7..10 -> {
-                v.text_headline.text = "Доброе утро, Владислав!"
+                v.text_headline.text = "Доброе утро, $name!"
             }
             currentHour.toInt() in 11..16 -> {
-                v.text_headline.text = "Добрый день, Владислав!"
+                v.text_headline.text = "Добрый день, $name!"
             }
             currentHour.toInt() in 17..22 -> {
-                v.text_headline.text = "Добрый вечер, Владислав!"
+                v.text_headline.text = "Добрый вечер, $name!"
             }
             currentHour.toInt() > 22 -> {
-                v.text_headline.text = "Доброй ночи, Владислав!"
+                v.text_headline.text = "Доброй ночи, $name!"
             }
         }
 
@@ -74,17 +80,18 @@ class MainFragment : Fragment() {
                         v.card_mp_today.setCardBackgroundColor(resources.getColor(R.color.color_04))
                     }
                 }
-                it.weeks.forEachIndexed {indexik, item ->
+                it.weeks.forEach {item ->
                     if (sdf.parse(currentDate) in sdf.parse(item.date_begin)..sdf.parse(item.date_finish)) {
-                        v.text_date.text = item.num_week.toString() + " неделя, " + item.date_begin  + "  —  " + item.date_finish
-                        v.text_verse.text = item.verse.RST
-                        v.text_link.text = item.verse.link_full
+                        v.card_mp_today.text_date.text = item.num_week.toString() + " неделя, " + item.date_begin  + "  —  " + item.date_finish
+                        v.card_mp_today.text_verse.text = item.verse.RST
+                        v.card_mp_today.text_link.text = item.verse.link_small + " "
                         v.card_mp_today.setOnClickListener {
                             val intent = Intent(context, DetailActivity::class.java)
                             intent.putExtra("text_date", v.text_date.text as String)
                             intent.putExtra("text_verse_rst", item.verse.RST)
                             intent.putExtra("text_verse_bti", item.verse.BTI)
-                            intent.putExtra("text_link", item.verse.link_full)
+                            intent.putExtra("text_link_full", item.verse.link_full)
+                            intent.putExtra("text_link_short", item.verse.link_small)
                             ContextCompat.startActivity(v.context, intent, null)
                         }
 

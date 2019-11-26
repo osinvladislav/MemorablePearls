@@ -23,10 +23,10 @@ class DetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detail)
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = intent.getStringExtra("text_link")
+        supportActionBar?.title = intent.getStringExtra("text_link_short")
         text_date.text = intent.getStringExtra("text_date")
         text_verse.text = intent.getStringExtra("text_verse_rst")
-        text_link.text = intent.getStringExtra("text_link")
+        text_link.text = intent.getStringExtra("text_link_full")
         val descriptor = assets.openFd("message.mp3")
         m.setDataSource(descriptor.fileDescriptor, descriptor.startOffset, descriptor.length)
         descriptor.close()
@@ -42,7 +42,7 @@ class DetailActivity : AppCompatActivity() {
                     menuItem.icon = resources.getDrawable(R.drawable.ic_pause_black_24dp)
                     m.prepare()
                     m.setVolume(1f, 1f)
-                    m.isLooping = false
+                    m.isLooping = true
                     m.start()
                     stateNow = "pause"
                 } else if (stateNow == "pause") {

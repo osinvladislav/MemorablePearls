@@ -149,19 +149,19 @@ class ArchiveFragment : Fragment(){
                 v.text_verse_12.text = quart[0].weeks[11].verse.RST
                 v.text_verse_13.text = quart[0].weeks[12].verse.RST
 
-                v.text_link_1.text = quart[0].weeks[0].verse.link_full
-                v.text_link_2.text = quart[0].weeks[1].verse.link_full
-                v.text_link_3.text = quart[0].weeks[2].verse.link_full
-                v.text_link_4.text = quart[0].weeks[3].verse.link_full
-                v.text_link_5.text = quart[0].weeks[4].verse.link_full
-                v.text_link_6.text = quart[0].weeks[5].verse.link_full
-                v.text_link_7.text = quart[0].weeks[6].verse.link_full
-                v.text_link_8.text = quart[0].weeks[7].verse.link_full
-                v.text_link_9.text = quart[0].weeks[8].verse.link_full
-                v.text_link_10.text = quart[0].weeks[9].verse.link_full
-                v.text_link_11.text = quart[0].weeks[10].verse.link_full
-                v.text_link_12.text = quart[0].weeks[11].verse.link_full
-                v.text_link_13.text = quart[0].weeks[12].verse.link_full
+                v.text_link_1.text = quart[0].weeks[0].verse.link_small + " "
+                v.text_link_2.text = quart[0].weeks[1].verse.link_small + " "
+                v.text_link_3.text = quart[0].weeks[2].verse.link_small + " "
+                v.text_link_4.text = quart[0].weeks[3].verse.link_small + " "
+                v.text_link_5.text = quart[0].weeks[4].verse.link_small + " "
+                v.text_link_6.text = quart[0].weeks[5].verse.link_small + " "
+                v.text_link_7.text = quart[0].weeks[6].verse.link_small + " "
+                v.text_link_8.text = quart[0].weeks[7].verse.link_small + " "
+                v.text_link_9.text = quart[0].weeks[8].verse.link_small + " "
+                v.text_link_10.text = quart[0].weeks[9].verse.link_small + " "
+                v.text_link_11.text = quart[0].weeks[10].verse.link_small + " "
+                v.text_link_12.text = quart[0].weeks[11].verse.link_small + " "
+                v.text_link_13.text = quart[0].weeks[12].verse.link_small + " "
             }
             v.text_date_2_q.text = quart[1].date_from + "  —  " + quart[1].date_to
             v.text_year_2_q.text = quart[1].name_quarter
@@ -249,19 +249,19 @@ class ArchiveFragment : Fragment(){
                 v.text_verse_12.text = quart[1].weeks[11].verse.RST
                 v.text_verse_13.text = quart[1].weeks[12].verse.RST
 
-                v.text_link_1.text = quart[1].weeks[0].verse.link_full
-                v.text_link_2.text = quart[1].weeks[1].verse.link_full
-                v.text_link_3.text = quart[1].weeks[2].verse.link_full
-                v.text_link_4.text = quart[1].weeks[3].verse.link_full
-                v.text_link_5.text = quart[1].weeks[4].verse.link_full
-                v.text_link_6.text = quart[1].weeks[5].verse.link_full
-                v.text_link_7.text = quart[1].weeks[6].verse.link_full
-                v.text_link_8.text = quart[1].weeks[7].verse.link_full
-                v.text_link_9.text = quart[1].weeks[8].verse.link_full
-                v.text_link_10.text = quart[1].weeks[9].verse.link_full
-                v.text_link_11.text = quart[1].weeks[10].verse.link_full
-                v.text_link_12.text = quart[1].weeks[11].verse.link_full
-                v.text_link_13.text = quart[1].weeks[12].verse.link_full
+                v.text_link_1.text = quart[1].weeks[0].verse.link_small + " "
+                v.text_link_2.text = quart[1].weeks[1].verse.link_small + " "
+                v.text_link_3.text = quart[1].weeks[2].verse.link_small + " "
+                v.text_link_4.text = quart[1].weeks[3].verse.link_small + " "
+                v.text_link_5.text = quart[1].weeks[4].verse.link_small + " "
+                v.text_link_6.text = quart[1].weeks[5].verse.link_small + " "
+                v.text_link_7.text = quart[1].weeks[6].verse.link_small + " "
+                v.text_link_8.text = quart[1].weeks[7].verse.link_small + " "
+                v.text_link_9.text = quart[1].weeks[8].verse.link_small + " "
+                v.text_link_10.text = quart[1].weeks[9].verse.link_small + " "
+                v.text_link_11.text = quart[1].weeks[10].verse.link_small + " "
+                v.text_link_12.text = quart[1].weeks[11].verse.link_small + " "
+                v.text_link_13.text = quart[1].weeks[12].verse.link_small + " "
             }
             v.text_date_3_q.text = quart[2].date_from + "  —  " + quart[2].date_to
             v.text_year_3_q.text = quart[2].name_quarter
@@ -349,19 +349,19 @@ class ArchiveFragment : Fragment(){
                 v.text_verse_12.text = quart[2].weeks[11].verse.RST
                 v.text_verse_13.text = quart[2].weeks[12].verse.RST
 
-                v.text_link_1.text = quart[2].weeks[0].verse.link_full
-                v.text_link_2.text = quart[2].weeks[1].verse.link_full
-                v.text_link_3.text = quart[2].weeks[2].verse.link_full
-                v.text_link_4.text = quart[2].weeks[3].verse.link_full
-                v.text_link_5.text = quart[2].weeks[4].verse.link_full
-                v.text_link_6.text = quart[2].weeks[5].verse.link_full
-                v.text_link_7.text = quart[2].weeks[6].verse.link_full
-                v.text_link_8.text = quart[2].weeks[7].verse.link_full
-                v.text_link_9.text = quart[2].weeks[8].verse.link_full
-                v.text_link_10.text = quart[2].weeks[9].verse.link_full
-                v.text_link_11.text = quart[2].weeks[10].verse.link_full
-                v.text_link_12.text = quart[2].weeks[11].verse.link_full
-                v.text_link_13.text = quart[2].weeks[12].verse.link_full
+                v.text_link_1.text = quart[2].weeks[0].verse.link_small + " "
+                v.text_link_2.text = quart[2].weeks[1].verse.link_small + " "
+                v.text_link_3.text = quart[2].weeks[2].verse.link_small + " "
+                v.text_link_4.text = quart[2].weeks[3].verse.link_small + " "
+                v.text_link_5.text = quart[2].weeks[4].verse.link_small + " "
+                v.text_link_6.text = quart[2].weeks[5].verse.link_small + " "
+                v.text_link_7.text = quart[2].weeks[6].verse.link_small + " "
+                v.text_link_8.text = quart[2].weeks[7].verse.link_small + " "
+                v.text_link_9.text = quart[2].weeks[8].verse.link_small + " "
+                v.text_link_10.text = quart[2].weeks[9].verse.link_small + " "
+                v.text_link_11.text = quart[2].weeks[10].verse.link_small + " "
+                v.text_link_12.text = quart[2].weeks[11].verse.link_small + " "
+                v.text_link_13.text = quart[2].weeks[12].verse.link_small + " "
 
             }
             v.text_date_4_q.text = quart[3].date_from + "  —  " + quart[3].date_to
@@ -450,19 +450,19 @@ class ArchiveFragment : Fragment(){
                 v.text_verse_12.text = quart[3].weeks[11].verse.RST
                 v.text_verse_13.text = quart[3].weeks[12].verse.RST
 
-                v.text_link_1.text = quart[3].weeks[0].verse.link_full
-                v.text_link_2.text = quart[3].weeks[1].verse.link_full
-                v.text_link_3.text = quart[3].weeks[2].verse.link_full
-                v.text_link_4.text = quart[3].weeks[3].verse.link_full
-                v.text_link_5.text = quart[3].weeks[4].verse.link_full
-                v.text_link_6.text = quart[3].weeks[5].verse.link_full
-                v.text_link_7.text = quart[3].weeks[6].verse.link_full
-                v.text_link_8.text = quart[3].weeks[7].verse.link_full
-                v.text_link_9.text = quart[3].weeks[8].verse.link_full
-                v.text_link_10.text = quart[3].weeks[9].verse.link_full
-                v.text_link_11.text = quart[3].weeks[10].verse.link_full
-                v.text_link_12.text = quart[3].weeks[11].verse.link_full
-                v.text_link_13.text = quart[3].weeks[12].verse.link_full
+                v.text_link_1.text = quart[3].weeks[0].verse.link_small + " "
+                v.text_link_2.text = quart[3].weeks[1].verse.link_small + " "
+                v.text_link_3.text = quart[3].weeks[2].verse.link_small + " "
+                v.text_link_4.text = quart[3].weeks[3].verse.link_small + " "
+                v.text_link_5.text = quart[3].weeks[4].verse.link_small + " "
+                v.text_link_6.text = quart[3].weeks[5].verse.link_small + " "
+                v.text_link_7.text = quart[3].weeks[6].verse.link_small + " "
+                v.text_link_8.text = quart[3].weeks[7].verse.link_small + " "
+                v.text_link_9.text = quart[3].weeks[8].verse.link_small + " "
+                v.text_link_10.text = quart[3].weeks[9].verse.link_small + " "
+                v.text_link_11.text = quart[3].weeks[10].verse.link_small + " "
+                v.text_link_12.text = quart[3].weeks[11].verse.link_small + " "
+                v.text_link_13.text = quart[3].weeks[12].verse.link_small + " "
             }
         }
         if (arguments?.getBoolean("isQuart") != null) {
@@ -529,7 +529,8 @@ class ArchiveFragment : Fragment(){
             intent.putExtra("text_date", quart[num1].weeks[num2].num_week.toString() + " неделя, " + quart[num1].weeks[num2].date_begin + "  —  " + quart[num1].weeks[num2].date_finish)
             intent.putExtra("text_verse_rst", quart[num1].weeks[num2].verse.RST)
             intent.putExtra("text_verse_bti", quart[num1].weeks[num2].verse.BTI)
-            intent.putExtra("text_link", quart[num1].weeks[num2].verse.link_full)
+            intent.putExtra("text_link_full", quart[num1].weeks[num2].verse.link_full)
+            intent.putExtra("text_link_short", quart[num1].weeks[num2].verse.link_small)
             ContextCompat.startActivity(v.context, intent, null)
         }
     }
