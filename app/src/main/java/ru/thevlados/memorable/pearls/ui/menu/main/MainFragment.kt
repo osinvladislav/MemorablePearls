@@ -24,7 +24,7 @@ import java.util.*
 
 class MainFragment : Fragment() {
     private lateinit var viewModel: MainViewModel
-    lateinit var pref: SharedPreferences
+    private lateinit var pref: SharedPreferences
 
     @SuppressLint("SimpleDateFormat", "SetTextI18n")
     override fun onCreateView(
@@ -83,13 +83,37 @@ class MainFragment : Fragment() {
                 it.weeks.forEach {item ->
                     if (sdf.parse(currentDate) in sdf.parse(item.date_begin)..sdf.parse(item.date_finish)) {
                         v.card_mp_today.text_date.text = item.num_week.toString() + " неделя, " + item.date_begin  + "  —  " + item.date_finish
-                        v.card_mp_today.text_verse.text = item.verse.RST
+                        when (pref.getString("translate", "")) {
+                             "radio_rst" -> {
+                                v.card_mp_today.text_verse.text = item.verse.RST
+                            }
+                            "radio_bti" -> {
+                                v.card_mp_today.text_verse.text = item.verse.BTI
+                            }
+                            "radio_nrp" -> {
+                                v.card_mp_today.text_verse.text = item.verse.NRP
+                            }
+                            "radio_cslav" -> {
+                                v.card_mp_today.text_verse.text = item.verse.CSLAV
+                            }
+                            "radio_srp" -> {
+                                v.card_mp_today.text_verse.text = item.verse.SRP
+                            }
+                            "radio_ibl" -> {
+                                v.card_mp_today.text_verse.text = item.verse.IBL
+                            }
+                        }
                         v.card_mp_today.text_link.text = item.verse.link_small + " "
                         v.card_mp_today.setOnClickListener {
                             val intent = Intent(context, DetailActivity::class.java)
                             intent.putExtra("text_date", v.text_date.text as String)
                             intent.putExtra("text_verse_rst", item.verse.RST)
                             intent.putExtra("text_verse_bti", item.verse.BTI)
+                            intent.putExtra("text_verse_cass", item.verse.CASS)
+                            intent.putExtra("text_verse_nrp", item.verse.NRP)
+                            intent.putExtra("text_verse_cslav", item.verse.CSLAV)
+                            intent.putExtra("text_verse_srp", item.verse.SRP)
+                            intent.putExtra("text_verse_ibl", item.verse.IBL)
                             intent.putExtra("text_link_full", item.verse.link_full)
                             intent.putExtra("text_link_short", item.verse.link_small)
                             ContextCompat.startActivity(v.context, intent, null)

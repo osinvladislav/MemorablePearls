@@ -32,6 +32,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Институт перевода Библии" />
+        <RadioButton
+            android:id="@+id/radio_nrp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Новый русский перевод" />
+        <RadioButton
+            android:id="@+id/radio_cslav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Церковнославянский перевод" />
+        <RadioButton
+            android:id="@+id/radio_srp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Современный русский перевод" />
+        <RadioButton
+            android:id="@+id/radio_ibl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Перевод Международной Библейской лиги" />
+        <RadioButton
+            android:id="@+id/radio_cass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Перевод Епископа Кассиана" />
 
     </RadioGroup>
 
