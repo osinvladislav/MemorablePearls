@@ -5,102 +5,115 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.start.StartActivity"
-    android:padding="8dp">
+    tools:context=".ui.start.StartActivity">
 
-    <TextView
-        android:id="@+id/text_hello"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_condensed_bold"
-        android:text="Добро пожаловать!"
-        android:textSize="24sp" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="Введите Ваше имя:"
-        android:textSize="16sp" />
-
-    <EditText
-        android:id="@+id/edit_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
-    <TextView
-        android:id="@+id/text_translate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="Выберите стандартный перевод (который будет использоваться в приложении по умолчанию)"
-        android:textSize="16sp" />
-
-    <RadioGroup
-        android:id="@+id/group_translate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <RadioButton
-            android:id="@+id/radio_rst"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Синодальный перевод" />
+            android:orientation="vertical"
+            android:padding="8dp">
 
-        <RadioButton
-            android:id="@+id/radio_bti"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Институт перевода Библии" />
+            <TextView
+                android:id="@+id/text_hello"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_condensed_bold"
+                android:text="Добро пожаловать!"
+                android:textSize="24sp" />
 
-        <RadioButton
-            android:id="@+id/radio_nrp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Новый русский перевод" />
-        <RadioButton
-            android:id="@+id/radio_cslav"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Церковнославянский перевод" />
-        <RadioButton
-            android:id="@+id/radio_srp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Современный русский перевод" />
-        <RadioButton
-            android:id="@+id/radio_ibl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Перевод Международной Библейской лиги" />
-    </RadioGroup>
+            <TextView
+                android:id="@+id/text_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Введите Ваше имя:"
+                android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/text_lang"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="Выберите язык приложения:"
-        android:textSize="16sp" />
+            <EditText
+                android:id="@+id/edit_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
 
-    <RadioButton
-        android:id="@+id/radio_ru"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Русский" />
+            <TextView
+                android:id="@+id/text_translate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Выберите стандартный перевод (который будет использоваться в приложении по умолчанию)"
+                android:textSize="16sp" />
 
-    <Button
-        android:id="@+id/btn_enter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:letterSpacing="0"
-        android:text="Войти" />
+            <RadioGroup
+                android:id="@+id/group_translate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/radio_rst"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Синодальный перевод" />
+
+                <RadioButton
+                    android:id="@+id/radio_bti"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Институт перевода Библии" />
+
+                <RadioButton
+                    android:id="@+id/radio_nrp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Новый русский перевод" />
+                <RadioButton
+                    android:id="@+id/radio_cslav"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Церковнославянский перевод" />
+                <RadioButton
+                    android:id="@+id/radio_srp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Современный русский перевод" />
+                <RadioButton
+                    android:id="@+id/radio_ibl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Перевод Международной Библейской лиги" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/text_lang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Выберите язык приложения:"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/radio_ru"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Русский" />
+
+            <Button
+                android:id="@+id/btn_enter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:letterSpacing="0"
+                android:text="Войти" />
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </LinearLayout>
