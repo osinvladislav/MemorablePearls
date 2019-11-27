@@ -18,7 +18,6 @@ import ru.thevlados.memorable.pearls.R
 class DetailActivity : AppCompatActivity() {
     private var stateNow: String = ""
     private var radioNow: String = ""
-    private val m = MediaPlayer()
     lateinit var pref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,9 +55,6 @@ class DetailActivity : AppCompatActivity() {
             }
         }
         text_link.text = intent.getStringExtra("text_link_full")
-        val descriptor = assets.openFd("message.mp3")
-        m.setDataSource(descriptor.fileDescriptor, descriptor.startOffset, descriptor.length)
-        descriptor.close()
     }
 
     override fun onOptionsItemSelected(menuItem: MenuItem): Boolean {
@@ -69,15 +65,10 @@ class DetailActivity : AppCompatActivity() {
             R.id.item_music -> {
                 if (stateNow == "" || stateNow == "play") {
                     menuItem.icon = resources.getDrawable(R.drawable.ic_pause_black_24dp)
-                    m.prepare()
-                    m.setVolume(1f, 1f)
-                    m.isLooping = true
-                    m.start()
                     stateNow = "pause"
                 } else if (stateNow == "pause") {
                     menuItem.icon = resources.getDrawable(R.drawable.ic_play_arrow_black_24dp)
                     stateNow = "play"
-                    m.stop()
                 }
             }
             R.id.item_translate -> {
