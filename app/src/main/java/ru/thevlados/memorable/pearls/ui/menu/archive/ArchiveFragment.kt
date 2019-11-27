@@ -256,7 +256,7 @@ class ArchiveFragment : Fragment() {
                 quart[0].weeks[12].num_week.toString() + " неделя, " + quart[0].weeks[12].date_begin + "  —  " + quart[0].weeks[12].date_finish
 
             quart[0].weeks.forEachIndexed { index, _ ->
-                setTextik(quart, 0, index, index+1)
+                setTextik(quart, 0, index, index+1, v)
             }
 
             v.text_link_1.text = quart[0].weeks[0].verse.link_small + " "
@@ -359,7 +359,7 @@ class ArchiveFragment : Fragment() {
                 quart[1].weeks[12].num_week.toString() + " неделя, " + quart[1].weeks[12].date_begin + "  —  " + quart[1].weeks[12].date_finish
 
             quart[1].weeks.forEachIndexed { index, _ ->
-                setTextik(quart, 1, index, index+1)
+                setTextik(quart, 1, index, index+1, v)
             }
 
             v.text_link_1.text = quart[1].weeks[0].verse.link_small + " "
@@ -462,7 +462,7 @@ class ArchiveFragment : Fragment() {
                 quart[2].weeks[12].num_week.toString() + " неделя, " + quart[2].weeks[12].date_begin + "  —  " + quart[2].weeks[12].date_finish
 
             quart[2].weeks.forEachIndexed { index, _ ->
-                setTextik(quart, 2, index, index+1)
+                setTextik(quart, 2, index, index+1, v)
             }
 
             v.text_link_1.text = quart[2].weeks[0].verse.link_small + " "
@@ -566,7 +566,7 @@ class ArchiveFragment : Fragment() {
                 quart[3].weeks[12].num_week.toString() + " неделя, " + quart[3].weeks[12].date_begin + "  —  " + quart[3].weeks[12].date_finish
 
             quart[3].weeks.forEachIndexed { index, _ ->
-                setTextik(quart, 3, index, index+1)
+                setTextik(quart, 3, index, index+1, v)
             }
 
             v.text_link_1.text = quart[3].weeks[0].verse.link_small + " "
@@ -608,8 +608,9 @@ class ArchiveFragment : Fragment() {
         ContextCompat.startActivity(v.context, intent, null)
     }
 
-    private fun setTextik(quart: Array<year>, q: Int, w: Int, t: Int) {
-        val item = activity!!.findViewById<TextView>(resources.getIdentifier("text_verse_$t", "id", context!!.packageName))
+    private fun setTextik(quart: Array<year>, q: Int, w: Int, t: Int, v: View) {
+        println("text_verse_$t")
+        val item = v.findViewById<TextView>(resources.getIdentifier("text_verse_$t", "id", context!!.packageName))
         item.text = when (pref.getString("translate", "")) {
             "radio_rst" -> {
                 quart[q].weeks[w].verse.RST
