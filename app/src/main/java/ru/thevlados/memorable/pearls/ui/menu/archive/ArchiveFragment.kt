@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
-import android.widget.RadioButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -14,11 +13,9 @@ import androidx.lifecycle.ViewModelProviders
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.archive_fragment.*
 import kotlinx.android.synthetic.main.archive_fragment.view.*
-import kotlinx.android.synthetic.main.main_fragment.view.*
 import ru.thevlados.memorable.pearls.MainActivity
 import ru.thevlados.memorable.pearls.R
 import ru.thevlados.memorable.pearls.ui.detail.DetailActivity
-import ru.thevlados.memorable.pearls.ui.menu.tests.TestsFragment
 
 
 class ArchiveFragment : Fragment() {
@@ -34,6 +31,7 @@ class ArchiveFragment : Fragment() {
         val v: View = inflater.inflate(R.layout.archive_fragment, container, false)
         pref = activity!!.getSharedPreferences("settings", AppCompatActivity.MODE_PRIVATE)
         valNow = "year"
+        setHasOptionsMenu(true)
         v.isFocusableInTouchMode = true
         v.requestFocus()
         v.setOnKeyListener(View.OnKeyListener { _, keyCode, event ->
@@ -49,7 +47,9 @@ class ArchiveFragment : Fragment() {
                             valNow = "year"
                             scroll_quarters.visibility = View.GONE
                             scroll_years.visibility = View.VISIBLE
-                            (activity as MainActivity?)?.resetActionBar(false)
+                            (activity as MainActivity?)?.resetActionBar(
+                                childAction = false
+                            )
                         }
                         else -> {
                             activity?.onBackPressed()
@@ -61,7 +61,7 @@ class ArchiveFragment : Fragment() {
             false
         })
         v.card_first.setOnClickListener {
-            (activity as MainActivity?)?.resetActionBar(true)
+            (activity as MainActivity?)?.resetActionBar(childAction = true)
             setHasOptionsMenu(true)
             valNow = "quart"
             val jsonString = returnJson("2017-ru")
@@ -81,7 +81,7 @@ class ArchiveFragment : Fragment() {
             funJson(v, quart)
         }
         v.card_third.setOnClickListener {
-            (activity as MainActivity?)?.resetActionBar(true)
+            (activity as MainActivity?)?.resetActionBar(childAction = true)
             setHasOptionsMenu(true)
             valNow = "quart"
             val jsonString = returnJson("2019-ru")
@@ -91,7 +91,7 @@ class ArchiveFragment : Fragment() {
             funJson(v, quart)
         }
         v.card_fourth.setOnClickListener {
-            (activity as MainActivity?)?.resetActionBar(true)
+            (activity as MainActivity?)?.resetActionBar(childAction = true)
             setHasOptionsMenu(true)
             valNow = "quart"
             val jsonString = returnJson("2020-ru")
@@ -101,7 +101,7 @@ class ArchiveFragment : Fragment() {
             funJson(v, quart)
         }
         v.card_fifth.setOnClickListener {
-            (activity as MainActivity?)?.resetActionBar(true)
+            (activity as MainActivity?)?.resetActionBar(childAction = true)
             setHasOptionsMenu(true)
             valNow = "quart"
             val jsonString = returnJson("2021-ru")
@@ -632,6 +632,13 @@ class ArchiveFragment : Fragment() {
             }
             else -> "Ошибка"
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.detail_menu, menu)
+        menu.findItem(R.id.item_music).isVisible = false
+        menu.findItem(R.id.item_translate).isVisible = false
+        super.onCreateOptionsMenu(menu, inflater)
     }
 }
 
