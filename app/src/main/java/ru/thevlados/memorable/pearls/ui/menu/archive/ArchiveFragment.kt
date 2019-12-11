@@ -3,6 +3,7 @@ package ru.thevlados.memorable.pearls.ui.menu.archive
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
@@ -22,8 +23,10 @@ class ArchiveFragment : Fragment() {
     private lateinit var viewModel: ArchiveViewModel
     private lateinit var valNow: String
     private lateinit var pref: SharedPreferences
+    private var stateNow: String = ""
+    private lateinit var mp: MediaPlayer
 
-    @SuppressLint("SetTextI18n")
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,6 +45,7 @@ class ArchiveFragment : Fragment() {
                             valNow = "quart"
                             scroll_quarters.visibility = View.VISIBLE
                             scroll_weeks.visibility = View.GONE
+                            mp.stop()
                         }
                         "quart" -> {
                             valNow = "year"
@@ -69,6 +73,7 @@ class ArchiveFragment : Fragment() {
             val quart: Array<year> =
                 Gson().fromJson<Array<year>>(jsonString, Array<year>::class.java)
             funJson(v, quart)
+            pref.edit().putString("year", "2017").apply()
         }
         v.card_second.setOnClickListener {
             (activity as MainActivity?)?.resetActionBar(true)
@@ -79,6 +84,7 @@ class ArchiveFragment : Fragment() {
             val quart: Array<year> =
                 Gson().fromJson<Array<year>>(jsonString, Array<year>::class.java)
             funJson(v, quart)
+            pref.edit().putString("year", "2018").apply()
         }
         v.card_third.setOnClickListener {
             (activity as MainActivity?)?.resetActionBar(childAction = true)
@@ -89,6 +95,7 @@ class ArchiveFragment : Fragment() {
             val quart: Array<year> =
                 Gson().fromJson<Array<year>>(jsonString, Array<year>::class.java)
             funJson(v, quart)
+            pref.edit().putString("year", "2019").apply()
         }
         v.card_fourth.setOnClickListener {
             (activity as MainActivity?)?.resetActionBar(childAction = true)
@@ -99,6 +106,7 @@ class ArchiveFragment : Fragment() {
             val quart: Array<year> =
                 Gson().fromJson<Array<year>>(jsonString, Array<year>::class.java)
             funJson(v, quart)
+            pref.edit().putString("year", "2020").apply()
         }
         v.card_fifth.setOnClickListener {
             (activity as MainActivity?)?.resetActionBar(childAction = true)
@@ -109,6 +117,7 @@ class ArchiveFragment : Fragment() {
             val quart: Array<year> =
                 Gson().fromJson<Array<year>>(jsonString, Array<year>::class.java)
             funJson(v, quart)
+            pref.edit().putString("year", "2021").apply()
         }
         if (arguments?.getBoolean("isQuart") != null) {
             if (arguments?.getBoolean("isQuart")!!) {
@@ -155,6 +164,7 @@ class ArchiveFragment : Fragment() {
                     valNow = "quart"
                     scroll_quarters.visibility = View.VISIBLE
                     scroll_weeks.visibility = View.GONE
+                    mp.stop()
                 } else if (valNow == "quart") {
                     valNow = "year"
                     scroll_quarters.visibility = View.GONE
@@ -173,415 +183,26 @@ class ArchiveFragment : Fragment() {
         v.text_date_1_q.text = quart[0].date_from + "  —  " + quart[0].date_to
         v.text_year_1_q.text = quart[0].name_quarter
         v.card_1_q.setOnClickListener {
-            valNow = "week"
-            v.scroll_quarters.visibility = View.GONE
-            v.scroll_weeks.visibility = View.VISIBLE
-            v.card_mp_1.setCardBackgroundColor(resources.getColor(R.color.color_01))
-            v.card_mp_1.setOnClickListener {
-                startActivity(this, quart, 0, 0, v)
-            }
-            v.card_mp_2.setCardBackgroundColor(resources.getColor(R.color.color_01))
-            v.card_mp_2.setOnClickListener {
-                startActivity(this, quart, 0, 1, v)
-            }
-            v.card_mp_3.setCardBackgroundColor(resources.getColor(R.color.color_01))
-            v.card_mp_3.setOnClickListener {
-                startActivity(this, quart, 0, 2, v)
-            }
-            v.card_mp_4.setCardBackgroundColor(resources.getColor(R.color.color_01))
-            v.card_mp_4.setOnClickListener {
-                startActivity(this, quart, 0, 3, v)
-            }
-            v.card_mp_5.setCardBackgroundColor(resources.getColor(R.color.color_01))
-            v.card_mp_5.setOnClickListener {
-                startActivity(this, quart, 0, 4, v)
-            }
-            v.card_mp_6.setCardBackgroundColor(resources.getColor(R.color.color_01))
-            v.card_mp_6.setOnClickListener {
-                startActivity(this, quart, 0, 5, v)
-            }
-            v.card_mp_7.setCardBackgroundColor(resources.getColor(R.color.color_01))
-            v.card_mp_7.setOnClickListener {
-                startActivity(this, quart, 0, 6, v)
-            }
-            v.card_mp_8.setCardBackgroundColor(resources.getColor(R.color.color_01))
-            v.card_mp_8.setOnClickListener {
-                startActivity(this, quart, 0, 7, v)
-            }
-            v.card_mp_9.setCardBackgroundColor(resources.getColor(R.color.color_01))
-            v.card_mp_9.setOnClickListener {
-                startActivity(this, quart, 0, 8, v)
-            }
-            v.card_mp_10.setCardBackgroundColor(resources.getColor(R.color.color_01))
-            v.card_mp_10.setOnClickListener {
-                startActivity(this, quart, 0, 9, v)
-            }
-            v.card_mp_11.setCardBackgroundColor(resources.getColor(R.color.color_01))
-            v.card_mp_11.setOnClickListener {
-                startActivity(this, quart, 0, 10, v)
-            }
-            v.card_mp_12.setCardBackgroundColor(resources.getColor(R.color.color_01))
-            v.card_mp_12.setOnClickListener {
-                startActivity(this, quart, 0, 11, v)
-            }
-            v.card_mp_13.setCardBackgroundColor(resources.getColor(R.color.color_01))
-            v.card_mp_13.setOnClickListener {
-                startActivity(this, quart, 0, 12, v)
-            }
-            v.text_date_1.text =
-                quart[0].weeks[0].num_week.toString() + " неделя, " + quart[0].weeks[0].date_begin + "  —  " + quart[0].weeks[0].date_finish
-            v.text_date_2.text =
-                quart[0].weeks[1].num_week.toString() + " неделя, " + quart[0].weeks[1].date_begin + "  —  " + quart[0].weeks[1].date_finish
-            v.text_date_3.text =
-                quart[0].weeks[2].num_week.toString() + " неделя, " + quart[0].weeks[2].date_begin + "  —  " + quart[0].weeks[2].date_finish
-            v.text_date_4.text =
-                quart[0].weeks[3].num_week.toString() + " неделя, " + quart[0].weeks[3].date_begin + "  —  " + quart[0].weeks[3].date_finish
-            v.text_date_5.text =
-                quart[0].weeks[4].num_week.toString() + " неделя, " + quart[0].weeks[4].date_begin + "  —  " + quart[0].weeks[4].date_finish
-            v.text_date_6.text =
-                quart[0].weeks[5].num_week.toString() + " неделя, " + quart[0].weeks[5].date_begin + "  —  " + quart[0].weeks[5].date_finish
-            v.text_date_7.text =
-                quart[0].weeks[6].num_week.toString() + " неделя, " + quart[0].weeks[6].date_begin + "  —  " + quart[0].weeks[6].date_finish
-            v.text_date_8.text =
-                quart[0].weeks[7].num_week.toString() + " неделя, " + quart[0].weeks[7].date_begin + "  —  " + quart[0].weeks[7].date_finish
-            v.text_date_9.text =
-                quart[0].weeks[8].num_week.toString() + " неделя, " + quart[0].weeks[8].date_begin + "  —  " + quart[0].weeks[8].date_finish
-            v.text_date_10.text =
-                quart[0].weeks[9].num_week.toString() + " неделя, " + quart[0].weeks[9].date_begin + "  —  " + quart[0].weeks[9].date_finish
-            v.text_date_11.text =
-                quart[0].weeks[10].num_week.toString() + " неделя, " + quart[0].weeks[10].date_begin + "  —  " + quart[0].weeks[10].date_finish
-            v.text_date_12.text =
-                quart[0].weeks[11].num_week.toString() + " неделя, " + quart[0].weeks[11].date_begin + "  —  " + quart[0].weeks[11].date_finish
-            v.text_date_13.text =
-                quart[0].weeks[12].num_week.toString() + " неделя, " + quart[0].weeks[12].date_begin + "  —  " + quart[0].weeks[12].date_finish
-
-            quart[0].weeks.forEachIndexed { index, _ ->
-                setTextik(quart, 0, index, index+1, v)
-            }
-
-            v.text_link_1.text = quart[0].weeks[0].verse.link_small + " "
-            v.text_link_2.text = quart[0].weeks[1].verse.link_small + " "
-            v.text_link_3.text = quart[0].weeks[2].verse.link_small + " "
-            v.text_link_4.text = quart[0].weeks[3].verse.link_small + " "
-            v.text_link_5.text = quart[0].weeks[4].verse.link_small + " "
-            v.text_link_6.text = quart[0].weeks[5].verse.link_small + " "
-            v.text_link_7.text = quart[0].weeks[6].verse.link_small + " "
-            v.text_link_8.text = quart[0].weeks[7].verse.link_small + " "
-            v.text_link_9.text = quart[0].weeks[8].verse.link_small + " "
-            v.text_link_10.text = quart[0].weeks[9].verse.link_small + " "
-            v.text_link_11.text = quart[0].weeks[10].verse.link_small + " "
-            v.text_link_12.text = quart[0].weeks[11].verse.link_small + " "
-            v.text_link_13.text = quart[0].weeks[12].verse.link_small + " "
+            pref.edit().putString("q", "1q").apply()
+            setListener(v, quart, 0)
         }
         v.text_date_2_q.text = quart[1].date_from + "  —  " + quart[1].date_to
         v.text_year_2_q.text = quart[1].name_quarter
         v.card_2_q.setOnClickListener {
-            v.scroll_quarters.visibility = View.GONE
-            v.scroll_weeks.visibility = View.VISIBLE
-            valNow = "week"
-            v.card_mp_1.setCardBackgroundColor(resources.getColor(R.color.color_02))
-            v.card_mp_1.setOnClickListener {
-                startActivity(this, quart, 1, 0, v)
-            }
-            v.card_mp_2.setCardBackgroundColor(resources.getColor(R.color.color_02))
-            v.card_mp_2.setOnClickListener {
-                startActivity(this, quart, 1, 1, v)
-            }
-            v.card_mp_3.setCardBackgroundColor(resources.getColor(R.color.color_02))
-            v.card_mp_3.setOnClickListener {
-                startActivity(this, quart, 1, 2, v)
-            }
-            v.card_mp_4.setCardBackgroundColor(resources.getColor(R.color.color_02))
-            v.card_mp_4.setOnClickListener {
-                startActivity(this, quart, 1, 3, v)
-            }
-            v.card_mp_5.setCardBackgroundColor(resources.getColor(R.color.color_02))
-            v.card_mp_5.setOnClickListener {
-                startActivity(this, quart, 1, 4, v)
-            }
-            v.card_mp_6.setCardBackgroundColor(resources.getColor(R.color.color_02))
-            v.card_mp_6.setOnClickListener {
-                startActivity(this, quart, 1, 5, v)
-            }
-            v.card_mp_7.setCardBackgroundColor(resources.getColor(R.color.color_02))
-            v.card_mp_7.setOnClickListener {
-                startActivity(this, quart, 1, 6, v)
-            }
-            v.card_mp_8.setCardBackgroundColor(resources.getColor(R.color.color_02))
-            v.card_mp_8.setOnClickListener {
-                startActivity(this, quart, 1, 7, v)
-            }
-            v.card_mp_9.setCardBackgroundColor(resources.getColor(R.color.color_02))
-            v.card_mp_9.setOnClickListener {
-                startActivity(this, quart, 1, 8, v)
-            }
-            v.card_mp_10.setCardBackgroundColor(resources.getColor(R.color.color_02))
-            v.card_mp_10.setOnClickListener {
-                startActivity(this, quart, 1, 9, v)
-            }
-            v.card_mp_11.setCardBackgroundColor(resources.getColor(R.color.color_02))
-            v.card_mp_11.setOnClickListener {
-                startActivity(this, quart, 1, 10, v)
-            }
-            v.card_mp_12.setCardBackgroundColor(resources.getColor(R.color.color_02))
-            v.card_mp_12.setOnClickListener {
-                startActivity(this, quart, 1, 11, v)
-            }
-            v.card_mp_13.setCardBackgroundColor(resources.getColor(R.color.color_02))
-            v.card_mp_13.setOnClickListener {
-                startActivity(this, quart, 1, 12, v)
-            }
-            v.text_date_1.text =
-                quart[1].weeks[0].num_week.toString() + " неделя, " + quart[1].weeks[0].date_begin + "  —  " + quart[1].weeks[0].date_finish
-            v.text_date_2.text =
-                quart[1].weeks[1].num_week.toString() + " неделя, " + quart[1].weeks[1].date_begin + "  —  " + quart[1].weeks[1].date_finish
-            v.text_date_3.text =
-                quart[1].weeks[2].num_week.toString() + " неделя, " + quart[1].weeks[2].date_begin + "  —  " + quart[1].weeks[2].date_finish
-            v.text_date_4.text =
-                quart[1].weeks[3].num_week.toString() + " неделя, " + quart[1].weeks[3].date_begin + "  —  " + quart[1].weeks[3].date_finish
-            v.text_date_5.text =
-                quart[1].weeks[4].num_week.toString() + " неделя, " + quart[1].weeks[4].date_begin + "  —  " + quart[1].weeks[4].date_finish
-            v.text_date_6.text =
-                quart[1].weeks[5].num_week.toString() + " неделя, " + quart[1].weeks[5].date_begin + "  —  " + quart[1].weeks[5].date_finish
-            v.text_date_7.text =
-                quart[1].weeks[6].num_week.toString() + " неделя, " + quart[1].weeks[6].date_begin + "  —  " + quart[1].weeks[6].date_finish
-            v.text_date_8.text =
-                quart[1].weeks[7].num_week.toString() + " неделя, " + quart[1].weeks[7].date_begin + "  —  " + quart[1].weeks[7].date_finish
-            v.text_date_9.text =
-                quart[1].weeks[8].num_week.toString() + " неделя, " + quart[1].weeks[8].date_begin + "  —  " + quart[1].weeks[8].date_finish
-            v.text_date_10.text =
-                quart[1].weeks[9].num_week.toString() + " неделя, " + quart[1].weeks[9].date_begin + "  —  " + quart[1].weeks[9].date_finish
-            v.text_date_11.text =
-                quart[1].weeks[10].num_week.toString() + " неделя, " + quart[1].weeks[10].date_begin + "  —  " + quart[1].weeks[10].date_finish
-            v.text_date_12.text =
-                quart[1].weeks[11].num_week.toString() + " неделя, " + quart[1].weeks[11].date_begin + "  —  " + quart[1].weeks[11].date_finish
-            v.text_date_13.text =
-                quart[1].weeks[12].num_week.toString() + " неделя, " + quart[1].weeks[12].date_begin + "  —  " + quart[1].weeks[12].date_finish
-
-            quart[1].weeks.forEachIndexed { index, _ ->
-                setTextik(quart, 1, index, index+1, v)
-            }
-
-            v.text_link_1.text = quart[1].weeks[0].verse.link_small + " "
-            v.text_link_2.text = quart[1].weeks[1].verse.link_small + " "
-            v.text_link_3.text = quart[1].weeks[2].verse.link_small + " "
-            v.text_link_4.text = quart[1].weeks[3].verse.link_small + " "
-            v.text_link_5.text = quart[1].weeks[4].verse.link_small + " "
-            v.text_link_6.text = quart[1].weeks[5].verse.link_small + " "
-            v.text_link_7.text = quart[1].weeks[6].verse.link_small + " "
-            v.text_link_8.text = quart[1].weeks[7].verse.link_small + " "
-            v.text_link_9.text = quart[1].weeks[8].verse.link_small + " "
-            v.text_link_10.text = quart[1].weeks[9].verse.link_small + " "
-            v.text_link_11.text = quart[1].weeks[10].verse.link_small + " "
-            v.text_link_12.text = quart[1].weeks[11].verse.link_small + " "
-            v.text_link_13.text = quart[1].weeks[12].verse.link_small + " "
+            pref.edit().putString("q", "2q").apply()
+            setListener(v, quart, 1)
         }
         v.text_date_3_q.text = quart[2].date_from + "  —  " + quart[2].date_to
         v.text_year_3_q.text = quart[2].name_quarter
         v.card_3_q.setOnClickListener {
-            valNow = "week"
-            v.scroll_quarters.visibility = View.GONE
-            v.scroll_weeks.visibility = View.VISIBLE
-            v.card_mp_1.setCardBackgroundColor(resources.getColor(R.color.color_03))
-            v.card_mp_1.setOnClickListener {
-                startActivity(this, quart, 2, 0, v)
-            }
-            v.card_mp_2.setCardBackgroundColor(resources.getColor(R.color.color_03))
-            v.card_mp_2.setOnClickListener {
-                startActivity(this, quart, 2, 1, v)
-            }
-            v.card_mp_3.setCardBackgroundColor(resources.getColor(R.color.color_03))
-            v.card_mp_3.setOnClickListener {
-                startActivity(this, quart, 2, 2, v)
-            }
-            v.card_mp_4.setCardBackgroundColor(resources.getColor(R.color.color_03))
-            v.card_mp_4.setOnClickListener {
-                startActivity(this, quart, 2, 3, v)
-            }
-            v.card_mp_5.setCardBackgroundColor(resources.getColor(R.color.color_03))
-            v.card_mp_5.setOnClickListener {
-                startActivity(this, quart, 2, 4, v)
-            }
-            v.card_mp_6.setCardBackgroundColor(resources.getColor(R.color.color_03))
-            v.card_mp_6.setOnClickListener {
-                startActivity(this, quart, 2, 5, v)
-            }
-            v.card_mp_7.setCardBackgroundColor(resources.getColor(R.color.color_03))
-            v.card_mp_7.setOnClickListener {
-                startActivity(this, quart, 2, 6, v)
-            }
-            v.card_mp_8.setCardBackgroundColor(resources.getColor(R.color.color_03))
-            v.card_mp_8.setOnClickListener {
-                startActivity(this, quart, 2, 7, v)
-            }
-            v.card_mp_9.setCardBackgroundColor(resources.getColor(R.color.color_03))
-            v.card_mp_9.setOnClickListener {
-                startActivity(this, quart, 2, 8, v)
-            }
-            v.card_mp_10.setCardBackgroundColor(resources.getColor(R.color.color_03))
-            v.card_mp_10.setOnClickListener {
-                startActivity(this, quart, 2, 9, v)
-            }
-            v.card_mp_11.setCardBackgroundColor(resources.getColor(R.color.color_03))
-            v.card_mp_11.setOnClickListener {
-                startActivity(this, quart, 2, 10, v)
-            }
-            v.card_mp_12.setCardBackgroundColor(resources.getColor(R.color.color_03))
-            v.card_mp_12.setOnClickListener {
-                startActivity(this, quart, 2, 11, v)
-            }
-            v.card_mp_13.setCardBackgroundColor(resources.getColor(R.color.color_03))
-            v.card_mp_13.setOnClickListener {
-                startActivity(this, quart, 2, 12, v)
-            }
-            v.text_date_1.text =
-                quart[2].weeks[0].num_week.toString() + " неделя, " + quart[2].weeks[0].date_begin + "  —  " + quart[2].weeks[0].date_finish
-            v.text_date_2.text =
-                quart[2].weeks[1].num_week.toString() + " неделя, " + quart[2].weeks[1].date_begin + "  —  " + quart[2].weeks[1].date_finish
-            v.text_date_3.text =
-                quart[2].weeks[2].num_week.toString() + " неделя, " + quart[2].weeks[2].date_begin + "  —  " + quart[2].weeks[2].date_finish
-            v.text_date_4.text =
-                quart[2].weeks[3].num_week.toString() + " неделя, " + quart[2].weeks[3].date_begin + "  —  " + quart[2].weeks[3].date_finish
-            v.text_date_5.text =
-                quart[2].weeks[4].num_week.toString() + " неделя, " + quart[2].weeks[4].date_begin + "  —  " + quart[2].weeks[4].date_finish
-            v.text_date_6.text =
-                quart[2].weeks[5].num_week.toString() + " неделя, " + quart[2].weeks[5].date_begin + "  —  " + quart[2].weeks[5].date_finish
-            v.text_date_7.text =
-                quart[2].weeks[6].num_week.toString() + " неделя, " + quart[2].weeks[6].date_begin + "  —  " + quart[2].weeks[6].date_finish
-            v.text_date_8.text =
-                quart[2].weeks[7].num_week.toString() + " неделя, " + quart[2].weeks[7].date_begin + "  —  " + quart[2].weeks[7].date_finish
-            v.text_date_9.text =
-                quart[2].weeks[8].num_week.toString() + " неделя, " + quart[2].weeks[8].date_begin + "  —  " + quart[2].weeks[8].date_finish
-            v.text_date_10.text =
-                quart[2].weeks[9].num_week.toString() + " неделя, " + quart[2].weeks[9].date_begin + "  —  " + quart[2].weeks[9].date_finish
-            v.text_date_11.text =
-                quart[2].weeks[10].num_week.toString() + " неделя, " + quart[2].weeks[10].date_begin + "  —  " + quart[2].weeks[10].date_finish
-            v.text_date_12.text =
-                quart[2].weeks[11].num_week.toString() + " неделя, " + quart[2].weeks[11].date_begin + "  —  " + quart[2].weeks[11].date_finish
-            v.text_date_13.text =
-                quart[2].weeks[12].num_week.toString() + " неделя, " + quart[2].weeks[12].date_begin + "  —  " + quart[2].weeks[12].date_finish
-
-            quart[2].weeks.forEachIndexed { index, _ ->
-                setTextik(quart, 2, index, index+1, v)
-            }
-
-            v.text_link_1.text = quart[2].weeks[0].verse.link_small + " "
-            v.text_link_2.text = quart[2].weeks[1].verse.link_small + " "
-            v.text_link_3.text = quart[2].weeks[2].verse.link_small + " "
-            v.text_link_4.text = quart[2].weeks[3].verse.link_small + " "
-            v.text_link_5.text = quart[2].weeks[4].verse.link_small + " "
-            v.text_link_6.text = quart[2].weeks[5].verse.link_small + " "
-            v.text_link_7.text = quart[2].weeks[6].verse.link_small + " "
-            v.text_link_8.text = quart[2].weeks[7].verse.link_small + " "
-            v.text_link_9.text = quart[2].weeks[8].verse.link_small + " "
-            v.text_link_10.text = quart[2].weeks[9].verse.link_small + " "
-            v.text_link_11.text = quart[2].weeks[10].verse.link_small + " "
-            v.text_link_12.text = quart[2].weeks[11].verse.link_small + " "
-            v.text_link_13.text = quart[2].weeks[12].verse.link_small + " "
-
+            pref.edit().putString("q", "3q").apply()
+            setListener(v, quart, 2)
         }
         v.text_date_4_q.text = quart[3].date_from + "  —  " + quart[3].date_to
         v.text_year_4_q.text = quart[3].name_quarter
         v.card_4_q.setOnClickListener {
-            valNow = "week"
-            v.scroll_quarters.visibility = View.GONE
-            v.scroll_weeks.visibility = View.VISIBLE
-            v.card_mp_1.setCardBackgroundColor(resources.getColor(R.color.color_04))
-            v.card_mp_1.setOnClickListener {
-                startActivity(this, quart, 3, 0, v)
-            }
-            v.card_mp_2.setCardBackgroundColor(resources.getColor(R.color.color_04))
-            v.card_mp_2.setOnClickListener {
-                startActivity(this, quart, 3, 1, v)
-            }
-            v.card_mp_3.setCardBackgroundColor(resources.getColor(R.color.color_04))
-            v.card_mp_3.setOnClickListener {
-                startActivity(this, quart, 3, 2, v)
-            }
-            v.card_mp_4.setCardBackgroundColor(resources.getColor(R.color.color_04))
-            v.card_mp_4.setOnClickListener {
-                startActivity(this, quart, 3, 3, v)
-            }
-            v.card_mp_5.setCardBackgroundColor(resources.getColor(R.color.color_04))
-            v.card_mp_5.setOnClickListener {
-                startActivity(this, quart, 3, 4, v)
-            }
-            v.card_mp_6.setCardBackgroundColor(resources.getColor(R.color.color_04))
-            v.card_mp_6.setOnClickListener {
-                startActivity(this, quart, 3, 5, v)
-            }
-            v.card_mp_7.setCardBackgroundColor(resources.getColor(R.color.color_04))
-            v.card_mp_7.setOnClickListener {
-                startActivity(this, quart, 3, 6, v)
-            }
-            v.card_mp_8.setCardBackgroundColor(resources.getColor(R.color.color_04))
-            v.card_mp_8.setOnClickListener {
-                startActivity(this, quart, 3, 7, v)
-            }
-            v.card_mp_9.setCardBackgroundColor(resources.getColor(R.color.color_04))
-            v.card_mp_9.setOnClickListener {
-                startActivity(this, quart, 3, 8, v)
-            }
-            v.card_mp_10.setCardBackgroundColor(resources.getColor(R.color.color_04))
-            v.card_mp_10.setOnClickListener {
-                startActivity(this, quart, 3, 9, v)
-            }
-            v.card_mp_11.setCardBackgroundColor(resources.getColor(R.color.color_04))
-            v.card_mp_11.setOnClickListener {
-                startActivity(this, quart, 3, 10, v)
-            }
-            v.card_mp_12.setCardBackgroundColor(resources.getColor(R.color.color_04))
-            v.card_mp_12.setOnClickListener {
-                startActivity(this, quart, 3, 11, v)
-            }
-            v.card_mp_13.setCardBackgroundColor(resources.getColor(R.color.color_04))
-            v.card_mp_13.setOnClickListener {
-                startActivity(this, quart, 3, 12, v)
-            }
-            v.text_date_1.text =
-                quart[3].weeks[0].num_week.toString() + " неделя, " + quart[3].weeks[0].date_begin + "  —  " + quart[3].weeks[0].date_finish
-            v.text_date_2.text =
-                quart[3].weeks[1].num_week.toString() + " неделя, " + quart[3].weeks[1].date_begin + "  —  " + quart[3].weeks[1].date_finish
-            v.text_date_3.text =
-                quart[3].weeks[2].num_week.toString() + " неделя, " + quart[3].weeks[2].date_begin + "  —  " + quart[3].weeks[2].date_finish
-            v.text_date_4.text =
-                quart[3].weeks[3].num_week.toString() + " неделя, " + quart[3].weeks[3].date_begin + "  —  " + quart[3].weeks[3].date_finish
-            v.text_date_5.text =
-                quart[3].weeks[4].num_week.toString() + " неделя, " + quart[3].weeks[4].date_begin + "  —  " + quart[3].weeks[4].date_finish
-            v.text_date_6.text =
-                quart[3].weeks[5].num_week.toString() + " неделя, " + quart[3].weeks[5].date_begin + "  —  " + quart[3].weeks[5].date_finish
-            v.text_date_7.text =
-                quart[3].weeks[6].num_week.toString() + " неделя, " + quart[3].weeks[6].date_begin + "  —  " + quart[3].weeks[6].date_finish
-            v.text_date_8.text =
-                quart[3].weeks[7].num_week.toString() + " неделя, " + quart[3].weeks[7].date_begin + "  —  " + quart[3].weeks[7].date_finish
-            v.text_date_9.text =
-                quart[3].weeks[8].num_week.toString() + " неделя, " + quart[3].weeks[8].date_begin + "  —  " + quart[3].weeks[8].date_finish
-            v.text_date_10.text =
-                quart[3].weeks[9].num_week.toString() + " неделя, " + quart[3].weeks[9].date_begin + "  —  " + quart[3].weeks[9].date_finish
-            v.text_date_11.text =
-                quart[3].weeks[10].num_week.toString() + " неделя, " + quart[3].weeks[10].date_begin + "  —  " + quart[3].weeks[10].date_finish
-            v.text_date_12.text =
-                quart[3].weeks[11].num_week.toString() + " неделя, " + quart[3].weeks[11].date_begin + "  —  " + quart[3].weeks[11].date_finish
-            v.text_date_13.text =
-                quart[3].weeks[12].num_week.toString() + " неделя, " + quart[3].weeks[12].date_begin + "  —  " + quart[3].weeks[12].date_finish
-
-            quart[3].weeks.forEachIndexed { index, _ ->
-                setTextik(quart, 3, index, index+1, v)
-            }
-
-            v.text_link_1.text = quart[3].weeks[0].verse.link_small + " "
-            v.text_link_2.text = quart[3].weeks[1].verse.link_small + " "
-            v.text_link_3.text = quart[3].weeks[2].verse.link_small + " "
-            v.text_link_4.text = quart[3].weeks[3].verse.link_small + " "
-            v.text_link_5.text = quart[3].weeks[4].verse.link_small + " "
-            v.text_link_6.text = quart[3].weeks[5].verse.link_small + " "
-            v.text_link_7.text = quart[3].weeks[6].verse.link_small + " "
-            v.text_link_8.text = quart[3].weeks[7].verse.link_small + " "
-            v.text_link_9.text = quart[3].weeks[8].verse.link_small + " "
-            v.text_link_10.text = quart[3].weeks[9].verse.link_small + " "
-            v.text_link_11.text = quart[3].weeks[10].verse.link_small + " "
-            v.text_link_12.text = quart[3].weeks[11].verse.link_small + " "
-            v.text_link_13.text = quart[3].weeks[12].verse.link_small + " "
+            pref.edit().putString("q", "4q").apply()
+            setListener(v, quart, 3)
         }
     }
 
@@ -634,11 +255,139 @@ class ArchiveFragment : Fragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.detail_menu, menu)
-        menu.findItem(R.id.item_music).isVisible = false
-        menu.findItem(R.id.item_translate).isVisible = false
-        super.onCreateOptionsMenu(menu, inflater)
+    @SuppressLint("SetTextI18n")
+    private fun setListener (v: View, quart: Array<year>, n_q: Int) {
+        valNow = "week"
+        v.scroll_quarters.visibility = View.GONE
+        v.scroll_weeks.visibility = View.VISIBLE
+        stateNow = ""
+        v.img_music.setImageResource(R.drawable.ic_play_arrow_black_24dp)
+        mp = MediaPlayer()
+        val afd = activity!!.assets.openFd("audio/"+pref.getString("year", "")+"/"+pref.getString("q", "")+"/all.mp3")
+        mp.setDataSource(afd.fileDescriptor,afd.startOffset,afd.length)
+        mp.prepare()
+        mp.isLooping = true
+        v.card_music.setOnClickListener {
+            if (stateNow == "" || stateNow == "play") {
+                mp.start()
+                v.img_music.setImageResource(R.drawable.ic_pause_black_24dp)
+                stateNow = "pause"
+            } else if (stateNow == "pause") {
+                mp.pause()
+                v.img_music.setImageResource(R.drawable.ic_play_arrow_black_24dp)
+                stateNow = "play"
+            }
+        }
+        v.card_mp_1.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_1.setOnClickListener {
+            pref.edit().putString("v", "1").apply()
+            startActivity(this, quart, n_q, 0, v)
+        }
+        v.card_mp_2.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_2.setOnClickListener {
+            pref.edit().putString("v", "2").apply()
+            startActivity(this, quart, n_q, 1, v)
+        }
+        v.card_mp_3.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_3.setOnClickListener {
+            pref.edit().putString("v", "3").apply()
+            startActivity(this, quart, n_q, 2, v)
+        }
+        v.card_mp_4.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_4.setOnClickListener {
+            pref.edit().putString("v", "4").apply()
+            startActivity(this, quart, n_q, 3, v)
+        }
+        v.card_mp_5.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_5.setOnClickListener {
+            pref.edit().putString("v", "5").apply()
+            startActivity(this, quart, n_q, 4, v)
+        }
+        v.card_mp_6.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_6.setOnClickListener {
+            pref.edit().putString("v", "6").apply()
+            startActivity(this, quart, n_q, 5, v)
+        }
+        v.card_mp_7.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_7.setOnClickListener {
+            pref.edit().putString("v", "7").apply()
+            startActivity(this, quart, n_q, 6, v)
+        }
+        v.card_mp_8.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_8.setOnClickListener {
+            pref.edit().putString("v", "8").apply()
+            startActivity(this, quart, n_q, 7, v)
+        }
+        v.card_mp_9.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_9.setOnClickListener {
+            pref.edit().putString("v", "9").apply()
+            startActivity(this, quart, n_q, 8, v)
+        }
+        v.card_mp_10.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_10.setOnClickListener {
+            pref.edit().putString("v", "10").apply()
+            startActivity(this, quart, n_q, 9, v)
+        }
+        v.card_mp_11.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_11.setOnClickListener {
+            pref.edit().putString("v", "11").apply()
+            startActivity(this, quart, n_q, 10, v)
+        }
+        v.card_mp_12.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_12.setOnClickListener {
+            pref.edit().putString("v", "12").apply()
+            startActivity(this, quart, n_q, 11, v)
+        }
+        v.card_mp_13.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_13.setOnClickListener {
+            pref.edit().putString("v", "13").apply()
+            startActivity(this, quart, n_q, 12, v)
+        }
+        v.text_date_1.text =
+            quart[n_q].weeks[0].num_week.toString() + " неделя, " + quart[n_q].weeks[0].date_begin + "  —  " + quart[n_q].weeks[0].date_finish
+        v.text_date_2.text =
+            quart[n_q].weeks[1].num_week.toString() + " неделя, " + quart[n_q].weeks[1].date_begin + "  —  " + quart[n_q].weeks[1].date_finish
+        v.text_date_3.text =
+            quart[n_q].weeks[2].num_week.toString() + " неделя, " + quart[n_q].weeks[2].date_begin + "  —  " + quart[n_q].weeks[2].date_finish
+        v.text_date_4.text =
+            quart[n_q].weeks[3].num_week.toString() + " неделя, " + quart[n_q].weeks[3].date_begin + "  —  " + quart[n_q].weeks[3].date_finish
+        v.text_date_5.text =
+            quart[n_q].weeks[4].num_week.toString() + " неделя, " + quart[n_q].weeks[4].date_begin + "  —  " + quart[n_q].weeks[4].date_finish
+        v.text_date_6.text =
+            quart[n_q].weeks[5].num_week.toString() + " неделя, " + quart[n_q].weeks[5].date_begin + "  —  " + quart[n_q].weeks[5].date_finish
+        v.text_date_7.text =
+            quart[n_q].weeks[6].num_week.toString() + " неделя, " + quart[n_q].weeks[6].date_begin + "  —  " + quart[n_q].weeks[6].date_finish
+        v.text_date_8.text =
+            quart[n_q].weeks[7].num_week.toString() + " неделя, " + quart[n_q].weeks[7].date_begin + "  —  " + quart[n_q].weeks[7].date_finish
+        v.text_date_9.text =
+            quart[n_q].weeks[8].num_week.toString() + " неделя, " + quart[n_q].weeks[8].date_begin + "  —  " + quart[n_q].weeks[8].date_finish
+        v.text_date_10.text =
+            quart[n_q].weeks[9].num_week.toString() + " неделя, " + quart[n_q].weeks[9].date_begin + "  —  " + quart[n_q].weeks[9].date_finish
+        v.text_date_11.text =
+            quart[n_q].weeks[10].num_week.toString() + " неделя, " + quart[n_q].weeks[10].date_begin + "  —  " + quart[n_q].weeks[10].date_finish
+        v.text_date_12.text =
+            quart[n_q].weeks[11].num_week.toString() + " неделя, " + quart[n_q].weeks[11].date_begin + "  —  " + quart[n_q].weeks[11].date_finish
+        v.text_date_13.text =
+            quart[n_q].weeks[12].num_week.toString() + " неделя, " + quart[n_q].weeks[12].date_begin + "  —  " + quart[n_q].weeks[12].date_finish
+
+        quart[n_q].weeks.forEachIndexed { index, _ ->
+            setTextik(quart, n_q, index, index+1, v)
+        }
+
+        v.text_link_1.text = quart[n_q].weeks[0].verse.link_small + " "
+        v.text_link_2.text = quart[n_q].weeks[1].verse.link_small + " "
+        v.text_link_3.text = quart[n_q].weeks[2].verse.link_small + " "
+        v.text_link_4.text = quart[n_q].weeks[3].verse.link_small + " "
+        v.text_link_5.text = quart[n_q].weeks[4].verse.link_small + " "
+        v.text_link_6.text = quart[n_q].weeks[5].verse.link_small + " "
+        v.text_link_7.text = quart[n_q].weeks[6].verse.link_small + " "
+        v.text_link_8.text = quart[n_q].weeks[7].verse.link_small + " "
+        v.text_link_9.text = quart[n_q].weeks[8].verse.link_small + " "
+        v.text_link_10.text = quart[n_q].weeks[9].verse.link_small + " "
+        v.text_link_11.text = quart[n_q].weeks[10].verse.link_small + " "
+        v.text_link_12.text = quart[n_q].weeks[11].verse.link_small + " "
+        v.text_link_13.text = quart[n_q].weeks[12].verse.link_small + " "
+
     }
 }
 

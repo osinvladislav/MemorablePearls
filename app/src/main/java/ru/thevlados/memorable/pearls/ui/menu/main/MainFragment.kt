@@ -57,9 +57,11 @@ class MainFragment : Fragment() {
 
         val sdf = SimpleDateFormat("dd.MM.yyyy")
         val currentDate = sdf.format(Date())
-        println(currentDate)
+        val sdfYear = SimpleDateFormat("yyyy")
+        val currentYeaR = sdfYear.format(Date())
+        pref.edit().putString("year", currentYeaR).apply()
 
-        val jsonString = activity!!.application.assets.open("2019-ru.json").bufferedReader().use{
+        val jsonString = activity!!.application.assets.open("$currentYeaR-ru.json").bufferedReader().use{
             it.readText()
         }
         val quart: Array<year> = Gson().fromJson<Array<year>>(jsonString, Array<year>::class.java)
@@ -69,24 +71,29 @@ class MainFragment : Fragment() {
                 when (index) {
                     0 -> {
                         v.card_mp_today.setCardBackgroundColor(resources.getColor(R.color.color_01))
+                        pref.edit().putString("q", "1q").apply()
                     }
                     1 -> {
                         v.card_mp_today.setCardBackgroundColor(resources.getColor(R.color.color_02))
+                        pref.edit().putString("q", "2q").apply()
                     }
                     2 -> {
                         v.card_mp_today.setCardBackgroundColor(resources.getColor(R.color.color_03))
+                        pref.edit().putString("q", "3q").apply()
                     }
                     3 -> {
                         v.card_mp_today.setCardBackgroundColor(resources.getColor(R.color.color_04))
+                        pref.edit().putString("q", "4q").apply()
                     }
                 }
                 it.weeks.forEach {item ->
                     if (sdf.parse(currentDate) in sdf.parse(item.date_begin)..sdf.parse(item.date_finish)) {
                         v.card_mp_today.text_date.text = item.num_week.toString() + " неделя, " + item.date_begin  + "  —  " + item.date_finish
+                        pref.edit().putString("v", item.num_week.toString()).apply()
                         when (pref.getString("translate", "")) {
                              "radio_rst" -> {
                                 v.card_mp_today.text_verse.text = item.verse.RST
-                            }
+                             }
                             "radio_bti" -> {
                                 v.card_mp_today.text_verse.text = item.verse.BTI
                             }

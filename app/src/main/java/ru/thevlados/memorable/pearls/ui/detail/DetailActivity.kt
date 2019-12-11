@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.bottom_sheet.view.*
 import kotlinx.android.synthetic.main.main_fragment.*
-import kotlinx.android.synthetic.main.main_fragment.view.*
 import ru.thevlados.memorable.pearls.R
 
 
@@ -19,6 +18,7 @@ class DetailActivity : AppCompatActivity() {
     private var stateNow: String = ""
     private var radioNow: String = ""
     lateinit var pref: SharedPreferences
+    var mp: MediaPlayer = MediaPlayer()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +55,10 @@ class DetailActivity : AppCompatActivity() {
             }
         }
         text_link.text = intent.getStringExtra("text_link_full")
+        val afd = assets.openFd("audio/"+pref.getString("year", "")+"/"+pref.getString("q", "")+"/"+pref.getString("v", "")+".mp3")
+        mp.setDataSource(afd.fileDescriptor,afd.startOffset,afd.length)
+        mp.prepare()
+        mp.isLooping = true
     }
 
     override fun onOptionsItemSelected(menuItem: MenuItem): Boolean {
@@ -64,9 +68,11 @@ class DetailActivity : AppCompatActivity() {
             }
             R.id.item_music -> {
                 if (stateNow == "" || stateNow == "play") {
+                    mp.start()
                     menuItem.icon = resources.getDrawable(R.drawable.ic_pause_black_24dp)
                     stateNow = "pause"
                 } else if (stateNow == "pause") {
+                    mp.pause()
                     menuItem.icon = resources.getDrawable(R.drawable.ic_play_arrow_black_24dp)
                     stateNow = "play"
                 }
