@@ -135,4 +135,9 @@ class DetailActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
+    override fun onDestroy() {
+        mp.stop()
+        super.onDestroy()
+    }
+
 }
