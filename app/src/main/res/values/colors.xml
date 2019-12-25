@@ -10,4 +10,6 @@
     <color name="color_text">#FDFDFE</color>
     <color name="color_text_light">#898989</color>
     <color name="color_05">#FDEF02</color>
+    <color name="color_error">#F44336</color>
+    <color name="color_ok">#4CAF50</color>
 </resources>

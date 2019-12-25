@@ -8,4 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="error" parent="@style/TextAppearance.Design.HelperText">
+        <item name="android:textColor">@color/color_error</item>
+    </style>
+
+    <style name="ok" parent="@style/TextAppearance.Design.HelperText">
+        <item name="android:textColor">@color/color_ok</item>
+    </style>
+
+    <style name="standart" parent="@style/TextAppearance.Design.HelperText"></style>
+
 </resources>
