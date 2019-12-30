@@ -14,4 +14,10 @@
         android:icon="@drawable/ic_audiotrack_black_24dp"
         app:showAsAction="always"
         android:title="" />
+
+    <item
+        android:id="@+id/item_copy"
+        android:icon="@drawable/ic_content_copy_black_24dp"
+        app:showAsAction="always"
+        android:title="" />
 </menu>

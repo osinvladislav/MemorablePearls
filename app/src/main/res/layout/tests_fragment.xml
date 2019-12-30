@@ -70,7 +70,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/roboto"
-                        android:text="Тренировка Памятных Жемчужин. Улучшает запоминание стихов посредством многократного переписывания."
+                        android:text="Тренировка Памятных Жемчужин. Улучшает запоминание стихов."
                         android:textColor="@color/color_text"
                         android:textSize="16sp" />
 
@@ -154,7 +154,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/roboto_medium"
-                android:text='Тренировка Памятных Жемчужин. Улучшает запоминание стихов посредством многократного переписывания. Выберите год и квартал. После нажатия кнопки "Запустить" вы перейдете в новое окно. Вам будет дан случайный стих, и вы должны будете переписать его. Регистр букв и знаки препинания за исключением точек, знаков вопроса и восклицательных знаков не учитываются. Стихи будут отображаться в том переводе, который вы выбрали в настройках.'
+                android:text='Тренировка Памятных Жемчужин. Улучшает запоминание стихов посредством. Выберите год и квартал. После нажатия кнопки "Запустить" вы перейдете в новое окно. Вам будет дана ссылка на случайный стих, и вы должны будете для себя понять, какой это стих. Если вы ответите правильно, нажимайте кнопку Я ответил правильно. Если отвечаете неправильно, нажимайте кнопку Я ответил неправильно. После того как вы пройдете все 12 стихов, будут показаны те стихи, на которые вы ответили неправильно. И так будет, пока вы не ответите на все вопросы правильно. Регистр букв и знаки препинания не учитываются. Стихи будут отображаться в том переводе, который вы выбрали в настройках.'
                 android:textSize="16sp" />
 
             <LinearLayout
@@ -242,7 +242,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/roboto_medium"
-                android:text='Проверка Ваших знаний Памятных Жемчужин. Помогает закрепить знания и понять слабые места. Выберите год и квартал. После нажатия кнопки "Запустить" вы перейдете в новое окно. Вам будет дан либо индекс стиха, либо сам стих. Вы должны будете выбрать правильный вариант ответа, а именно: Если вам попадается индекс стиха, ваша задача переписать стих, если вам попадается стих, то вы должны написать ссылку. Регистр букв и знаки препинания за исключением точек, знаков вопроса и восклицательных знаков не учитываются. Стихи будут отображаться в том переводе, который вы выбрали в настройках.'
+                android:text='Проверка Ваших знаний Памятных Жемчужин. Помогает закрепить знания и понять слабые места. Выберите год и квартал. После нажатия кнопки "Запустить" вы перейдете в новое окно. Вам будет дана ссылка и номер недели стиха, и нужно будет написать этот стих из своей памяти. Регистр букв и знаки препинания не учитываются. Стихи будут отображаться в том переводе, который вы выбрали в настройках.'
                 android:textSize="16sp" />
 
             <LinearLayout
@@ -292,27 +292,27 @@
                     android:entries="@array/quart" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:orientation="horizontal">-->
 
-                <TextView
-                    android:id="@+id/text_select_diff"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/roboto"
-                    android:gravity="center"
-                    android:text="Выберите сложность:"
-                    android:textSize="16sp" />
+<!--                <TextView-->
+<!--                    android:id="@+id/text_select_diff"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:fontFamily="@font/roboto"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="Выберите сложность:"-->
+<!--                    android:textSize="16sp" />-->
 
-                <Spinner
-                    android:id="@+id/spinner_diff"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:entries="@array/diff" />
-            </LinearLayout>
+<!--                <Spinner-->
+<!--                    android:id="@+id/spinner_diff"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="8dp"-->
+<!--                    android:entries="@array/diff" />-->
+<!--            </LinearLayout>-->
 
             <Button
                 android:id="@+id/btn_test"

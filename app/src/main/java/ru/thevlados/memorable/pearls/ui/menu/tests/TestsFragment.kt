@@ -53,7 +53,6 @@ class TestsFragment : Fragment() {
             false
         })
 
-
         v.card_trane.setOnClickListener {
             (activity as MainActivity?)?.resetActionBar(childAction = true)
             setHasOptionsMenu(true)
@@ -69,6 +68,15 @@ class TestsFragment : Fragment() {
             v.scroll_test.isVisible = true
         }
 
+        if (arguments?.getBoolean("isCheck") != null) {
+            if (arguments?.getBoolean("isCheck")!!) {
+                v.card_test.performClick()
+            } else if (arguments?.getBoolean("isTrane")!!) {
+                v.card_trane.performClick()
+            }
+        }
+
+
         v.btn_trane.setOnClickListener {
             val intent = Intent(v.context, TraneActivity::class.java)
             intent.putExtra("year", v.spinner_year_trane.selectedItem.toString())
@@ -80,7 +88,7 @@ class TestsFragment : Fragment() {
             val intent = Intent(v.context, TestActivity::class.java)
             intent.putExtra("year", v.spinner_year_test.selectedItem.toString())
             intent.putExtra("quart", (v.spinner_quart_test.selectedItemId+1).toString())
-            intent.putExtra("diff", v.spinner_diff.selectedItem.toString())
+//            intent.putExtra("diff", v.spinner_diff.selectedItem.toString())
             startActivity(intent)
         }
 

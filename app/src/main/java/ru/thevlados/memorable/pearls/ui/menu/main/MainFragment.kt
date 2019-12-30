@@ -152,7 +152,7 @@ class MainFragment : Fragment() {
         v.text_trans_now.setOnClickListener {
             val navController = findNavController()
             val args = Bundle()
-            args.putBoolean("isTrain", true)
+            args.putBoolean("isTrane", true)
             args.putBoolean("isCheck", false)
             navController.navigate(R.id.navigation_tests, args)
         }
@@ -160,7 +160,7 @@ class MainFragment : Fragment() {
         v.text_check_know.setOnClickListener {
             val navController = findNavController()
             val args = Bundle()
-            args.putBoolean("isTrain", false)
+            args.putBoolean("isTrane", false)
             args.putBoolean("isCheck", true)
             navController.navigate(R.id.navigation_tests, args)
         }
