@@ -101,7 +101,7 @@ tools:context=".ui.trane.TraneActivity">
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/roboto"
-            android:text="Вы переписали все стихи заданного квартала правильно. Если вы хотите еще проверить свои знания, нажмите Пройти еще раз. Если вы хотите выйти, нажмите Закрыть"
+            android:text="Вы переписали все стихи заданного квартала правильно. Если вы хотите еще раз проверить свои знания, нажмите Пройти еще раз. Если вы хотите выйти, нажмите Закрыть"
             android:textSize="16sp" />
 
         <com.google.android.material.button.MaterialButton

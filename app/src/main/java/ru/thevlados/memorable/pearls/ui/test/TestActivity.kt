@@ -34,6 +34,10 @@ class TestActivity : AppCompatActivity() {
             it.readText()
         }
 
+        val quarter: Array<year> =
+            Gson().fromJson<Array<year>>(jsonString, Array<year>::class.java)
+        val quartNow = quarter[quart.toInt()-1]
+
         when (pref.getString("translate", "")) {
             "radio_rst" -> {
                 translate = "rst"
@@ -55,10 +59,6 @@ class TestActivity : AppCompatActivity() {
             }
         }
 
-        val quarter: Array<year> =
-            Gson().fromJson<Array<year>>(jsonString, Array<year>::class.java)
-        val quartNow = quarter[quart.toInt()-1]
-
         randomValues = returnRandomListOfVerse()
 
         updateVerse(quartNow.weeks[randomValues[numOfVerseNow]-1])
@@ -72,7 +72,7 @@ class TestActivity : AppCompatActivity() {
                 scroll_finish.visibility = View.VISIBLE
                 btn_again.setOnClickListener {
                     finish()
-                    val intent = Intent(this, TraneActivity::class.java)
+                    val intent = Intent(this, TestActivity::class.java)
                     intent.putExtra("year", year)
                     intent.putExtra("quart", quart)
                     startActivity(intent)

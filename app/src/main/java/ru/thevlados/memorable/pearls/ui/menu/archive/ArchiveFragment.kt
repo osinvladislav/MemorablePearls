@@ -1,19 +1,22 @@
 package ru.thevlados.memorable.pearls.ui.menu.archive
 
 import android.annotation.SuppressLint
-import android.content.Intent
-import android.content.SharedPreferences
+import android.content.*
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.archive_fragment.*
 import kotlinx.android.synthetic.main.archive_fragment.view.*
+import kotlinx.android.synthetic.main.main_fragment.view.*
 import ru.thevlados.memorable.pearls.MainActivity
 import ru.thevlados.memorable.pearls.R
 import ru.thevlados.memorable.pearls.ui.detail.DetailActivity
@@ -388,6 +391,84 @@ class ArchiveFragment : Fragment() {
         v.text_link_12.text = quart[n_q].weeks[11].verse.link_small + " "
         v.text_link_13.text = quart[n_q].weeks[12].verse.link_small + " "
 
+        v.card_mp_1.setOnLongClickListener {
+            startDialogMenu(v, v.text_verse_1.text.toString(), v.text_link_1.text.toString())
+            true
+        }
+
+        v.card_mp_2.setOnLongClickListener {
+            startDialogMenu(v, v.text_verse_2.text.toString(), v.text_link_2.text.toString())
+            true
+        }
+
+        v.card_mp_3.setOnLongClickListener {
+            startDialogMenu(v, v.text_verse_3.text.toString(), v.text_link_3.text.toString())
+            true
+        }
+
+        v.card_mp_4.setOnLongClickListener {
+            startDialogMenu(v, v.text_verse_4.text.toString(), v.text_link_4.text.toString())
+            true
+        }
+
+        v.card_mp_5.setOnLongClickListener {
+            startDialogMenu(v, v.text_verse_5.text.toString(), v.text_link_5.text.toString())
+            true
+        }
+
+        v.card_mp_6.setOnLongClickListener {
+            startDialogMenu(v, v.text_verse_6.text.toString(), v.text_link_6.text.toString())
+            true
+        }
+        v.card_mp_7.setOnLongClickListener {
+            startDialogMenu(v, v.text_verse_7.text.toString(), v.text_link_7.text.toString())
+            true
+        }
+
+        v.card_mp_8.setOnLongClickListener {
+            startDialogMenu(v, v.text_verse_8.text.toString(), v.text_link_8.text.toString())
+            true
+        }
+
+        v.card_mp_9.setOnLongClickListener {
+            startDialogMenu(v, v.text_verse_9.text.toString(), v.text_link_9.text.toString())
+            true
+        }
+
+        v.card_mp_10.setOnLongClickListener {
+            startDialogMenu(v, v.text_verse_10.text.toString(), v.text_link_10.text.toString())
+            true
+        }
+
+        v.card_mp_11.setOnLongClickListener {
+            startDialogMenu(v, v.text_verse_11.text.toString(), v.text_link_11.text.toString())
+            true
+        }
+
+        v.card_mp_12.setOnLongClickListener {
+            startDialogMenu(v, v.text_verse_12.text.toString(), v.text_link_12.text.toString())
+            true
+        }
+
+        v.card_mp_13.setOnLongClickListener {
+            startDialogMenu(v, v.text_verse_13.text.toString(), v.text_link_13.text.toString())
+            true
+        }
+    }
+
+    private fun startDialogMenu (v: View, textCopy: String, link_short: String) {
+        val items = arrayOf("Скопировать")
+        AlertDialog.Builder(context!!)
+            .setItems(items) { _, _ ->
+                val clipboard =
+                    context?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                val clip = ClipData.newPlainText(link_short, "$textCopy $link_short")
+                clipboard.setPrimaryClip(clip)
+                Snackbar.make(v, "Стих скопирован в буфер обмена", Snackbar.LENGTH_LONG)
+                    .show()
+
+            }
+            .show()
     }
 }
 
