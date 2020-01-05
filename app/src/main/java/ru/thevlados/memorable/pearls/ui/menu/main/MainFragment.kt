@@ -127,22 +127,7 @@ class MainFragment : Fragment() {
                         }
 
                         v.text_open_now.setOnClickListener {
-                            val navController = findNavController()
-                            val args = Bundle()
-                            args.putBoolean("isQuart", true)
-                            when {
-                                SimpleDateFormat("yyyy").format(Date()) == "2019" -> {
-                                    args.putInt("int", 3)
-                                }
-                                SimpleDateFormat("yyyy").format(Date()) == "2020" -> {
-                                    args.putInt("int", 4)
-                                }
-                                SimpleDateFormat("yyyy").format(Date()) == "2021" -> {
-                                    args.putInt("int", 5)
-                                }
-                            }
-                            args.putInt("int1", index+1)
-                            navController.navigate(R.id.navigation_archive, args)
+                            findNavController().navigate(R.id.navigation_archive)
                         }
                     }
                 }
@@ -150,26 +135,17 @@ class MainFragment : Fragment() {
         }
 
         v.text_trans_now.setOnClickListener {
-            val navController = findNavController()
-            val args = Bundle()
-            args.putBoolean("isTrane", true)
-            args.putBoolean("isCheck", false)
-            navController.navigate(R.id.navigation_tests, args)
+            pref.edit().putString("whatIs", "trane").apply()
+            findNavController().navigate(R.id.navigation_tests)
         }
 
         v.text_check_know.setOnClickListener {
-            val navController = findNavController()
-            val args = Bundle()
-            args.putBoolean("isTrane", false)
-            args.putBoolean("isCheck", true)
-            navController.navigate(R.id.navigation_tests, args)
+            pref.edit().putString("whatIs", "test").apply()
+            findNavController().navigate(R.id.navigation_tests)
         }
 
         v.text_switch_translate.setOnClickListener {
-            val navController = findNavController()
-            val args = Bundle()
-            args.putBoolean("isTrans", true)
-            navController.navigate(R.id.navigation_settings, args)
+            findNavController().navigate(R.id.navigation_settings)
         }
 
         return v

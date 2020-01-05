@@ -105,6 +105,7 @@ class TestsFragment : Fragment() {
             valNow = "detail"
             v.scroll_choose.isVisible = false
             v.scroll_trane.isVisible = true
+            pref.edit().putString("whatIs", "trane").apply()
         }
         v.card_test.setOnClickListener {
             (activity as MainActivity?)?.resetActionBar(childAction = true)
@@ -112,16 +113,8 @@ class TestsFragment : Fragment() {
             valNow = "detail"
             v.scroll_choose.isVisible = false
             v.scroll_test.isVisible = true
+            pref.edit().putString("whatIs", "test").apply()
         }
-
-        if (arguments?.getBoolean("isCheck") != null) {
-            if (arguments?.getBoolean("isCheck")!!) {
-                v.card_test.performClick()
-            } else if (arguments?.getBoolean("isTrane")!!) {
-                v.card_trane.performClick()
-            }
-        }
-
 
         v.btn_trane.setOnClickListener {
             val intent = Intent(v.context, TraneActivity::class.java)
@@ -134,8 +127,14 @@ class TestsFragment : Fragment() {
             val intent = Intent(v.context, TestActivity::class.java)
             intent.putExtra("year", v.spinner_year_test.selectedItem.toString())
             intent.putExtra("quart", (v.spinner_quart_test.selectedItemId+1).toString())
-//            intent.putExtra("diff", v.spinner_diff.selectedItem.toString())
             startActivity(intent)
+        }
+
+        if (pref.contains("whatIs")) {
+            when (pref.getString("whatIs", "")) {
+                "trane" -> v.card_trane.performClick()
+                "test" -> v.card_test.performClick()
+            }
         }
 
         return v

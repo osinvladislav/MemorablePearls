@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -27,7 +28,13 @@ class MainActivity : AppCompatActivity() {
         if (!pref.contains("name")) {
             startActivity(Intent(this, StartActivity::class.java))
         }
-
+        if (pref.contains("theme")) {
+            when (pref.getString("theme", "")) {
+                "radio_light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                "radio_dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                "radio_energy" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY)
+            }
+        }
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         val navController = findNavController(R.id.nav_host_fragment)
@@ -38,6 +45,7 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
     }
 
     fun resetActionBar(childAction: Boolean) {

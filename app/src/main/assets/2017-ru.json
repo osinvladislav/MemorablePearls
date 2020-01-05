@@ -6,8 +6,8 @@
 		"weeks": [
 			{
 				"num_week": 1,
-				"date_begin": "07.10.2017",
-				"date_finish": "13.10.2017",
+				"date_begin": "07.01.2017",
+				"date_finish": "13.01.2017",
 				"verse": {
 					"link_full": "Псалтирь, 45 глава 2 и 3 стих",
 					"link_small": "Пс. 45:2-3",
@@ -22,8 +22,8 @@
 			},
 			{
 				"num_week": 2,
-				"date_begin": "14.10.2017",
-				"date_finish": "20.10.2017",
+				"date_begin": "14.01.2017",
+				"date_finish": "20.01.2017",
 				"verse": {
 					"link_full": "Псалтирь, 89 глава 3 стих",
 					"link_small": "Пс. 89:3",
@@ -38,8 +38,8 @@
 			},
 			{
 				"num_week": 3,
-				"date_begin": "21.10.2017",
-				"date_finish": "27.10.2017",
+				"date_begin": "21.01.2017",
+				"date_finish": "27.01.2017",
 				"verse": {
 					"link_full": "Второзаконие,  7 глава 9 стих",
 					"link_small": "Втор. 7:9",
@@ -54,8 +54,8 @@
 			},
 			{
 				"num_week": 4,
-				"date_begin": "28.10.2017",
-				"date_finish": "03.11.2017",
+				"date_begin": "28.01.2017",
+				"date_finish": "03.02.2017",
 				"verse": {
 					"link_full": "Псалтирь, 41 глава 2 и 3 стих",
 					"link_small": "Пс. 41:2-3",
@@ -70,8 +70,8 @@
 			},
 			{
 				"num_week": 5,
-				"date_begin": "04.11.2017",
-				"date_finish": "10.11.2017",
+				"date_begin": "04.02.2017",
+				"date_finish": "10.02.2017",
 				"verse": {
 					"link_full": "Книга Исход, 34 глава 6 стих",
 					"link_small": "Исх. 34:6",
@@ -86,8 +86,8 @@
 			},
 			{
 				"num_week": 6,
-				"date_begin": "11.11.2017",
-				"date_finish": "17.11.2017",
+				"date_begin": "11.02.2017",
+				"date_finish": "17.02.2017",
 				"verse": {
 					"link_full": "1 Цар 12 глава 22 стих",
 					"link_small": "1 Цар. 12:22",
@@ -102,8 +102,8 @@
 			},
 			{
 				"num_week": 7,
-				"date_begin": "18.11.2017",
-				"date_finish": "24.11.2017",
+				"date_begin": "18.02.2017",
+				"date_finish": "24.02.2017",
 				"verse": {
 					"link_full": "1-е послание к Коринфянам, 8 глава 6 стих",
 					"link_small": "1 Кор. 8:6",
@@ -118,8 +118,8 @@
 			},
 			{
 				"num_week": 8,
-				"date_begin": "25.11.2017",
-				"date_finish": "01.12.2017",
+				"date_begin": "25.02.2017",
+				"date_finish": "03.03.2017",
 				"verse": {
 					"link_full": "Книга пророка Исаии, 33 глава 22 стих",
 					"link_small": "Ис. 33:22",
@@ -134,8 +134,8 @@
 			},
 			{
 				"num_week": 9,
-				"date_begin": "02.12.2017",
-				"date_finish": "08.12.2017",
+				"date_begin": "04.03.2017",
+				"date_finish": "10.03.2017",
 				"verse": {
 					"link_full": "Книга пророка Иеремии, 31 глава 3 стих",
 					"link_small": "Иер. 31:3",
@@ -150,8 +150,8 @@
 			},
 			{
 				"num_week": 10,
-				"date_begin": "09.12.2017",
-				"date_finish": "15.12.2017",
+				"date_begin": "11.03.2017",
+				"date_finish": "17.03.2017",
 				"verse": {
 					"link_full": "Второзаконие,  32 глава 3 и 4 стих",
 					"link_small": "Втор. 32:3-4",
@@ -166,8 +166,8 @@
 			},
 			{
 				"num_week": 11,
-				"date_begin": "16.12.2017",
-				"date_finish": "22.12.2017",
+				"date_begin": "18.03.2017",
+				"date_finish": "24.03.2017",
 				"verse": {
 					"link_full": "Книга пророка Исаии, 64 глава 8 стих",
 					"link_small": "Ис. 64:8",
@@ -182,8 +182,8 @@
 			},
 			{
 				"num_week": 12,
-				"date_begin": "23.12.2017",
-				"date_finish": "29.12.2017",
+				"date_begin": "25.03.2017",
+				"date_finish": "31.03.2017",
 				"verse": {
 					"link_full": "Евангелие от Иоанна, 1 глава 18 стих",
 					"link_small": "Ин. 1:18",
@@ -196,14 +196,20 @@
 					"CSLAV": "Нет перевода"
 					}
 			},
-			{
+				{
 				"num_week": 13,
 				"date_begin": "30.12.2017",
 				"date_finish": "05.01.2018",
-				"verse": {
+					"verse": {
 					"link_full": "Экзамен",
 					"link_small": "Экзамен",
-					"RST": "Экзамен"
+					"RST": "Экзамен",
+					"BTI": "Экзамен",
+					"NRP": "Экзамен",
+					"SRP": "Экзамен",
+					"IBL": "Экзамен",
+					"CASS": "Экзамен",
+					"CSLAV": "Экзамен"
 					}
 			}
 		]
@@ -215,8 +221,8 @@
 		"weeks": [
 			{
 				"num_week": 1,
-				"date_begin": "07.10.2017",
-				"date_finish": "13.10.2017",
+				"date_begin": "01.05.2017",
+				"date_finish": "07.05.2017",
 				"verse": {
 					"link_full": "Евангелие от Матфея, 3 глава 17 стих",
 					"link_small": "Мф. 3:17",
@@ -231,8 +237,8 @@
 			},
 			{
 				"num_week": 2,
-				"date_begin": "14.10.2017",
-				"date_finish": "20.10.2017",
+				"date_begin": "08.05.2017",
+				"date_finish": "14.05.2017",
 				"verse": {
 					"link_full": "Книга пророка Исаии, 53 глава 5 стих",
 					"link_small": "Ис. 53:5",
@@ -247,8 +253,8 @@
 			},
 			{
 				"num_week": 3,
-				"date_begin": "21.10.2017",
-				"date_finish": "27.10.2017",
+				"date_begin": "15.05.2017",
+				"date_finish": "21.05.2017",
 				"verse": {
 					"link_full": "Евангелие от Иоанна, 20 глава 31 стих",
 					"link_small": "Ин. 20:31",
@@ -263,8 +269,8 @@
 			},
 			{
 				"num_week": 4,
-				"date_begin": "28.10.2017",
-				"date_finish": "03.11.2017",
+				"date_begin": "22.05.2017",
+				"date_finish": "28.05.2017",
 				"verse": {
 					"link_full": "Книга пророка Исаии, 9 глава 6 стих",
 					"link_small": "Ис. 9:6",
@@ -279,8 +285,8 @@
 			},
 			{
 				"num_week": 5,
-				"date_begin": "04.11.2017",
-				"date_finish": "10.11.2017",
+				"date_begin": "29.05.2017",
+				"date_finish": "05.06.2017",
 				"verse": {
 					"link_full": "Послание к Галатам, 4 глава 4 стих",
 					"link_small": "Гал. 4:4",
@@ -295,8 +301,8 @@
 			},
 			{
 				"num_week": 6,
-				"date_begin": "11.11.2017",
-				"date_finish": "17.11.2017",
+				"date_begin": "06.06.2017",
+				"date_finish": "12.06.2017",
 				"verse": {
 					"link_full": "1-е послание Иоанна, 3 глава 8 стих",
 					"link_small": "1 Ин. 3:8",
@@ -311,8 +317,8 @@
 			},
 			{
 				"num_week": 7,
-				"date_begin": "18.11.2017",
-				"date_finish": "24.11.2017",
+				"date_begin": "13.06.2017",
+				"date_finish": "19.06.2017",
 				"verse": {
 					"link_full": "Евангелие от Матфея, 20 глава 28 стих",
 					"link_small": "Мф. 20:28",
@@ -327,8 +333,8 @@
 			},
 			{
 				"num_week": 8,
-				"date_begin": "25.11.2017",
-				"date_finish": "01.12.2017",
+				"date_begin": "20.06.2017",
+				"date_finish": "26.06.2017",
 				"verse": {
 					"link_full": "1-е послание Петра, 1 глава 18 и 19 стих",
 					"link_small": "1 Петр. 1:18-19",
@@ -343,8 +349,8 @@
 			},
 			{
 				"num_week": 9,
-				"date_begin": "02.12.2017",
-				"date_finish": "08.12.2017",
+				"date_begin": "27.06.2017",
+				"date_finish": "02.07.2017",
 				"verse": {
 					"link_full": "Евангелие от Матфея, 11 глава 28 и 29 стих",
 					"link_small": "Мф. 11:28-29",
@@ -359,8 +365,8 @@
 			},
 			{
 				"num_week": 10,
-				"date_begin": "09.12.2017",
-				"date_finish": "15.12.2017",
+				"date_begin": "03.07.2017",
+				"date_finish": "09.07.2017",
 				"verse": {
 					"link_full": "Евангелие от Иоанна, 14 глава с 1 по 3 стих",
 					"link_small": "Ин. 14:1-3",
@@ -375,8 +381,8 @@
 			},
 			{
 				"num_week": 11,
-				"date_begin": "16.12.2017",
-				"date_finish": "22.12.2017",
+				"date_begin": "10.07.2017",
+				"date_finish": "16.07.2017",
 				"verse": {
 					"link_full": "Евангелие от Иоанна, 14 глава 27 стих",
 					"link_small": "Ин. 14:27",
@@ -391,8 +397,8 @@
 			},
 			{
 				"num_week": 12,
-				"date_begin": "23.12.2017",
-				"date_finish": "29.12.2017",
+				"date_begin": "17.07.2017",
+				"date_finish": "23.07.2017",
 				"verse": {
 					"link_full": "Евангелие от Матфея, 1 глава 23 стих",
 					"link_small": "Мф. 1:23",
@@ -405,14 +411,20 @@
 					"CSLAV": "Нет перевода"
 					}
 			},
-			{
+				{
 				"num_week": 13,
 				"date_begin": "30.12.2017",
 				"date_finish": "05.01.2018",
-				"verse": {
+					"verse": {
 					"link_full": "Экзамен",
 					"link_small": "Экзамен",
-					"RST": "Экзамен"
+					"RST": "Экзамен",
+					"BTI": "Экзамен",
+					"NRP": "Экзамен",
+					"SRP": "Экзамен",
+					"IBL": "Экзамен",
+					"CASS": "Экзамен",
+					"CSLAV": "Экзамен"
 					}
 			}
 		]
@@ -424,8 +436,8 @@
 		"weeks": [
 			{
 				"num_week": 1,
-				"date_begin": "07.10.2017",
-				"date_finish": "13.10.2017",
+				"date_begin": "01.08.2017",
+				"date_finish": "07.08.2017",
 				"verse": {
 					"link_full": "Евангелие от Иоанна, 16 глава с 8 по 11 стих",
 					"link_small": "Ин. 16:8-11",
@@ -440,8 +452,8 @@
 			},
 			{
 				"num_week": 2,
-				"date_begin": "14.10.2017",
-				"date_finish": "20.10.2017",
+				"date_begin": "08.08.2017",
+				"date_finish": "14.08.2017",
 				"verse": {
 					"link_full": "Евангелие от Матфея, 3 глава 16 стих",
 					"link_small": "Мф. 3:16",
@@ -456,8 +468,8 @@
 			},
 			{
 				"num_week": 3,
-				"date_begin": "21.10.2017",
-				"date_finish": "27.10.2017",
+				"date_begin": "15.08.2017",
+				"date_finish": "21.08.2017",
 				"verse": {
 					"link_full": "Послание к Римлянам, 8 глава 14 стих",
 					"link_small": "Рим. 8:14",
@@ -472,8 +484,8 @@
 			},
 			{
 				"num_week": 4,
-				"date_begin": "28.10.2017",
-				"date_finish": "03.11.2017",
+				"date_begin": "22.08.2017",
+				"date_finish": "28.08.2017",
 				"verse": {
 					"link_full": "Книга Бытие, 6 глава 3 стих",
 					"link_small": "Быт. 6:3",
@@ -488,8 +500,8 @@
 			},
 			{
 				"num_week": 5,
-				"date_begin": "04.11.2017",
-				"date_finish": "10.11.2017",
+				"date_begin": "29.08.2017",
+				"date_finish": "04.09.2017",
 				"verse": {
 					"link_full": "Евангелие от Иоанна, 14 глава 26 стих",
 					"link_small": "Ин. 14:26",
@@ -504,8 +516,8 @@
 			},
 			{
 				"num_week": 6,
-				"date_begin": "11.11.2017",
-				"date_finish": "17.11.2017",
+				"date_begin": "05.09.2017",
+				"date_finish": "11.09.2017",
 				"verse": {
 					"link_full": "Иоиль 2 глава 28 стих",
 					"link_small": "Иоиль 2:28",
@@ -520,8 +532,8 @@
 			},
 			{
 				"num_week": 7,
-				"date_begin": "18.11.2017",
-				"date_finish": "24.11.2017",
+				"date_begin": "12.09.2017",
+				"date_finish": "18.09.2017",
 				"verse": {
 					"link_full": "Евангелие от Иоанна, 15 глава 26 стих",
 					"link_small": "Ин. 15:26",
@@ -536,8 +548,8 @@
 			},
 			{
 				"num_week": 8,
-				"date_begin": "25.11.2017",
-				"date_finish": "01.12.2017",
+				"date_begin": "19.09.2017",
+				"date_finish": "25.09.2017",
 				"verse": {
 					"link_full": "Послание к Ефесянам, 4 глава 30 стих",
 					"link_small": "Еф. 4:30",
@@ -552,8 +564,8 @@
 			},
 			{
 				"num_week": 9,
-				"date_begin": "02.12.2017",
-				"date_finish": "08.12.2017",
+				"date_begin": "26.09.2017",
+				"date_finish": "01.10.2017",
 				"verse": {
 					"link_full": "1-е послание к Коринфянам, 3 глава 16 и 17 стих",
 					"link_small": "1 Кор. 3:16-17",
@@ -568,8 +580,8 @@
 			},
 			{
 				"num_week": 10,
-				"date_begin": "09.12.2017",
-				"date_finish": "15.12.2017",
+				"date_begin": "02.10.2017",
+				"date_finish": "08.10.2017",
 				"verse": {
 					"link_full": "Послание к Галатам, 5 глава 22 и 23 стих",
 					"link_small": "Гал. 5:22-23",
@@ -584,8 +596,8 @@
 			},
 			{
 				"num_week": 11,
-				"date_begin": "16.12.2017",
-				"date_finish": "22.12.2017",
+				"date_begin": "09.10.2017",
+				"date_finish": "15.10.2017",
 				"verse": {
 					"link_full": "Послание к Римлянам, 15 глава 13 стих",
 					"link_small": "Рим. 15:13",
@@ -600,8 +612,8 @@
 			},
 			{
 				"num_week": 12,
-				"date_begin": "23.12.2017",
-				"date_finish": "29.12.2017",
+				"date_begin": "16.10.2017",
+				"date_finish": "22.10.2017",
 				"verse": {
 					"link_full": "Евангелие от Иоанна, 3 глава 5 стих",
 					"link_small": "Ин. 3:5",
@@ -614,14 +626,20 @@
 					"CSLAV": "Нет перевода"
 					}
 			},
-			{
+				{
 				"num_week": 13,
 				"date_begin": "30.12.2017",
 				"date_finish": "05.01.2018",
-				"verse": {
+					"verse": {
 					"link_full": "Экзамен",
 					"link_small": "Экзамен",
-					"RST": "Экзамен"
+					"RST": "Экзамен",
+					"BTI": "Экзамен",
+					"NRP": "Экзамен",
+					"SRP": "Экзамен",
+					"IBL": "Экзамен",
+					"CASS": "Экзамен",
+					"CSLAV": "Экзамен"
 					}
 			}
 		]
@@ -823,14 +841,20 @@
 					"CSLAV": "Нет перевода"
 					}
 			},
-			{
+				{
 				"num_week": 13,
 				"date_begin": "30.12.2017",
 				"date_finish": "05.01.2018",
-				"verse": {
+					"verse": {
 					"link_full": "Экзамен",
 					"link_small": "Экзамен",
-					"RST": "Экзамен"
+					"RST": "Экзамен",
+					"BTI": "Экзамен",
+					"NRP": "Экзамен",
+					"SRP": "Экзамен",
+					"IBL": "Экзамен",
+					"CASS": "Экзамен",
+					"CSLAV": "Экзамен"
 					}
 			}
 		]

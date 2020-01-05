@@ -8,7 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.snackbar.Snackbar
@@ -32,11 +34,17 @@ class SettingsFragment : Fragment() {
         itemTrans.isChecked = true
         val itemLang = v.findViewById<RadioButton>(resources.getIdentifier(pref.getString("lang", ""), "id", context!!.packageName))
         itemLang.isChecked = true
+        val itemTheme = v.findViewById<RadioButton>(resources.getIdentifier(pref.getString("theme", ""), "id", context!!.packageName))
+        itemTheme.isChecked = true
 
         v.btn_save.setOnClickListener {
-            pref.edit().putString("name", edit_name.text.toString()).putString("translate", resources.getResourceEntryName(group_translate.checkedRadioButtonId)).putString("lang", resources.getResourceEntryName(radio_ru.id)).apply()
-            Snackbar.make(v, "Сохранено!", Snackbar.LENGTH_SHORT)
-                .show()
+            pref.edit().putString("name", edit_name.text.toString()).putString("translate", resources.getResourceEntryName(group_translate.checkedRadioButtonId)).putString("lang", resources.getResourceEntryName(radio_ru.id)).putString("theme", resources.getResourceEntryName(group_theme.checkedRadioButtonId)).apply()
+            when (v.group_theme.checkedRadioButtonId) {
+                R.id.radio_light -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                R.id.radio_dark -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                R.id.radio_energy -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY)
+            }
+            Toast.makeText(context, "Сохранено!", Toast.LENGTH_SHORT).show()
         }
 
         v.edit_name.addTextChangedListener(object : TextWatcher {

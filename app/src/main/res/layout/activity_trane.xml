@@ -85,7 +85,8 @@
                     android:layout_weight="1"
                     android:letterSpacing="0"
                     android:text="Я ответил неправильно"
-                    android:textColor="#E91E63" />
+                    android:textColor="#E91E63"
+                    app:rippleColor="#E91E63" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_yes"

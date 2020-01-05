@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/settings_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.menu.settings.SettingsFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.menu.settings.SettingsFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,20 +17,21 @@
             android:orientation="vertical"
             android:padding="8dp">
 
-            <TextView
-                android:id="@+id/text_name"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edit_name_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_medium"
-                android:text="Введите Ваше имя:"
-                android:textSize="16sp" />
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/edit_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Введите Ваше имя:"
+                    android:inputType="textPersonName" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <TextView
                 android:id="@+id/text_translate"
@@ -62,16 +64,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Новый русский перевод" />
+
                 <RadioButton
                     android:id="@+id/radio_cslav"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Церковнославянский перевод" />
+
                 <RadioButton
                     android:id="@+id/radio_srp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Современный русский перевод" />
+
                 <RadioButton
                     android:id="@+id/radio_ibl"
                     android:layout_width="match_parent"
@@ -94,8 +99,43 @@
                 android:layout_height="wrap_content"
                 android:text="Русский" />
 
-            <Button
+
+            <TextView
+                android:id="@+id/text_theme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Выберите тему приложения:"
+                android:textSize="16sp" />
+
+            <RadioGroup
+                android:id="@+id/group_theme"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/radio_light"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Светлая" />
+
+                <RadioButton
+                    android:id="@+id/radio_dark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Темная" />
+
+                <RadioButton
+                    android:id="@+id/radio_energy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Энергосберегающая" />
+            </RadioGroup>
+
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_save"
+                style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"

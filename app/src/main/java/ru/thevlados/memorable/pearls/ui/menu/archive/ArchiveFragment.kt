@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.archive_fragment.*
@@ -28,6 +29,7 @@ class ArchiveFragment : Fragment() {
     private lateinit var pref: SharedPreferences
     private var stateNow: String = ""
     private lateinit var mp: MediaPlayer
+    private lateinit var mps: MediaPlayer
 
 
     override fun onCreateView(
@@ -122,33 +124,19 @@ class ArchiveFragment : Fragment() {
             funJson(v, quart)
             pref.edit().putString("year", "2021").apply()
         }
-        if (arguments?.getBoolean("isQuart") != null) {
-            if (arguments?.getBoolean("isQuart")!!) {
-                when {
-                    arguments?.getInt("int") == 3 -> {
-                        v.card_third.performClick()
-                    }
-                    arguments?.getInt("int") == 4 -> {
-                        v.card_fourth.performClick()
-                    }
-                    arguments?.getInt("int") == 5 -> {
-                        v.card_fifth.performClick()
-                    }
-                }
-                when {
-                    arguments?.getInt("int1") == 1 -> {
-                        v.card_1_q.performClick()
-                    }
-                    arguments?.getInt("int1") == 2 -> {
-                        v.card_2_q.performClick()
-                    }
-                    arguments?.getInt("int1") == 3 -> {
-                        v.card_3_q.performClick()
-                    }
-                    arguments?.getInt("int1") == 4 -> {
-                        v.card_4_q.performClick()
-                    }
-                }
+        if (pref.contains("year") && pref.contains("q")) {
+            when (pref.getString("year", "")) {
+                "2017" -> v.card_first.performClick()
+                "2018" -> v.card_second.performClick()
+                "2019" -> v.card_third.performClick()
+                "2020" -> v.card_fourth.performClick()
+                "2021" -> v.card_fifth.performClick()
+            }
+            when (pref.getString("q", "")) {
+                "1q" -> v.card_1_q.performClick()
+                "2q" -> v.card_2_q.performClick()
+                "3q" -> v.card_3_q.performClick()
+                "4q" -> v.card_4_q.performClick()
             }
         }
         return v
@@ -393,79 +381,106 @@ class ArchiveFragment : Fragment() {
 
         v.card_mp_1.setOnLongClickListener {
             startDialogMenu(v, v.text_verse_1.text.toString(), v.text_link_1.text.toString())
+            pref.edit().putString("v", "1").apply()
             true
         }
 
         v.card_mp_2.setOnLongClickListener {
             startDialogMenu(v, v.text_verse_2.text.toString(), v.text_link_2.text.toString())
+            pref.edit().putString("v", "2").apply()
             true
         }
 
         v.card_mp_3.setOnLongClickListener {
             startDialogMenu(v, v.text_verse_3.text.toString(), v.text_link_3.text.toString())
+            pref.edit().putString("v", "3").apply()
             true
         }
 
         v.card_mp_4.setOnLongClickListener {
             startDialogMenu(v, v.text_verse_4.text.toString(), v.text_link_4.text.toString())
+            pref.edit().putString("v", "4").apply()
             true
         }
 
         v.card_mp_5.setOnLongClickListener {
             startDialogMenu(v, v.text_verse_5.text.toString(), v.text_link_5.text.toString())
+            pref.edit().putString("v", "5").apply()
             true
         }
 
         v.card_mp_6.setOnLongClickListener {
             startDialogMenu(v, v.text_verse_6.text.toString(), v.text_link_6.text.toString())
+            pref.edit().putString("v", "6").apply()
             true
         }
         v.card_mp_7.setOnLongClickListener {
             startDialogMenu(v, v.text_verse_7.text.toString(), v.text_link_7.text.toString())
+            pref.edit().putString("v", "7").apply()
             true
         }
 
         v.card_mp_8.setOnLongClickListener {
             startDialogMenu(v, v.text_verse_8.text.toString(), v.text_link_8.text.toString())
+            pref.edit().putString("v", "8").apply()
             true
         }
 
         v.card_mp_9.setOnLongClickListener {
             startDialogMenu(v, v.text_verse_9.text.toString(), v.text_link_9.text.toString())
+            pref.edit().putString("v", "9").apply()
             true
         }
 
         v.card_mp_10.setOnLongClickListener {
             startDialogMenu(v, v.text_verse_10.text.toString(), v.text_link_10.text.toString())
+            pref.edit().putString("v", "10").apply()
             true
         }
 
         v.card_mp_11.setOnLongClickListener {
             startDialogMenu(v, v.text_verse_11.text.toString(), v.text_link_11.text.toString())
+            pref.edit().putString("v", "11").apply()
             true
         }
 
         v.card_mp_12.setOnLongClickListener {
             startDialogMenu(v, v.text_verse_12.text.toString(), v.text_link_12.text.toString())
+            pref.edit().putString("v", "12").apply()
             true
         }
 
         v.card_mp_13.setOnLongClickListener {
             startDialogMenu(v, v.text_verse_13.text.toString(), v.text_link_13.text.toString())
+            pref.edit().putString("v", "13").apply()
             true
         }
     }
 
     private fun startDialogMenu (v: View, textCopy: String, link_short: String) {
-        val items = arrayOf("Скопировать")
-        AlertDialog.Builder(context!!)
-            .setItems(items) { _, _ ->
-                val clipboard =
-                    context?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                val clip = ClipData.newPlainText(link_short, "$textCopy $link_short")
-                clipboard.setPrimaryClip(clip)
-                Snackbar.make(v, "Стих скопирован в буфер обмена", Snackbar.LENGTH_LONG)
-                    .show()
+        val items = arrayOf("Скопировать", "Прослушать")
+        MaterialAlertDialogBuilder(context!!)
+            .setItems(items) { _: DialogInterface, i: Int ->
+                when (i) {
+                    0 -> {
+                        val clipboard =
+                            context?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                        val clip = ClipData.newPlainText(link_short, "$textCopy $link_short")
+                        clipboard.setPrimaryClip(clip)
+                        Snackbar.make(v, "Стих скопирован в буфер обмена", Snackbar.LENGTH_LONG)
+                            .show()
+                    }
+                    1 -> {
+                        println("audio/"+pref.getString("year", "")+"/"+pref.getString("q", "")+"/"+pref.getString("v", "")+".mp3")
+                        mps = MediaPlayer()
+                        val afd = activity!!.assets.openFd("audio/"+pref.getString("year", "")+"/"+pref.getString("q", "")+"/"+pref.getString("v", "")+".mp3")
+                        mps.setDataSource(afd.fileDescriptor,afd.startOffset,afd.length)
+                        mps.prepare()
+                        mps.isLooping = false
+                        mps.start()
+                    }
+                }
+
 
             }
             .show()
