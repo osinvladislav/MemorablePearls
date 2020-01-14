@@ -1,20 +1,18 @@
 package ru.thevlados.memorable.pearls.ui.menu.settings
 
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.CompoundButton
 import android.widget.RadioButton
-import android.widget.Toast
+import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_start.*
 import kotlinx.android.synthetic.main.settings_fragment.view.*
 import ru.thevlados.memorable.pearls.R
 
@@ -34,17 +32,33 @@ class SettingsFragment : Fragment() {
         itemTrans.isChecked = true
         val itemLang = v.findViewById<RadioButton>(resources.getIdentifier(pref.getString("lang", ""), "id", context!!.packageName))
         itemLang.isChecked = true
-        val itemTheme = v.findViewById<RadioButton>(resources.getIdentifier(pref.getString("theme", ""), "id", context!!.packageName))
-        itemTheme.isChecked = true
 
-        v.btn_save.setOnClickListener {
-            pref.edit().putString("name", edit_name.text.toString()).putString("translate", resources.getResourceEntryName(group_translate.checkedRadioButtonId)).putString("lang", resources.getResourceEntryName(radio_ru.id)).putString("theme", resources.getResourceEntryName(group_theme.checkedRadioButtonId)).apply()
-            when (v.group_theme.checkedRadioButtonId) {
-                R.id.radio_light -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                R.id.radio_dark -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                R.id.radio_energy -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY)
+        if (pref.getString("theme","") == "dark") v.switch_dark.isChecked = true
+
+        v.switch_dark.setOnCheckedChangeListener { _: CompoundButton, b: Boolean ->
+            if(b) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                if (Build.VERSION.SDK_INT >= 21) {
+                    val window: Window = activity!!.window
+                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                    window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                    window.statusBarColor = this.resources.getColor(R.color.colorOnSecondary)
+                }
+                pref.edit().putString("theme", "dark").apply()
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                if (Build.VERSION.SDK_INT >= 21) {
+                    val window: Window = activity!!.window
+                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                    window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                    window.statusBarColor = this.resources.getColor(R.color.colorPrimaryVariant)
+                }
+                pref.edit().putString("theme", "light").apply()
             }
-            Toast.makeText(context, "Сохранено!", Toast.LENGTH_SHORT).show()
+        }
+
+        v.group_translate.setOnCheckedChangeListener { radioGroup: RadioGroup, _: Int ->
+            pref.edit().putString("translate", resources.getResourceEntryName(radioGroup.checkedRadioButtonId)).apply()
         }
 
         v.edit_name.addTextChangedListener(object : TextWatcher {
@@ -54,10 +68,10 @@ class SettingsFragment : Fragment() {
                 before: Int,
                 count: Int
             ) {
-                v.btn_save.isEnabled = count > 0
             }
 
             override fun afterTextChanged(editable: Editable) {
+                pref.edit().putString("name", editable.toString()).apply()
             }
 
             override fun beforeTextChanged(

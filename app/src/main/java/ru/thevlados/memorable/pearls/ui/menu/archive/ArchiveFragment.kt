@@ -2,14 +2,13 @@ package ru.thevlados.memorable.pearls.ui.menu.archive
 
 import android.annotation.SuppressLint
 import android.content.*
+import android.content.Intent.getIntent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -17,10 +16,12 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.archive_fragment.*
 import kotlinx.android.synthetic.main.archive_fragment.view.*
-import kotlinx.android.synthetic.main.main_fragment.view.*
 import ru.thevlados.memorable.pearls.MainActivity
 import ru.thevlados.memorable.pearls.R
 import ru.thevlados.memorable.pearls.ui.detail.DetailActivity
+import java.text.SimpleDateFormat
+import java.util.*
+import java.util.Calendar.*
 
 
 class ArchiveFragment : Fragment() {
@@ -69,76 +70,92 @@ class ArchiveFragment : Fragment() {
             }
             false
         })
-        v.card_first.setOnClickListener {
+
+        initSeason(v)
+
+
+        v.card_season_1.setOnClickListener {
             (activity as MainActivity?)?.resetActionBar(childAction = true)
             setHasOptionsMenu(true)
             valNow = "quart"
-            val jsonString = returnJson("2017-ru")
+
+            val lol = v.text_season_first.text.split(" ")
+
+            val jsonString = returnJson(lol[0]+"s-ru")
+            pref.edit().putString("season", lol[0]+"s").apply()
 
             val quart: Array<year> =
                 Gson().fromJson<Array<year>>(jsonString, Array<year>::class.java)
+            pref.edit().putString("s", pref.getString("1y", "")).apply()
             funJson(v, quart)
-            pref.edit().putString("year", "2017").apply()
         }
-        v.card_second.setOnClickListener {
+        v.card_season_2.setOnClickListener {
             (activity as MainActivity?)?.resetActionBar(true)
             setHasOptionsMenu(true)
             valNow = "quart"
-            val jsonString = returnJson("2018-ru")
+            val lol = v.text_season_second.text.split(" ")
+
+            val jsonString = returnJson(lol[0]+"s-ru")
+            pref.edit().putString("season", lol[0]+"s").apply()
 
             val quart: Array<year> =
                 Gson().fromJson<Array<year>>(jsonString, Array<year>::class.java)
+            pref.edit().putString("s", pref.getString("2y", "")).apply()
             funJson(v, quart)
-            pref.edit().putString("year", "2018").apply()
         }
-        v.card_third.setOnClickListener {
+        v.card_season_3.setOnClickListener {
             (activity as MainActivity?)?.resetActionBar(childAction = true)
             setHasOptionsMenu(true)
             valNow = "quart"
-            val jsonString = returnJson("2019-ru")
+            val lol = v.text_season_third.text.split(" ")
+
+            val jsonString = returnJson(lol[0]+"s-ru")
+            pref.edit().putString("season", lol[0]+"s").apply()
 
             val quart: Array<year> =
                 Gson().fromJson<Array<year>>(jsonString, Array<year>::class.java)
+            pref.edit().putString("s", pref.getString("3y", "")).apply()
             funJson(v, quart)
-            pref.edit().putString("year", "2019").apply()
         }
-        v.card_fourth.setOnClickListener {
+        v.card_season_4.setOnClickListener {
             (activity as MainActivity?)?.resetActionBar(childAction = true)
             setHasOptionsMenu(true)
             valNow = "quart"
-            val jsonString = returnJson("2020-ru")
+            val lol = v.text_season_fourth.text.split(" ")
+
+            val jsonString = returnJson(lol[0]+"s-ru")
+            pref.edit().putString("season", lol[0]+"s").apply()
 
             val quart: Array<year> =
                 Gson().fromJson<Array<year>>(jsonString, Array<year>::class.java)
+            pref.edit().putString("s", pref.getString("4y", "")).apply()
             funJson(v, quart)
-            pref.edit().putString("year", "2020").apply()
         }
-        v.card_fifth.setOnClickListener {
+        v.card_season_5.setOnClickListener {
             (activity as MainActivity?)?.resetActionBar(childAction = true)
             setHasOptionsMenu(true)
             valNow = "quart"
-            val jsonString = returnJson("2021-ru")
+            val lol = v.text_season_fifth.text.split(" ")
+
+            val jsonString = returnJson(lol[0]+"s-ru")
+            pref.edit().putString("season", lol[0]+"s").apply()
 
             val quart: Array<year> =
                 Gson().fromJson<Array<year>>(jsonString, Array<year>::class.java)
+            pref.edit().putString("s", pref.getString("5y", "")).apply()
             funJson(v, quart)
-            pref.edit().putString("year", "2021").apply()
         }
-        if (pref.contains("year") && pref.contains("q")) {
-            when (pref.getString("year", "")) {
-                "2017" -> v.card_first.performClick()
-                "2018" -> v.card_second.performClick()
-                "2019" -> v.card_third.performClick()
-                "2020" -> v.card_fourth.performClick()
-                "2021" -> v.card_fifth.performClick()
+
+        if (arguments != null) {
+            v.card_season_3.performClick()
+            when (arguments!!.getString("quart", "")) {
+                "1" -> v.card_q_1.performClick()
+                "2" -> v.card_q_2.performClick()
+                "3" -> v.card_q_3.performClick()
+                "4" -> v.card_q_4.performClick()
             }
-            when (pref.getString("q", "")) {
-                "1q" -> v.card_1_q.performClick()
-                "2q" -> v.card_2_q.performClick()
-                "3q" -> v.card_3_q.performClick()
-                "4q" -> v.card_4_q.performClick()
-            }
         }
+
         return v
     }
 
@@ -171,31 +188,60 @@ class ArchiveFragment : Fragment() {
     fun funJson(v: View, quart: Array<year>) {
         v.scroll_quarters.visibility = View.VISIBLE
         v.scroll_years.visibility = View.GONE
-        v.text_date_1_q.text = quart[0].date_from + "  —  " + quart[0].date_to
+        v.text_date_1_q.text = returnDates(quart[0].start_week, pref.getString("s", "")!!.toInt())[0] + "  —  " + returnDates(quart[0].end_week, pref.getString("s", "")!!.toInt())[1]
         v.text_year_1_q.text = quart[0].name_quarter
-        v.card_1_q.setOnClickListener {
+        v.card_q_1.setOnClickListener {
             pref.edit().putString("q", "1q").apply()
             setListener(v, quart, 0)
         }
-        v.text_date_2_q.text = quart[1].date_from + "  —  " + quart[1].date_to
+        v.text_date_2_q.text = returnDates(quart[1].start_week, pref.getString("s", "")!!.toInt())[0] + "  —  " + returnDates(quart[1].end_week, pref.getString("s", "")!!.toInt())[1]
         v.text_year_2_q.text = quart[1].name_quarter
-        v.card_2_q.setOnClickListener {
+        v.card_q_2.setOnClickListener {
             pref.edit().putString("q", "2q").apply()
             setListener(v, quart, 1)
         }
-        v.text_date_3_q.text = quart[2].date_from + "  —  " + quart[2].date_to
+        v.text_date_3_q.text = returnDates(quart[2].start_week, pref.getString("s", "")!!.toInt())[0] + "  —  " + returnDates(quart[2].end_week, pref.getString("s", "")!!.toInt())[1]
         v.text_year_3_q.text = quart[2].name_quarter
-        v.card_3_q.setOnClickListener {
+        v.card_q_3.setOnClickListener {
             pref.edit().putString("q", "3q").apply()
             setListener(v, quart, 2)
         }
-        v.text_date_4_q.text = quart[3].date_from + "  —  " + quart[3].date_to
+        v.text_date_4_q.text = returnDates(quart[3].start_week, pref.getString("s", "")!!.toInt())[0] + "  —  " + returnDates(quart[3].end_week, pref.getString("s", "")!!.toInt())[1]
         v.text_year_4_q.text = quart[3].name_quarter
-        v.card_4_q.setOnClickListener {
+        v.card_q_4.setOnClickListener {
             pref.edit().putString("q", "4q").apply()
             setListener(v, quart, 3)
         }
     }
+
+    @SuppressLint("SimpleDateFormat")
+    private fun returnDates(w: Int, year: Int): List<String> {
+        val sdf = SimpleDateFormat("dd.MM.yyyy")
+        val c = Calendar.getInstance()
+        val test = Calendar.getInstance()
+        c.firstDayOfWeek = Calendar.SATURDAY
+        test.firstDayOfWeek = Calendar.SATURDAY
+        c.time = Date()
+        test.time = Date()
+        c.set(YEAR, year)
+        test.set(YEAR, year)
+        test.set(DAY_OF_YEAR, 1)
+        if (test.get(DAY_OF_WEEK) == SATURDAY) {
+            c.set(Calendar.WEEK_OF_YEAR, w)
+        } else {
+            c.set(Calendar.WEEK_OF_YEAR, w+1)
+        }
+        c.time
+        val sD: Calendar = c.clone() as Calendar
+        sD.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY)
+        val eD: Calendar = c.clone() as Calendar
+        if (test.get(DAY_OF_WEEK) == SATURDAY) {
+            eD.set(Calendar.WEEK_OF_YEAR, w+1)
+        }
+        eD.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY)
+        return listOf(sdf.format(sD.time), sdf.format(eD.time))
+    }
+
 
     private fun returnJson (string: String): String {
         return activity!!.application.assets.open("$string.json").bufferedReader().use {
@@ -207,7 +253,7 @@ class ArchiveFragment : Fragment() {
         archiveFragment: ArchiveFragment,
         quart: Array<year>, num1: Int, num2: Int, v: View) {
         val intent = Intent(archiveFragment.context, DetailActivity::class.java)
-        intent.putExtra("text_date", quart[num1].weeks[num2].num_week.toString() + " неделя, " + quart[num1].weeks[num2].date_begin + "  —  " + quart[num1].weeks[num2].date_finish)
+        intent.putExtra("text_date", quart[num1].weeks[num2].num_week.toString() + " неделя, " + returnDates(quart[num1].weeks[num2].num_week_in_year, pref.getString("s", "")!!.toInt())[0] + "  —  " + returnDates(quart[num1].weeks[num2].num_week_in_year, pref.getString("s", "")!!.toInt())[1])
         intent.putExtra("text_verse_rst", quart[num1].weeks[num2].verse.RST)
         intent.putExtra("text_verse_bti", quart[num1].weeks[num2].verse.BTI)
         intent.putExtra("text_verse_cass", quart[num1].weeks[num2].verse.CASS)
@@ -254,7 +300,7 @@ class ArchiveFragment : Fragment() {
         stateNow = ""
         v.img_music.setImageResource(R.drawable.ic_play_arrow_black_24dp)
         mp = MediaPlayer()
-        val afd = activity!!.assets.openFd("audio/"+pref.getString("year", "")+"/"+pref.getString("q", "")+"/all.mp3")
+        val afd = activity!!.assets.openFd("audio/"+pref.getString("season", "")+"/"+pref.getString("q", "")+"/all.mp3")
         mp.setDataSource(afd.fileDescriptor,afd.startOffset,afd.length)
         mp.prepare()
         mp.isLooping = true
@@ -335,31 +381,31 @@ class ArchiveFragment : Fragment() {
             startActivity(this, quart, n_q, 12, v)
         }
         v.text_date_1.text =
-            quart[n_q].weeks[0].num_week.toString() + " неделя, " + quart[n_q].weeks[0].date_begin + "  —  " + quart[n_q].weeks[0].date_finish
+            quart[n_q].weeks[0].num_week.toString() + " неделя, " + returnDates(quart[n_q].weeks[0].num_week_in_year, pref.getString("s", "")!!.toInt())[0] + "  —  " + returnDates(quart[n_q].weeks[0].num_week_in_year, pref.getString("s", "")!!.toInt())[1]
         v.text_date_2.text =
-            quart[n_q].weeks[1].num_week.toString() + " неделя, " + quart[n_q].weeks[1].date_begin + "  —  " + quart[n_q].weeks[1].date_finish
+            quart[n_q].weeks[1].num_week.toString() + " неделя, " + returnDates(quart[n_q].weeks[1].num_week_in_year, pref.getString("s", "")!!.toInt())[0] + "  —  " + returnDates(quart[n_q].weeks[1].num_week_in_year, pref.getString("s", "")!!.toInt())[1]
         v.text_date_3.text =
-            quart[n_q].weeks[2].num_week.toString() + " неделя, " + quart[n_q].weeks[2].date_begin + "  —  " + quart[n_q].weeks[2].date_finish
+            quart[n_q].weeks[2].num_week.toString() + " неделя, " + returnDates(quart[n_q].weeks[2].num_week_in_year, pref.getString("s", "")!!.toInt())[0] + "  —  " + returnDates(quart[n_q].weeks[2].num_week_in_year, pref.getString("s", "")!!.toInt())[1]
         v.text_date_4.text =
-            quart[n_q].weeks[3].num_week.toString() + " неделя, " + quart[n_q].weeks[3].date_begin + "  —  " + quart[n_q].weeks[3].date_finish
+            quart[n_q].weeks[3].num_week.toString() + " неделя, " + returnDates(quart[n_q].weeks[3].num_week_in_year, pref.getString("s", "")!!.toInt())[0] + "  —  " + returnDates(quart[n_q].weeks[3].num_week_in_year, pref.getString("s", "")!!.toInt())[1]
         v.text_date_5.text =
-            quart[n_q].weeks[4].num_week.toString() + " неделя, " + quart[n_q].weeks[4].date_begin + "  —  " + quart[n_q].weeks[4].date_finish
+            quart[n_q].weeks[4].num_week.toString() + " неделя, " + returnDates(quart[n_q].weeks[4].num_week_in_year, pref.getString("s", "")!!.toInt())[0] + "  —  " + returnDates(quart[n_q].weeks[4].num_week_in_year, pref.getString("s", "")!!.toInt())[1]
         v.text_date_6.text =
-            quart[n_q].weeks[5].num_week.toString() + " неделя, " + quart[n_q].weeks[5].date_begin + "  —  " + quart[n_q].weeks[5].date_finish
+            quart[n_q].weeks[5].num_week.toString() + " неделя, " + returnDates(quart[n_q].weeks[5].num_week_in_year, pref.getString("s", "")!!.toInt())[0] + "  —  " + returnDates(quart[n_q].weeks[5].num_week_in_year, pref.getString("s", "")!!.toInt())[1]
         v.text_date_7.text =
-            quart[n_q].weeks[6].num_week.toString() + " неделя, " + quart[n_q].weeks[6].date_begin + "  —  " + quart[n_q].weeks[6].date_finish
+            quart[n_q].weeks[6].num_week.toString() + " неделя, " + returnDates(quart[n_q].weeks[6].num_week_in_year, pref.getString("s", "")!!.toInt())[0] + "  —  " + returnDates(quart[n_q].weeks[6].num_week_in_year, pref.getString("s", "")!!.toInt())[1]
         v.text_date_8.text =
-            quart[n_q].weeks[7].num_week.toString() + " неделя, " + quart[n_q].weeks[7].date_begin + "  —  " + quart[n_q].weeks[7].date_finish
+            quart[n_q].weeks[7].num_week.toString() + " неделя, " + returnDates(quart[n_q].weeks[7].num_week_in_year, pref.getString("s", "")!!.toInt())[0] + "  —  " + returnDates(quart[n_q].weeks[7].num_week_in_year, pref.getString("s", "")!!.toInt())[1]
         v.text_date_9.text =
-            quart[n_q].weeks[8].num_week.toString() + " неделя, " + quart[n_q].weeks[8].date_begin + "  —  " + quart[n_q].weeks[8].date_finish
+            quart[n_q].weeks[8].num_week.toString() + " неделя, " + returnDates(quart[n_q].weeks[8].num_week_in_year, pref.getString("s", "")!!.toInt())[0] + "  —  " + returnDates(quart[n_q].weeks[8].num_week_in_year, pref.getString("s", "")!!.toInt())[1]
         v.text_date_10.text =
-            quart[n_q].weeks[9].num_week.toString() + " неделя, " + quart[n_q].weeks[9].date_begin + "  —  " + quart[n_q].weeks[9].date_finish
+            quart[n_q].weeks[9].num_week.toString() + " неделя, " + returnDates(quart[n_q].weeks[9].num_week_in_year, pref.getString("s", "")!!.toInt())[0] + "  —  " + returnDates(quart[n_q].weeks[9].num_week_in_year, pref.getString("s", "")!!.toInt())[1]
         v.text_date_11.text =
-            quart[n_q].weeks[10].num_week.toString() + " неделя, " + quart[n_q].weeks[10].date_begin + "  —  " + quart[n_q].weeks[10].date_finish
+            quart[n_q].weeks[10].num_week.toString() + " неделя, " + returnDates(quart[n_q].weeks[10].num_week_in_year, pref.getString("s", "")!!.toInt())[0] + "  —  " + returnDates(quart[n_q].weeks[10].num_week_in_year, pref.getString("s", "")!!.toInt())[1]
         v.text_date_12.text =
-            quart[n_q].weeks[11].num_week.toString() + " неделя, " + quart[n_q].weeks[11].date_begin + "  —  " + quart[n_q].weeks[11].date_finish
+            quart[n_q].weeks[11].num_week.toString() + " неделя, " + returnDates(quart[n_q].weeks[11].num_week_in_year, pref.getString("s", "")!!.toInt())[0] + "  —  " + returnDates(quart[n_q].weeks[11].num_week_in_year, pref.getString("s", "")!!.toInt())[1]
         v.text_date_13.text =
-            quart[n_q].weeks[12].num_week.toString() + " неделя, " + quart[n_q].weeks[12].date_begin + "  —  " + quart[n_q].weeks[12].date_finish
+            quart[n_q].weeks[12].num_week.toString() + " неделя, " + returnDates(quart[n_q].weeks[12].num_week_in_year, pref.getString("s", "")!!.toInt())[0] + "  —  " + returnDates(quart[n_q].weeks[12].num_week_in_year, pref.getString("s", "")!!.toInt())[1]
 
         quart[n_q].weeks.forEachIndexed { index, _ ->
             setTextik(quart, n_q, index, index+1, v)
@@ -471,7 +517,7 @@ class ArchiveFragment : Fragment() {
                             .show()
                     }
                     1 -> {
-                        println("audio/"+pref.getString("year", "")+"/"+pref.getString("q", "")+"/"+pref.getString("v", "")+".mp3")
+                        println("audio/"+pref.getString("season", "")+"/"+pref.getString("q", "")+"/"+pref.getString("v", "")+".mp3")
                         mps = MediaPlayer()
                         val afd = activity!!.assets.openFd("audio/"+pref.getString("year", "")+"/"+pref.getString("q", "")+"/"+pref.getString("v", "")+".mp3")
                         mps.setDataSource(afd.fileDescriptor,afd.startOffset,afd.length)
@@ -485,11 +531,102 @@ class ArchiveFragment : Fragment() {
             }
             .show()
     }
+
+    @SuppressLint("SetTextI18n")
+    private fun initSeason(v: View) {
+        when (pref.getString("seas", "")) {
+            "1s" -> {
+                v.card_season_1.setCardBackgroundColor(resources.getColor(R.color.color_04))
+                v.text_season_first.text = "4 сезон"
+                v.text_year_first.text = pref.getString("1y", "") + " год"
+                v.card_season_2.setCardBackgroundColor(resources.getColor(R.color.color_05))
+                v.text_season_second.text = "5 сезон"
+                v.text_year_second.text = pref.getString("2y", "") + " год"
+                v.card_season_3.setCardBackgroundColor(resources.getColor(R.color.color_01))
+                v.text_season_third.text = "1 сезон"
+                v.text_year_third.text = pref.getString("3y", "") + " год"
+                v.card_season_4.setCardBackgroundColor(resources.getColor(R.color.color_02))
+                v.text_season_fourth.text = "2 сезон"
+                v.text_year_fourth.text = pref.getString("4y", "") + " год"
+                v.card_season_5.setCardBackgroundColor(resources.getColor(R.color.color_03))
+                v.text_season_fifth.text = "3 сезон"
+                v.text_year_fifth.text = pref.getString("5y", "") + " год"
+            }
+            "2s" -> {
+                v.card_season_1.setCardBackgroundColor(resources.getColor(R.color.color_05))
+                v.text_season_first.text = "5 сезон"
+                v.text_year_first.text = pref.getString("1y", "") + " год"
+                v.card_season_2.setCardBackgroundColor(resources.getColor(R.color.color_01))
+                v.text_season_second.text = "1 сезон"
+                v.text_year_second.text = pref.getString("2y", "") + " год"
+                v.card_season_3.setCardBackgroundColor(resources.getColor(R.color.color_02))
+                v.text_season_third.text = "2 сезон"
+                v.text_year_third.text = pref.getString("3y", "") + " год"
+                v.card_season_4.setCardBackgroundColor(resources.getColor(R.color.color_03))
+                v.text_season_fourth.text = "3 сезон"
+                v.text_year_fourth.text = pref.getString("4y", "") + " год"
+                v.card_season_5.setCardBackgroundColor(resources.getColor(R.color.color_04))
+                v.text_season_fifth.text = "4 сезон"
+                v.text_year_fifth.text = pref.getString("5y", "") + " год"
+            }
+            "3s" -> {
+                v.card_season_1.setCardBackgroundColor(resources.getColor(R.color.color_01))
+                v.text_season_first.text = "1 сезон"
+                v.text_year_first.text = pref.getString("1y", "") + " год"
+                v.card_season_2.setCardBackgroundColor(resources.getColor(R.color.color_02))
+                v.text_season_second.text = "2 сезон"
+                v.text_year_second.text = pref.getString("2y", "") + " год"
+                v.card_season_3.setCardBackgroundColor(resources.getColor(R.color.color_03))
+                v.text_season_third.text = "3 сезон"
+                v.text_year_third.text = pref.getString("3y", "") + " год"
+                v.card_season_4.setCardBackgroundColor(resources.getColor(R.color.color_04))
+                v.text_season_fourth.text = "4 сезон"
+                v.text_year_fourth.text = pref.getString("4y", "") + " год"
+                v.card_season_5.setCardBackgroundColor(resources.getColor(R.color.color_05))
+                v.text_season_fifth.text = "5 сезон"
+                v.text_year_fifth.text = pref.getString("5y", "") + " год"
+            }
+            "4s" -> {
+                v.card_season_1.setCardBackgroundColor(resources.getColor(R.color.color_02))
+                v.text_season_first.text = "2 сезон"
+                v.text_year_first.text = pref.getString("1y", "") + " год"
+                v.card_season_2.setCardBackgroundColor(resources.getColor(R.color.color_03))
+                v.text_season_second.text = "3 сезон"
+                v.text_year_second.text = pref.getString("2y", "") + " год"
+                v.card_season_3.setCardBackgroundColor(resources.getColor(R.color.color_04))
+                v.text_season_third.text = "4 сезон"
+                v.text_year_third.text = pref.getString("3y", "") + " год"
+                v.card_season_4.setCardBackgroundColor(resources.getColor(R.color.color_05))
+                v.text_season_fourth.text = "5 сезон"
+                v.text_year_fourth.text = pref.getString("4y", "") + " год"
+                v.card_season_5.setCardBackgroundColor(resources.getColor(R.color.color_01))
+                v.text_season_fifth.text = "1 сезон"
+                v.text_year_fifth.text = pref.getString("5y", "") + " год"
+            }
+            "5s" -> {
+                v.card_season_1.setCardBackgroundColor(resources.getColor(R.color.color_03))
+                v.text_season_first.text = "3 сезон"
+                v.text_year_first.text = pref.getString("1y", "") + " год"
+                v.card_season_2.setCardBackgroundColor(resources.getColor(R.color.color_04))
+                v.text_season_second.text = "4 сезон"
+                v.text_year_second.text = pref.getString("2y", "") + " год"
+                v.card_season_3.setCardBackgroundColor(resources.getColor(R.color.color_05))
+                v.text_season_third.text = "5 сезон"
+                v.text_year_third.text = pref.getString("3y", "") + " год"
+                v.card_season_4.setCardBackgroundColor(resources.getColor(R.color.color_01))
+                v.text_season_fourth.text = "1 сезон"
+                v.text_year_fourth.text = pref.getString("4y", "") + " год"
+                v.card_season_5.setCardBackgroundColor(resources.getColor(R.color.color_02))
+                v.text_season_fifth.text = "2 сезон"
+                v.text_year_fifth.text = pref.getString("5y", "") + " год"
+            }
+        }
+    }
 }
 
 
-data class year (val name_quarter: String, val date_from: String, val date_to: String, val weeks: Array<week>)
+data class year (val name_quarter: String, val start_week: Int, val end_week: Int, val weeks: Array<week>)
 
-data class week (val num_week: Int, val date_begin: String, val date_finish: String, val verse: verse)
+data class week (val num_week: Int, val num_week_in_year: Int, val verse: verse)
 
 data class verse (val link_full: String, val link_small: String, val RST: String, val BTI: String, val CASS: String, val NRP: String, val CSLAV: String, val SRP: String, val IBL: String)

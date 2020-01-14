@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/settings_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -51,36 +52,44 @@
                     android:id="@+id/radio_rst"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Синодальный перевод" />
+                    android:text="Синодальный перевод"
+                    android:layout_marginTop="-5dp"
+                    android:layout_marginBottom="-20dp"
+                    app:useMaterialThemeColors="false"/>
 
                 <RadioButton
                     android:id="@+id/radio_bti"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="-20dp"
                     android:text="Институт перевода Библии" />
 
                 <RadioButton
                     android:id="@+id/radio_nrp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="-20dp"
                     android:text="Новый русский перевод" />
 
                 <RadioButton
                     android:id="@+id/radio_cslav"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="-20dp"
                     android:text="Церковнославянский перевод" />
 
                 <RadioButton
                     android:id="@+id/radio_srp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="-20dp"
                     android:text="Современный русский перевод" />
 
                 <RadioButton
                     android:id="@+id/radio_ibl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="-10dp"
                     android:text="Перевод Международной Библейской лиги" />
             </RadioGroup>
 
@@ -97,50 +106,16 @@
                 android:id="@+id/radio_ru"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="-5dp"
                 android:text="Русский" />
 
-
-            <TextView
-                android:id="@+id/text_theme"
+            <Switch
+                android:id="@+id/switch_dark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="Выберите тему приложения:"
+                android:text="Темная тема"
                 android:textSize="16sp" />
 
-            <RadioGroup
-                android:id="@+id/group_theme"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <RadioButton
-                    android:id="@+id/radio_light"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Светлая" />
-
-                <RadioButton
-                    android:id="@+id/radio_dark"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Темная" />
-
-                <RadioButton
-                    android:id="@+id/radio_energy"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Энергосберегающая" />
-            </RadioGroup>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_save"
-                style="@style/Widget.MaterialComponents.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:letterSpacing="0"
-                android:text="Сохранить" />
 
         </LinearLayout>
     </ScrollView>

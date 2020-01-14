@@ -67,7 +67,7 @@ class DetailActivity : AppCompatActivity() {
             }
         }
         text_link.text = intent.getStringExtra("text_link_full")
-        val afd = assets.openFd("audio/"+pref.getString("year", "")+"/"+pref.getString("q", "")+"/"+pref.getString("v", "")+".mp3")
+        val afd = assets.openFd("audio/"+pref.getString("season", "")+"/"+pref.getString("q", "")+"/"+pref.getString("v", "")+".mp3")
         mp.setDataSource(afd.fileDescriptor,afd.startOffset,afd.length)
         mp.prepare()
         mp.isLooping = true

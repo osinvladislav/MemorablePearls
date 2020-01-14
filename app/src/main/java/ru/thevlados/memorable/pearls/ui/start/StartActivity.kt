@@ -29,7 +29,6 @@ class StartActivity : AppCompatActivity() {
 
         group_translate.radio_rst.isChecked = true
         radio_ru.isChecked = true
-        group_theme.radio_light.isChecked = true
         btn_enter.isEnabled = false
 
         edit_name.addTextChangedListener(object : TextWatcher {
@@ -55,7 +54,7 @@ class StartActivity : AppCompatActivity() {
         })
 
         btn_enter.setOnClickListener {
-            pref.edit().putString("name", edit_name.text.toString()).putString("translate", resources.getResourceEntryName(group_translate.checkedRadioButtonId)).putString("lang", resources.getResourceEntryName(radio_ru.id)).putString("theme", resources.getResourceEntryName(group_theme.checkedRadioButtonId)).apply()
+            pref.edit().putString("name", edit_name.text.toString()).putString("translate", resources.getResourceEntryName(group_translate.checkedRadioButtonId)).putString("lang", resources.getResourceEntryName(radio_ru.id)).putString("theme", if (switch_dark.isChecked) "dark" else "light").apply()
             finish()
             startActivity(Intent(this, MainActivity::class.java))
         }

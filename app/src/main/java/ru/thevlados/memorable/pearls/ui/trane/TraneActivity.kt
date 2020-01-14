@@ -30,11 +30,12 @@ class TraneActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trane)
         val year = intent.getStringExtra("year")
+        val season = intent.getStringExtra("season")
         val quart = intent.getStringExtra("quart")
         pref = getSharedPreferences("settings", MODE_PRIVATE)
 
         supportActionBar?.title = "$quart квартал, $year год"
-        val jsonString = application.assets.open("$year-ru.json").bufferedReader().use {
+        val jsonString = application.assets.open("$season-ru.json").bufferedReader().use {
             it.readText()
         }
 
@@ -91,6 +92,7 @@ class TraneActivity : AppCompatActivity() {
                             finish()
                             val intent = Intent(this, TraneActivity::class.java)
                             intent.putExtra("year", year)
+                            intent.putExtra("season", season)
                             intent.putExtra("quart", quart)
                             startActivity(intent)
                         }

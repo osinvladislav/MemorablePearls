@@ -3,7 +3,6 @@ package ru.thevlados.memorable.pearls.ui.menu.main
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Typeface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +19,7 @@ import ru.thevlados.memorable.pearls.ui.detail.DetailActivity
 import ru.thevlados.memorable.pearls.ui.menu.archive.year
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.Calendar.*
 
 
 class MainFragment : Fragment() {
@@ -55,19 +55,23 @@ class MainFragment : Fragment() {
             }
         }
 
-        val sdf = SimpleDateFormat("dd.MM.yyyy")
-        val currentDate = sdf.format(Date())
         val sdfYear = SimpleDateFormat("yyyy")
         val currentYeaR = sdfYear.format(Date())
         pref.edit().putString("year", currentYeaR).apply()
 
-        val jsonString = activity!!.application.assets.open("$currentYeaR-ru.json").bufferedReader().use{
+        returnYears(currentYeaR.toInt())
+
+        val cal = getInstance()
+        cal.add(DAY_OF_MONTH, -5)
+
+        val jsonString = activity!!.application.assets.open(pref.getString("seas", "") + "-ru.json").bufferedReader().use{
             it.readText()
         }
+
         val quart: Array<year> = Gson().fromJson<Array<year>>(jsonString, Array<year>::class.java)
 
         quart.forEachIndexed {index, it ->
-            if (sdf.parse(currentDate) in sdf.parse(it.date_from)..sdf.parse(it.date_to)) {
+            if (cal.get(WEEK_OF_YEAR) in it.start_week..it.end_week) {
                 when (index) {
                     0 -> {
                         v.card_mp_today.setCardBackgroundColor(resources.getColor(R.color.color_01))
@@ -87,8 +91,8 @@ class MainFragment : Fragment() {
                     }
                 }
                 it.weeks.forEach {item ->
-                    if (sdf.parse(currentDate) in sdf.parse(item.date_begin)..sdf.parse(item.date_finish)) {
-                        v.card_mp_today.text_date.text = item.num_week.toString() + " неделя, " + item.date_begin  + "  —  " + item.date_finish
+                    if (cal.get(WEEK_OF_YEAR) == item.num_week_in_year) {
+                        v.card_mp_today.text_date.text = item.num_week.toString() + " неделя, " + returnDates(item.num_week_in_year)[0]  + "  —  " + returnDates(item.num_week_in_year)[1]
                         pref.edit().putString("v", item.num_week.toString()).apply()
                         when (pref.getString("translate", "")) {
                              "radio_rst" -> {
@@ -127,7 +131,9 @@ class MainFragment : Fragment() {
                         }
 
                         v.text_open_now.setOnClickListener {
-                            findNavController().navigate(R.id.navigation_archive)
+                            val args = Bundle()
+                            args.putString("quart", (index+1).toString())
+                            findNavController().navigate(R.id.navigation_archive, args)
                         }
                     }
                 }
@@ -154,6 +160,70 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    private fun returnDates(w: Int): List<String> {
+        val sdf = SimpleDateFormat("dd.MM.yyyy")
+        val c = Calendar.getInstance()
+        val test = Calendar.getInstance()
+        c.firstDayOfWeek = Calendar.SATURDAY
+        test.firstDayOfWeek = Calendar.SATURDAY
+        c.time = Date()
+        test.time = Date()
+        if (test.get(DAY_OF_WEEK) == SATURDAY) {
+            c.set(Calendar.WEEK_OF_YEAR, w)
+        } else {
+            c.set(Calendar.WEEK_OF_YEAR, w+1)
+        }
+        c.time
+        val sD: Calendar = c.clone() as Calendar
+        sD.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY)
+        val eD: Calendar = c.clone() as Calendar
+        if (test.get(DAY_OF_WEEK) == SATURDAY) {
+            eD.set(Calendar.WEEK_OF_YEAR, w+1)
+        }
+        eD.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY)
+        return listOf(sdf.format(sD.time), sdf.format(eD.time))
+    }
+
+    private fun returnYears(cY: Int) {
+        var i = cY
+        loop@ while (true) {
+            when (i) {
+                2017 -> {
+                    pref.edit().putString("seas", "1s").apply()
+                    break@loop
+                }
+                2018 -> {
+                    pref.edit().putString("seas", "2s").apply()
+                    break@loop
+                }
+                2019 -> {
+                    pref.edit().putString("seas", "3s").apply()
+                    break@loop
+                }
+                2020 -> {
+                    pref.edit().putString("seas", "4s").apply()
+                    break@loop
+                }
+                2021 -> {
+                    pref.edit().putString("seas", "5s").apply()
+                    break@loop
+                }
+                else -> {
+                    i -= 5
+                    continue@loop
+                }
+            }
+        }
+
+        pref.edit().putString("1y", (cY-2).toString()).apply()
+        pref.edit().putString("2y", (cY-1).toString()).apply()
+        pref.edit().putString("3y", cY.toString()).apply()
+        pref.edit().putString("4y", (cY+1).toString()).apply()
+        pref.edit().putString("5y", (cY+2).toString()).apply()
+
     }
 
 }

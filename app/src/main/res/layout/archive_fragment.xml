@@ -21,7 +21,7 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_first"
+                android:id="@+id/card_season_1"
                 style="@style/Widget.MaterialComponents.CardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
                 app:contentPadding="10dp">
 
                 <LinearLayout
-                    android:id="@+id/layout_card_first"
+                    android:id="@+id/layout_season_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -67,7 +67,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_second"
+                android:id="@+id/card_season_2"
                 style="@style/Widget.MaterialComponents.CardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
                 app:contentPadding="10dp">
 
                 <LinearLayout
-                    android:id="@+id/layout_card_second"
+                    android:id="@+id/layout_season_2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -113,7 +113,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_third"
+                android:id="@+id/card_season_3"
                 style="@style/Widget.MaterialComponents.CardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -129,7 +129,7 @@
                 app:contentPadding="10dp">
 
                 <LinearLayout
-                    android:id="@+id/layout_card_third"
+                    android:id="@+id/layout_season_3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -159,7 +159,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_fourth"
+                android:id="@+id/card_season_4"
                 style="@style/Widget.MaterialComponents.CardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -175,7 +175,7 @@
                 app:contentPadding="10dp">
 
                 <LinearLayout
-                    android:id="@+id/layout_card_fourth"
+                    android:id="@+id/layout_season_4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -205,7 +205,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_fifth"
+                android:id="@+id/card_season_5"
                 style="@style/Widget.MaterialComponents.CardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -221,7 +221,7 @@
                 app:contentPadding="10dp">
 
                 <LinearLayout
-                    android:id="@+id/layout_card_fifth"
+                    android:id="@+id/layout_season_5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -265,7 +265,7 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_1_q"
+                android:id="@+id/card_q_1"
                 style="@style/Widget.MaterialComponents.CardView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -281,7 +281,7 @@
                 app:contentPadding="10dp">
 
                 <LinearLayout
-                    android:id="@+id/layout_card_1_q"
+                    android:id="@+id/layout_q_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -320,7 +320,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_2_q"
+                android:id="@+id/card_q_2"
                 style="@style/Widget.MaterialComponents.CardView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -336,7 +336,7 @@
                 app:contentPadding="10dp">
 
                 <LinearLayout
-                    android:id="@+id/layout_card_2_q"
+                    android:id="@+id/layout_q_2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -375,7 +375,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_3_q"
+                android:id="@+id/card_q_3"
                 style="@style/Widget.MaterialComponents.CardView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -391,7 +391,7 @@
                 app:contentPadding="10dp">
 
                 <LinearLayout
-                    android:id="@+id/layout_card_3_q"
+                    android:id="@+id/layout_q_3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -430,7 +430,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_4_q"
+                android:id="@+id/card_q_4"
                 style="@style/Widget.MaterialComponents.CardView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -446,7 +446,7 @@
                 app:contentPadding="10dp">
 
                 <LinearLayout
-                    android:id="@+id/layout_card_4_q"
+                    android:id="@+id/layout_q_4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"

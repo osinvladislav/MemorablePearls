@@ -1,5 +1,6 @@
 package ru.thevlados.memorable.pearls.ui.test
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,8 @@ import ru.thevlados.memorable.pearls.R
 import ru.thevlados.memorable.pearls.ui.menu.archive.week
 import ru.thevlados.memorable.pearls.ui.menu.archive.year
 import ru.thevlados.memorable.pearls.ui.trane.TraneActivity
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.random.Random
 
 class TestActivity : AppCompatActivity() {
@@ -20,17 +23,19 @@ class TestActivity : AppCompatActivity() {
     lateinit var pref: SharedPreferences
     private var translate = ""
     private lateinit var randomValues: MutableList<Int>
+    var year = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test)
-        val year = intent.getStringExtra("year")
+        year = intent.getStringExtra("year")
+        val season = intent.getStringExtra("season")
         val quart = intent.getStringExtra("quart")
         pref = getSharedPreferences("settings", MODE_PRIVATE)
 
         supportActionBar?.title = "$quart квартал, $year год"
-        val jsonString = application.assets.open("$year-ru.json").bufferedReader().use {
+        val jsonString = application.assets.open("$season-ru.json").bufferedReader().use {
             it.readText()
         }
 
@@ -74,6 +79,7 @@ class TestActivity : AppCompatActivity() {
                     finish()
                     val intent = Intent(this, TestActivity::class.java)
                     intent.putExtra("year", year)
+                    intent.putExtra("season", season)
                     intent.putExtra("quart", quart)
                     startActivity(intent)
                 }
@@ -84,6 +90,7 @@ class TestActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun updateVerse(weeks: week) {
         layout_edit_verse.helperText = "Регистр букв и знаки препинания за исключением точек, знаков вопроса и восклицательных знаков не учитываются."
         layout_edit_verse.setHelperTextTextAppearance(R.style.standart)
@@ -91,7 +98,7 @@ class TestActivity : AppCompatActivity() {
         btn_next.isEnabled = false
         supportActionBar?.subtitle = weeks.verse.link_small
         text_link_headline.text = weeks.verse.link_small
-        text_date_desc.text = weeks.num_week.toString() + " неделя, " + weeks.date_begin + " — " + weeks.date_finish
+        text_date_desc.text = weeks.num_week.toString() + " неделя, " + returnDates(weeks.num_week_in_year, year.toInt())[0] + " — " + returnDates(weeks.num_week_in_year, year.toInt())[1]
         var verse = when (translate) {
             "rst" -> weeks.verse.RST
             "bti" -> weeks.verse.BTI
@@ -107,6 +114,35 @@ class TestActivity : AppCompatActivity() {
             checkVerse(edit_verse.text.toString().replace(" ", "").replace("!", "").replace("?", "").replace(".", "").replace("«", "").replace("»", "").replace(",", "").replace(";", "").replace("-", "").replace("—", "").replace(":", "").toLowerCase())
         }
     }
+
+    @SuppressLint("SimpleDateFormat")
+    private fun returnDates(w: Int, year: Int): List<String> {
+        val sdf = SimpleDateFormat("dd.MM.yyyy")
+        val c = Calendar.getInstance()
+        val test = Calendar.getInstance()
+        c.firstDayOfWeek = Calendar.SATURDAY
+        test.firstDayOfWeek = Calendar.SATURDAY
+        c.time = Date()
+        test.time = Date()
+        c.set(Calendar.YEAR, year)
+        test.set(Calendar.YEAR, year)
+        test.set(Calendar.DAY_OF_YEAR, 1)
+        if (test.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) {
+            c.set(Calendar.WEEK_OF_YEAR, w)
+        } else {
+            c.set(Calendar.WEEK_OF_YEAR, w+1)
+        }
+        c.time
+        val sD: Calendar = c.clone() as Calendar
+        sD.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY)
+        val eD: Calendar = c.clone() as Calendar
+        if (test.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) {
+            eD.set(Calendar.WEEK_OF_YEAR, w+1)
+        }
+        eD.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY)
+        return listOf(sdf.format(sD.time), sdf.format(eD.time))
+    }
+
 
     private fun checkVerse(getVerse: String) {
         if (getVerse == trueVerse) {
