@@ -19,8 +19,8 @@ android {
         applicationId "ru.thevlados.memorable.pearls"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 11
-        versionName "beta v1.8"
+        versionCode 12
+        versionName "beta v1.9"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.config
     }

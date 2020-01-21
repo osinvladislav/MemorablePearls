@@ -4,14 +4,16 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.activity_test.*
 import kotlinx.android.synthetic.main.activity_trane.*
-import kotlinx.android.synthetic.main.main_fragment.*
 import kotlinx.android.synthetic.main.main_fragment.text_link
 import kotlinx.android.synthetic.main.main_fragment.text_verse
 import ru.thevlados.memorable.pearls.R
+import ru.thevlados.memorable.pearls.archive
+import ru.thevlados.memorable.pearls.lang
 import ru.thevlados.memorable.pearls.ui.menu.archive.week
 import ru.thevlados.memorable.pearls.ui.menu.archive.year
 import kotlin.random.Random
@@ -34,8 +36,8 @@ class TraneActivity : AppCompatActivity() {
         val quart = intent.getStringExtra("quart")
         pref = getSharedPreferences("settings", MODE_PRIVATE)
 
-        supportActionBar?.title = "$quart квартал, $year год"
-        val jsonString = application.assets.open("$season-ru.json").bufferedReader().use {
+        supportActionBar?.title = "$quart ${initLang(returnLang(pref.getString("lang", "")!!)).quart}, $year ${initLang(returnLang(pref.getString("lang", "")!!)).year}"
+        val jsonString = application.assets.open("$season.json").bufferedReader().use {
             it.readText()
         }
 
@@ -88,6 +90,7 @@ class TraneActivity : AppCompatActivity() {
                     if (alreadyLearned.size == 12) {
                         scroll_card.visibility = View.GONE
                         scroll_end.visibility = View.VISIBLE
+                        supportActionBar?.subtitle = ""
                         btn_again_trane.setOnClickListener {
                             finish()
                             val intent = Intent(this, TraneActivity::class.java)
@@ -145,12 +148,28 @@ class TraneActivity : AppCompatActivity() {
     }
 
     private fun updateVerse(weeks: week) {
-        supportActionBar?.subtitle = weeks.verse.link_small
+        when (pref.getString("lang", "")) {
+            "ru" -> {
+                supportActionBar?.subtitle = weeks.verse.link_small_ru
+                text_link.text = weeks.verse.link_small_ru
+            }
+            "en" -> {
+                supportActionBar?.subtitle = weeks.verse.link_small_en
+                text_link.text = weeks.verse.link_small_en
+            }
+            "ua" -> {
+                supportActionBar?.subtitle = weeks.verse.link_small_ua
+                text_link.text = weeks.verse.link_small_ua
+            }
+            "by" -> {
+                supportActionBar?.subtitle = weeks.verse.link_small_by
+                text_link.text = weeks.verse.link_small_by
+            }
+        }
         stateCardNow = "first"
         layout_btn.visibility = View.GONE
         text_link.visibility = View.VISIBLE
         text_verse.visibility = View.GONE
-        text_link.text = weeks.verse.link_small
         val verse = when (translate) {
             "rst" -> weeks.verse.RST
             "bti" -> weeks.verse.BTI
@@ -213,6 +232,33 @@ class TraneActivity : AppCompatActivity() {
         }
 
         return randomVerses
+    }
+
+    private fun returnLang (string: String): String {
+        return application.assets.open("lang/$string.json").bufferedReader().use {
+            it.readText()
+        }
+    }
+
+    private fun initLang(str: String): archive {
+        val lang: lang = Gson().fromJson<lang>(str, lang::class.java)
+        btn_no.text = lang.trane.btn_no
+        btn_yes.text = lang.trane.btn_yes
+        text_end_headline.text = lang.trane.text_end_headline
+        text_end_desc.text = lang.trane.text_end_desc
+        btn_again_trane.text = lang.finish.btn_again
+        btn_finish.text = lang.finish.btn_end
+        return lang.archive
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.close_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        this.finish()
+        return super.onOptionsItemSelected(item)
     }
 
 }

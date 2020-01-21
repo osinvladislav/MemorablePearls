@@ -7,57 +7,211 @@
     android:padding="8dp">
 
     <TextView
-        android:id="@+id/text_select_translate"
+        android:id="@+id/text_translate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_condensed_bold"
-        android:layout_marginBottom="8dp"
-        android:text="Выберите перевод Библии:"
-        android:textSize="22sp"
-        android:textStyle="bold"/>
+        android:fontFamily="@font/roboto_medium"
+        android:text=""
+        android:textSize="16sp" />
 
     <RadioGroup
-        android:id="@+id/radio_group"
+        android:id="@+id/group_translate_ru"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="visible">
 
         <RadioButton
             android:id="@+id/radio_rst"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Синодальный перевод" />
+            android:layout_marginTop="-5dp"
+            android:layout_marginBottom="-10dp"
+            android:checked="true"
+            android:text="" />
 
         <RadioButton
             android:id="@+id/radio_bti"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Институт перевода Библии" />
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="-10dp"
+            android:text="" />
+
         <RadioButton
             android:id="@+id/radio_nrp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Новый русский перевод" />
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="-10dp"
+            android:text="" />
+
         <RadioButton
             android:id="@+id/radio_cslav"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Церковнославянский перевод" />
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="-10dp"
+            android:text="" />
+
         <RadioButton
             android:id="@+id/radio_srp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Современный русский перевод" />
-        <RadioButton
-            android:id="@+id/radio_ibl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Перевод Международной Библейской лиги" />
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="-10dp"
+            android:text="" />
+
         <RadioButton
             android:id="@+id/radio_cass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Перевод Епископа Кассиана" />
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="-10dp"
+            android:text="" />
 
+        <RadioButton
+            android:id="@+id/radio_ibl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="-10dp"
+            android:text="" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/group_translate_en"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <RadioButton
+            android:id="@+id/radio_kjv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-5dp"
+            android:layout_marginBottom="-10dp"
+            android:checked="true"
+            android:text="" />
+
+        <RadioButton
+            android:id="@+id/radio_nkjv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="-10dp"
+            android:text="" />
+
+        <RadioButton
+            android:id="@+id/radio_nasb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="-10dp"
+            android:text="" />
+
+        <RadioButton
+            android:id="@+id/radio_csb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="-10dp"
+            android:text="" />
+
+        <RadioButton
+            android:id="@+id/radio_esv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="-10dp"
+            android:text="" />
+
+        <RadioButton
+            android:id="@+id/radio_gnt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="-10dp"
+            android:text="" />
+
+        <RadioButton
+            android:id="@+id/radio_gw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="-10dp"
+            android:text="" />
+
+        <RadioButton
+            android:id="@+id/radio_nirv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="-10dp"
+            android:text="" />
+
+        <RadioButton
+            android:id="@+id/radio_niv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="-10dp"
+            android:text="" />
+
+        <RadioButton
+            android:id="@+id/radio_nlt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="-10dp"
+            android:text="" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/group_translate_ua"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <RadioButton
+            android:id="@+id/radio_ubio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-5dp"
+            android:layout_marginBottom="-10dp"
+            android:checked="true"
+            android:text="" />
+
+        <RadioButton
+            android:id="@+id/radio_ukrk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="-10dp"
+            android:text="" />
+
+        <RadioButton
+            android:id="@+id/radio_utt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="-10dp"
+            android:text="" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/group_translate_by"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <RadioButton
+            android:id="@+id/radio_bbl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-5dp"
+            android:layout_marginBottom="-10dp"
+            android:checked="true"
+            android:text="" />
     </RadioGroup>
 
     <com.google.android.material.button.MaterialButton
@@ -70,6 +224,6 @@
         android:fontFamily="@font/roboto_medium"
         android:insetTop="0dp"
         android:letterSpacing="0"
-        android:text="Закрыть" />
+        android:text="" />
 
 </LinearLayout>

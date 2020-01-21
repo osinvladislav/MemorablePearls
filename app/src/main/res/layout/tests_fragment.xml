@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="-6dp"
                 android:fontFamily="@font/roboto_condensed_bold"
-                android:text="Что хотите сделать?"
+                android:text=""
                 android:textSize="24sp" />
 
             <androidx.cardview.widget.CardView
@@ -59,7 +59,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
-                        android:text="Тренироваться"
+                        android:text=""
                         android:textColor="@color/color_text"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -70,7 +70,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/roboto"
-                        android:text="Тренировка Памятных Жемчужин. Улучшает запоминание стихов."
+                        android:text=""
                         android:textColor="@color/color_text"
                         android:textSize="16sp" />
 
@@ -106,7 +106,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
-                        android:text="Проверить знания"
+                        android:text=""
                         android:textColor="@color/color_text"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -117,7 +117,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/roboto"
-                        android:text="Тестирование ваших знаний Памятных Жемчужин. Помогает закрепить знания и понять слабые места."
+                        android:text=""
                         android:textColor="@color/color_text"
                         android:textSize="16sp" />
 
@@ -145,7 +145,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_condensed_bold"
-                android:text="Тренировка"
+                android:text=""
                 android:textSize="24sp" />
 
             <TextView
@@ -154,7 +154,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/roboto_medium"
-                android:text='Тренировка Памятных Жемчужин. Улучшает запоминание стихов посредством. Выберите год и квартал. После нажатия кнопки "Запустить" вы перейдете в новое окно. Вам будет дана ссылка на случайный стих, и вы должны будете для себя понять, какой это стих. После нажимаете на карточку со ссылкой стиха. Если вы ответите правильно, нажимайте кнопку Я ответил правильно. Если отвечаете неправильно, нажимайте кнопку Я ответил неправильно. После того как вы пройдете все 12 стихов, будут показаны те стихи, на которые вы ответили неправильно. И так будет, пока вы не ответите на все вопросы правильно. Регистр букв и знаки препинания не учитываются. Стихи будут отображаться в том переводе, который вы выбрали в настройках.'
+                android:text=""
                 android:textSize="16sp" />
 
             <LinearLayout
@@ -170,7 +170,7 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/roboto"
                     android:gravity="center"
-                    android:text="Выберите год:"
+                    android:text=""
                     android:textSize="16sp" />
 
                 <Spinner
@@ -192,7 +192,7 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/roboto"
                     android:gravity="center"
-                    android:text="Выберите квартал:"
+                    android:text=""
                     android:textSize="16sp" />
 
                 <Spinner
@@ -210,7 +210,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:letterSpacing="0"
-                android:text="Запустить" />
+                android:text=""
+                tools:targetApi="lollipop" />
 
         </LinearLayout>
     </ScrollView>
@@ -233,7 +234,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_condensed_bold"
-                android:text="Проверка знаний"
+                android:text=""
                 android:textSize="24sp" />
 
             <TextView
@@ -242,7 +243,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/roboto_medium"
-                android:text='Проверка Ваших знаний Памятных Жемчужин. Помогает закрепить знания и понять слабые места. Выберите год и квартал. После нажатия кнопки "Запустить" вы перейдете в новое окно. Вам будет дана ссылка и номер недели стиха, и нужно будет написать этот стих из своей памяти. Регистр букв и знаки препинания не учитываются. Стихи будут отображаться в том переводе, который вы выбрали в настройках.'
+                android:text=''
                 android:textSize="16sp" />
 
             <LinearLayout
@@ -258,7 +259,7 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/roboto"
                     android:gravity="center"
-                    android:text="Выберите год:"
+                    android:text=""
                     android:textSize="16sp" />
 
                 <Spinner
@@ -280,7 +281,7 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/roboto"
                     android:gravity="center"
-                    android:text="Выберите квартал:"
+                    android:text=""
                     android:textSize="16sp" />
 
                 <Spinner
@@ -320,7 +321,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:letterSpacing="0"
-                android:text="Запустить" />
+                android:text=""
+                tools:targetApi="lollipop" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

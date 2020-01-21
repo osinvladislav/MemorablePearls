@@ -5,11 +5,17 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_start.*
 import kotlinx.android.synthetic.main.activity_test.*
 import kotlinx.android.synthetic.main.main_fragment.*
 import ru.thevlados.memorable.pearls.R
+import ru.thevlados.memorable.pearls.archive
+import ru.thevlados.memorable.pearls.lang
+import ru.thevlados.memorable.pearls.test
 import ru.thevlados.memorable.pearls.ui.menu.archive.week
 import ru.thevlados.memorable.pearls.ui.menu.archive.year
 import ru.thevlados.memorable.pearls.ui.trane.TraneActivity
@@ -24,6 +30,7 @@ class TestActivity : AppCompatActivity() {
     private var translate = ""
     private lateinit var randomValues: MutableList<Int>
     var year = ""
+    lateinit var test: test
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,10 +41,12 @@ class TestActivity : AppCompatActivity() {
         val quart = intent.getStringExtra("quart")
         pref = getSharedPreferences("settings", MODE_PRIVATE)
 
-        supportActionBar?.title = "$quart квартал, $year год"
-        val jsonString = application.assets.open("$season-ru.json").bufferedReader().use {
+        supportActionBar?.title = "$quart ${initLang(returnLang(pref.getString("lang", "")!!)).quart}, $year ${initLang(returnLang(pref.getString("lang", "")!!)).year}"
+        val jsonString = application.assets.open("$season.json").bufferedReader().use {
             it.readText()
         }
+
+        test = returnTest(returnLang(pref.getString("lang", "")!!))
 
         val quarter: Array<year> =
             Gson().fromJson<Array<year>>(jsonString, Array<year>::class.java)
@@ -75,6 +84,7 @@ class TestActivity : AppCompatActivity() {
             } else {
                 scroll_question.visibility = View.GONE
                 scroll_finish.visibility = View.VISIBLE
+                supportActionBar?.subtitle = ""
                 btn_again.setOnClickListener {
                     finish()
                     val intent = Intent(this, TestActivity::class.java)
@@ -92,13 +102,29 @@ class TestActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun updateVerse(weeks: week) {
-        layout_edit_verse.helperText = "Регистр букв и знаки препинания за исключением точек, знаков вопроса и восклицательных знаков не учитываются."
+        layout_edit_verse.helperText = test.edit_verse_hint
         layout_edit_verse.setHelperTextTextAppearance(R.style.standart)
         edit_verse.text = null
         btn_next.isEnabled = false
-        supportActionBar?.subtitle = weeks.verse.link_small
-        text_link_headline.text = weeks.verse.link_small
-        text_date_desc.text = weeks.num_week.toString() + " неделя, " + returnDates(weeks.num_week_in_year, year.toInt())[0] + " — " + returnDates(weeks.num_week_in_year, year.toInt())[1]
+        when (pref.getString("lang", "")) {
+            "ru" -> {
+                supportActionBar?.subtitle = weeks.verse.link_small_ru
+                text_link_headline.text = weeks.verse.link_small_ru
+            }
+            "en" -> {
+                supportActionBar?.subtitle = weeks.verse.link_small_en
+                text_link_headline.text = weeks.verse.link_small_en
+            }
+            "ua" -> {
+                supportActionBar?.subtitle = weeks.verse.link_small_ua
+                text_link_headline.text = weeks.verse.link_small_ua
+            }
+            "by" -> {
+                supportActionBar?.subtitle = weeks.verse.link_small_by
+                text_link_headline.text = weeks.verse.link_small_by
+            }
+        }
+        text_date_desc.text = weeks.num_week.toString() + " " + test.week + ", " + returnDates(weeks.num_week_in_year, year.toInt())[0] + " — " + returnDates(weeks.num_week_in_year, year.toInt())[1]
         var verse = when (translate) {
             "rst" -> weeks.verse.RST
             "bti" -> weeks.verse.BTI
@@ -146,11 +172,11 @@ class TestActivity : AppCompatActivity() {
 
     private fun checkVerse(getVerse: String) {
         if (getVerse == trueVerse) {
-            layout_edit_verse.helperText = "Все правильно!"
+            layout_edit_verse.helperText = test.all_right
             layout_edit_verse.setHelperTextTextAppearance(R.style.ok)
             btn_next.isEnabled = true
         } else {
-            layout_edit_verse.helperText = "Вы допустили ошибку. Перепроверьте свой текст еще раз."
+            layout_edit_verse.helperText = test.all_error
             layout_edit_verse.setHelperTextTextAppearance(R.style.error)
         }
     }
@@ -180,4 +206,37 @@ class TestActivity : AppCompatActivity() {
         return randomVerses
     }
 
+    private fun returnLang (string: String): String {
+        return application.assets.open("lang/$string.json").bufferedReader().use {
+            it.readText()
+        }
+    }
+
+    private fun initLang(str: String): archive {
+        val lang: lang = Gson().fromJson<lang>(str, lang::class.java)
+        layout_edit_verse.hint = lang.test.edit_verse
+        layout_edit_verse.helperText = lang.test.edit_verse_hint
+        btn_check.text = lang.test.btn_check
+        btn_next.text = lang.test.btn_next
+        text_end_headline.text = lang.test.text_end_headline
+        text_end_desc.text = lang.test.text_end_desc
+        btn_again.text = lang.finish.btn_again
+        btn_end.text = lang.finish.btn_end
+        return lang.archive
+    }
+
+    private fun returnTest(str: String): test {
+        val lang: lang = Gson().fromJson<lang>(str, lang::class.java)
+        return lang.test
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.close_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        this.finish()
+        return super.onOptionsItemSelected(item)
+    }
 }

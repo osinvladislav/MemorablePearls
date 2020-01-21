@@ -1,0 +1,105 @@
+{
+  "app_name": "Memorable Pearls",
+  "start": {
+    "text_hello": "Welcome!",
+    "edit_name": "Enter Your name:",
+    "text_translate": "Select the standard translation (which will be used in the default application):",
+    "radio_rst": "Синодальный перевод",
+    "radio_bti": "Институт перевода Библии",
+    "radio_nrp": "Новый русский перевод",
+    "radio_cslav": "Церковнославянский перевод",
+    "radio_srp": "Современный русский перевод",
+	"radio_cass": "Перевод Епископа Кассиана",
+    "radio_ibl": "Перевод Международной Библейской лиги",
+    "radio_kjv": "King James Version",
+    "radio_nkjv": "New King James Version",
+    "radio_nasb": "New American Standard Bible",
+    "radio_csb": "Christian Standard Bible",
+    "radio_esv": "English Standard Version",
+    "radio_gnt": "Good News Translation",
+    "radio_gw": "GOD`S WORD Translation",
+    "radio_nirv": "New International Reader`s Version",
+    "radio_niv": "New International Version",
+    "radio_nlt": "New Living Translation",
+    "radio_ubio": "Біблія в пер. Івана Огієнка",
+    "radio_ukrk": "Біблія в пер. П.Куліша та І.Пулюя",
+    "radio_utt": "Переклад Р. Турконяка",
+    "radio_bbl": "Біблія (пераклад В. Сёмухі)",
+    "text_lang": "Select the application language:",
+    "radio_ru": "Русский",
+    "radio_en": "English",
+    "radio_ua": "Український",
+    "radio_by": "Беларускі",
+    "switch_dark": "Dark theme",
+    "btn_enter": "Enter"
+  },
+	"main": {
+		"text_action_bar": "Main",
+		"text_date": "14 week",
+		"text_verse": "Exam",
+		"text_actions": "What do you want to do?",
+		"text_open_now": "Discover Memorable Pearls for this quarter",
+		"text_trans_now": "Train the current Memorable Pearls",
+		"text_check_know": "Test your knowledge",
+		"text_switch_translate": "Change the standard translation of the Bible",
+		"text_morning": "Good morning",
+		"text_night": "Good night",
+		"text_evening": "Good evening",
+		"text_day": "Good day"
+		
+	},
+	"archive": {
+		"text_action_bar": "Archive",
+		"season": "season",
+		"year": "year",
+		"quart": "quarter",
+		"week": "week",
+		"error": "Error",
+		"copy": "Copy",
+		"listen": "Listen",
+		"copy_notify": "Verse was copied to the clipboard",
+		"text_music": "Listen to Memorable Pearls for the entire quarter"
+	},
+	"settings": {
+		"text_action_bar": "Settings"
+	},
+	"tests": {
+		"text_action_bar": "Tests",
+		"text_title": "What do you want to do?",
+		"text_trane": "Train",
+		"text_trane_desc": "Training Memorable Pearls. Improves verse memorization.",
+		"text_test": "Test your knowledge",
+		"text_test_desc": "Testing your knowledge of Memorable Gems. Helps to reinforce knowledge and to understand the weak points.",
+		"text_title_trane": "Training",
+		"text_desc_trane": "Training Memorable Pearls. Improves memorization of poems by means of. Select the year and quarter. After clicking the «Run» button, you will be taken to a new window. You will be given a link to a random verse, and you will have to figure out for yourself what kind of verse it is. Then click on the card with the link of the verse. If you answer correctly, press the button, I answered it correctly. If you answer incorrectly, click the I answered incorrectly button. After you complete all 12 verses, the verses that you answered incorrectly will be shown. And so it will be until you answer all the questions correctly. Case and punctuation are not taken into account. The verses will be displayed in the translation that you selected in the settings.",
+		"text_select_year_trane": "Select a year:",
+		"text_select_quart_trane": "Select a quarter:",
+		"btn_trane": "Run",
+		"text_title_test": "Test of knowledge",
+		"text_desc_test": "Checking Your knowledge of Memorable Gems. Helps to reinforce knowledge and to understand the weak points. Select the year and quarter. After clicking the «Run» button, you will be taken to a new window. You will be given a link and the number of the week of the verse, and will need to write this verse from your memory. Case and punctuation are not taken into account. The verses will be displayed in the translation that you selected in the settings.",
+		"text_select_year_test": "Select a year:",
+		"text_select_quart_test": "Select a quarter:",
+		"btn_test": "Run"
+	},
+	"test": {
+		"edit_verse": "Memorable Pearls",
+		"edit_verse_hint": "The сase of letters and punctuation marks except for dots, question marks, and exclamation marks are not taken into account.",
+		"btn_check": "Check",
+		"btn_next": "Go to the next Memorable Pearls",
+		"text_end_headline": "Congratulations, the test is over!",
+		"text_end_desc": "You have rewritten all the verses of the given quarter correctly. If you want to test your knowledge again, click pass Again. If you want to exit, click Close",
+		"week": "week",
+		"all_right": "That's right!",
+		"all_error": "You made a mistake. Double-check your text again."
+	},
+	"trane": {
+		"btn_no": "I answered incorrectly",
+		"btn_yes": "I answered correctly",
+		"text_end_headline": "Congratulations, training is over!",
+		"text_end_desc": "You have learned all the verses of the given quarter. If you want to learn PJ again, click Pass again. If you want to exit, click Close"
+	},
+	"finish": {
+		"btn_again": "Pass again",
+		"btn_end": "Close"
+	}
+}

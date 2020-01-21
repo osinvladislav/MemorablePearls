@@ -24,10 +24,9 @@
                 android:id="@+id/text_headline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
                 android:fontFamily="@font/roboto_condensed_bold"
                 android:gravity="center"
-                android:layout_marginBottom="2dp"
-                android:text="Добрый вечер!"
                 android:textSize="28sp"
                 android:textStyle="bold" />
 
@@ -58,7 +57,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="2dp"
                         android:fontFamily="@font/roboto"
-                        android:text="14 неделя"
                         android:textColor="@color/color_text"
                         android:textSize="14sp" />
 
@@ -67,7 +65,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
-                        android:text="Экзамен"
                         android:textColor="@color/color_text"
                         android:textSize="20sp" />
 
@@ -78,7 +75,6 @@
                         android:layout_gravity="right"
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/roboto_medium"
-                        android:text="Экзамен"
                         android:textColor="@color/color_text"
                         android:textSize="16sp"
                         android:textStyle="italic" />
@@ -92,7 +88,6 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_condensed_bold"
                 android:paddingStart="6dp"
-                android:text="Что хотите сделать?"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
@@ -106,7 +101,6 @@
                 android:fontFamily="@font/roboto_medium"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:padding="8dp"
-                android:text="Открыть Памятные Жемчужины за этот квартал"
                 android:textAllCaps="false"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/color_text_light"
@@ -131,7 +125,6 @@
                 android:fontFamily="@font/roboto_medium"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:padding="8dp"
-                android:text="Тренировать текущую Памятную Жемчужину"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/color_text_light"
                 android:textSize="16sp"
@@ -154,7 +147,6 @@
                 android:fontFamily="@font/roboto_medium"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:padding="8dp"
-                android:text="Проверить свои знания"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/color_text_light"
                 android:textSize="16sp"
@@ -177,7 +169,6 @@
                 android:fontFamily="@font/roboto_medium"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:padding="8dp"
-                android:text="Изменить стандартный перевод Библии"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/color_text_light"
                 android:textSize="16sp"

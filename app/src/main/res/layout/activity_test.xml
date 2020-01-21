@@ -42,9 +42,7 @@ tools:context=".ui.trane.TraneActivity">
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:hint="Памятная Жемчужина"
-            app:helperText="Регистр букв и знаки препинания за исключением точек, знаков вопроса и восклицательных знаков не учитываются.">
+            android:layout_marginBottom="8dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_verse"
@@ -59,16 +57,14 @@ tools:context=".ui.trane.TraneActivity">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:letterSpacing="0"
-            android:text="Проверить" />
+            android:letterSpacing="0" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_next"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:letterSpacing="0"
-            android:text="Переход к следующей Памятной Жемчужине" />
+            android:letterSpacing="0" />
 
     </LinearLayout>
 </ScrollView>
@@ -92,7 +88,6 @@ tools:context=".ui.trane.TraneActivity">
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:fontFamily="@font/roboto_condensed_bold"
-            android:text="Поздравляем, тест окончен!"
             android:textSize="24sp" />
 
         <TextView
@@ -101,7 +96,6 @@ tools:context=".ui.trane.TraneActivity">
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/roboto"
-            android:text="Вы переписали все стихи заданного квартала правильно. Если вы хотите еще раз проверить свои знания, нажмите Пройти еще раз. Если вы хотите выйти, нажмите Закрыть"
             android:textSize="16sp" />
 
         <com.google.android.material.button.MaterialButton
@@ -109,8 +103,7 @@ tools:context=".ui.trane.TraneActivity">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="-4dp"
-            android:letterSpacing="0"
-            android:text="Пройти еще раз" />
+            android:letterSpacing="0" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_end"
@@ -118,8 +111,7 @@ tools:context=".ui.trane.TraneActivity">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="-4dp"
-            android:letterSpacing="0"
-            android:text="Закрыть" />
+            android:letterSpacing="0" />
     </LinearLayout>
 </ScrollView>
 </LinearLayout>

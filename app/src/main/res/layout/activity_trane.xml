@@ -84,7 +84,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:letterSpacing="0"
-                    android:text="Я ответил неправильно"
                     android:textColor="#E91E63"
                     app:rippleColor="#E91E63" />
 
@@ -95,7 +94,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:letterSpacing="0"
-                    android:text="Я ответил правильно"
                     android:textColor="#4CAF50"
                     app:rippleColor="#4CAF50" />
             </LinearLayout>
@@ -122,7 +120,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:fontFamily="@font/roboto_condensed_bold"
-                android:text="Поздравляем, тренировка окончена!"
                 android:textSize="24sp" />
 
             <TextView
@@ -131,7 +128,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/roboto"
-                android:text="Вы выучили все стихи заданного квартала. Если вы хотите еще раз учить ПЖ, нажмите Пройти еще раз. Если вы хотите выйти, нажмите Закрыть"
                 android:textSize="16sp" />
 
             <com.google.android.material.button.MaterialButton
@@ -139,8 +135,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="-4dp"
-                android:letterSpacing="0"
-                android:text="Пройти еще раз" />
+                android:letterSpacing="0" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_finish"
@@ -148,8 +143,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-4dp"
-                android:letterSpacing="0"
-                android:text="Закрыть" />
+                android:letterSpacing="0" />
         </LinearLayout>
     </ScrollView>
 

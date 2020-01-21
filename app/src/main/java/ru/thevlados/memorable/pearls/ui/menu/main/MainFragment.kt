@@ -13,10 +13,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_start.*
 import kotlinx.android.synthetic.main.main_fragment.view.*
 import ru.thevlados.memorable.pearls.R
+import ru.thevlados.memorable.pearls.archive
+import ru.thevlados.memorable.pearls.lang
+import ru.thevlados.memorable.pearls.main
 import ru.thevlados.memorable.pearls.ui.detail.DetailActivity
-import ru.thevlados.memorable.pearls.ui.menu.archive.year
+import ru.thevlados.memorable.pearls.ui.menu.archive.*
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.Calendar.*
@@ -38,20 +42,20 @@ class MainFragment : Fragment() {
         val currentHour = sdfh.format(Date())
         val name = pref.getString("name", "")
         when {
-            currentHour.toInt() < 6 -> {
-                v.text_headline.text = "Доброй ночи, $name!"
+            currentHour.toInt() < 5 -> {
+                v.text_headline.text = initLang(returnLang(pref.getString("lang", "")!!), v).text_night + ", $name!"
             }
-            currentHour.toInt() in 7..10 -> {
-                v.text_headline.text = "Доброе утро, $name!"
+            currentHour.toInt() in 5..10 -> {
+                v.text_headline.text = initLang(returnLang(pref.getString("lang", "")!!), v).text_morning + ", $name!"
             }
             currentHour.toInt() in 11..16 -> {
-                v.text_headline.text = "Добрый день, $name!"
+                v.text_headline.text = initLang(returnLang(pref.getString("lang", "")!!), v).text_day + ", $name!"
             }
             currentHour.toInt() in 17..22 -> {
-                v.text_headline.text = "Добрый вечер, $name!"
+                v.text_headline.text = initLang(returnLang(pref.getString("lang", "")!!), v).text_evening + " $name!"
             }
             currentHour.toInt() > 22 -> {
-                v.text_headline.text = "Доброй ночи, $name!"
+                v.text_headline.text = initLang(returnLang(pref.getString("lang", "")!!), v).text_night + ", $name!"
             }
         }
 
@@ -64,13 +68,14 @@ class MainFragment : Fragment() {
         val cal = getInstance()
         cal.add(DAY_OF_MONTH, -5)
 
-        val jsonString = activity!!.application.assets.open(pref.getString("seas", "") + "-ru.json").bufferedReader().use{
+        val jsonString = activity!!.application.assets.open(pref.getString("seas", "") + ".json").bufferedReader().use{
             it.readText()
         }
 
-        val quart: Array<year> = Gson().fromJson<Array<year>>(jsonString, Array<year>::class.java)
+        val quart: Array<year> =
+            Gson().fromJson<Array<year>>(jsonString, Array<year>::class.java)
 
-        quart.forEachIndexed {index, it ->
+        quart.forEachIndexed { index, it ->
             if (cal.get(WEEK_OF_YEAR) in it.start_week..it.end_week) {
                 when (index) {
                     0 -> {
@@ -90,31 +95,84 @@ class MainFragment : Fragment() {
                         pref.edit().putString("q", "4q").apply()
                     }
                 }
-                it.weeks.forEach {item ->
+                it.weeks.forEach { item: week ->
                     if (cal.get(WEEK_OF_YEAR) == item.num_week_in_year) {
-                        v.card_mp_today.text_date.text = item.num_week.toString() + " неделя, " + returnDates(item.num_week_in_year)[0]  + "  —  " + returnDates(item.num_week_in_year)[1]
+                        v.card_mp_today.text_date.text =
+                            item.num_week.toString() + " "+initLangArch(returnLang(pref.getString("lang", "")!!)).week+", " + returnDates(item.num_week_in_year)[0] + "  —  " + returnDates(
+                                item.num_week_in_year
+                            )[1]
                         pref.edit().putString("v", item.num_week.toString()).apply()
-                        when (pref.getString("translate", "")) {
-                             "radio_rst" -> {
+                        when (pref.getString("translate_" + pref.getString("lang", ""), "")) {
+                            "rst" -> {
                                 v.card_mp_today.text_verse.text = item.verse.RST
-                             }
-                            "radio_bti" -> {
+                            }
+                            "bti" -> {
                                 v.card_mp_today.text_verse.text = item.verse.BTI
                             }
-                            "radio_nrp" -> {
+                            "nrp" -> {
                                 v.card_mp_today.text_verse.text = item.verse.NRP
                             }
-                            "radio_cslav" -> {
+                            "cslav" -> {
                                 v.card_mp_today.text_verse.text = item.verse.CSLAV
                             }
-                            "radio_srp" -> {
+                            "srp" -> {
                                 v.card_mp_today.text_verse.text = item.verse.SRP
                             }
-                            "radio_ibl" -> {
+                            "cass" -> {
+                                v.card_mp_today.text_verse.text = item.verse.CASS
+                            }
+                            "ibl" -> {
                                 v.card_mp_today.text_verse.text = item.verse.IBL
                             }
+                            "kjv" -> {
+                                v.card_mp_today.text_verse.text = item.verse.KJV
+                            }
+                            "nkjv" -> {
+                                v.card_mp_today.text_verse.text = item.verse.NKJV
+                            }
+                            "nasb" -> {
+                                v.card_mp_today.text_verse.text = item.verse.NASB
+                            }
+                            "csb" -> {
+                                v.card_mp_today.text_verse.text = item.verse.CSB
+                            }
+                            "esv" -> {
+                                v.card_mp_today.text_verse.text = item.verse.ESV
+                            }
+                            "gnt" -> {
+                                v.card_mp_today.text_verse.text = item.verse.GNT
+                            }
+                            "gw" -> {
+                                v.card_mp_today.text_verse.text = item.verse.GW
+                            }
+                            "nirv" -> {
+                                v.card_mp_today.text_verse.text = item.verse.NIRV
+                            }
+                            "niv" -> {
+                                v.card_mp_today.text_verse.text = item.verse.NIV
+                            }
+                            "nlt" -> {
+                                v.card_mp_today.text_verse.text = item.verse.NLT
+                            }
+                            "ubio" -> {
+                                v.card_mp_today.text_verse.text = item.verse.UBIO
+                            }
+                            "ukrk" -> {
+                                v.card_mp_today.text_verse.text = item.verse.UKRK
+                            }
+                            "utt" -> {
+                                v.card_mp_today.text_verse.text = item.verse.UTT
+                            }
+                            "bbl" -> {
+                                v.card_mp_today.text_verse.text = item.verse.BBL
+                            }
                         }
-                        v.card_mp_today.text_link.text = item.verse.link_small + " "
+                        when (pref.getString("lang", "")) {
+                            "ru" -> v.card_mp_today.text_link.text = item.verse.link_small_ru + " "
+                            "en" -> v.card_mp_today.text_link.text = item.verse.link_small_en + " "
+                            "ua" -> v.card_mp_today.text_link.text = item.verse.link_small_ua + " "
+                            "by" -> v.card_mp_today.text_link.text = item.verse.link_small_by + " "
+                        }
                         v.card_mp_today.setOnClickListener {
                             val intent = Intent(context, DetailActivity::class.java)
                             intent.putExtra("text_date", v.text_date.text as String)
@@ -125,29 +183,60 @@ class MainFragment : Fragment() {
                             intent.putExtra("text_verse_cslav", item.verse.CSLAV)
                             intent.putExtra("text_verse_srp", item.verse.SRP)
                             intent.putExtra("text_verse_ibl", item.verse.IBL)
-                            intent.putExtra("text_link_full", item.verse.link_full)
-                            intent.putExtra("text_link_short", item.verse.link_small)
+                            intent.putExtra("text_verse_kjv", item.verse.KJV)
+                            intent.putExtra("text_verse_nkjv", item.verse.NKJV)
+                            intent.putExtra("text_verse_nasb", item.verse.NASB)
+                            intent.putExtra("text_verse_csb", item.verse.CSB)
+                            intent.putExtra("text_verse_esv", item.verse.ESV)
+                            intent.putExtra("text_verse_gnt", item.verse.GNT)
+                            intent.putExtra("text_verse_gw", item.verse.GW)
+                            intent.putExtra("text_verse_nirv", item.verse.NIRV)
+                            intent.putExtra("text_verse_niv", item.verse.NIV)
+                            intent.putExtra("text_verse_nlt", item.verse.NLT)
+                            intent.putExtra("text_verse_ubio", item.verse.UBIO)
+                            intent.putExtra("text_verse_ukrk", item.verse.UKRK)
+                            intent.putExtra("text_verse_utt", item.verse.UTT)
+                            intent.putExtra("text_verse_bbl", item.verse.BBL)
+                            when (pref.getString("lang", "")) {
+                                "ru" -> {
+                                    intent.putExtra("text_link_full", item.verse.link_full_ru)
+                                    intent.putExtra("text_link_short", item.verse.link_small_ru)
+                                }
+                                "en" -> {
+                                    intent.putExtra("text_link_full", item.verse.link_full_en)
+                                    intent.putExtra("text_link_short", item.verse.link_small_en)
+                                }
+                                "ua" -> {
+                                    intent.putExtra("text_link_full", item.verse.link_full_ua)
+                                    intent.putExtra("text_link_short", item.verse.link_small_ua)
+                                }
+                                "by" -> {
+                                    intent.putExtra("text_link_full", item.verse.link_full_by)
+                                    intent.putExtra("text_link_short", item.verse.link_small_by)
+                                }
+                            }
                             ContextCompat.startActivity(v.context, intent, null)
                         }
 
                         v.text_open_now.setOnClickListener {
                             val args = Bundle()
-                            args.putString("quart", (index+1).toString())
+                            args.putString("quart", (index + 1).toString())
                             findNavController().navigate(R.id.navigation_archive, args)
                         }
                     }
                 }
             }
         }
-
         v.text_trans_now.setOnClickListener {
-            pref.edit().putString("whatIs", "trane").apply()
-            findNavController().navigate(R.id.navigation_tests)
+            val args = Bundle()
+            args.putString("whatIs", "trane")
+            findNavController().navigate(R.id.navigation_tests, args)
         }
 
         v.text_check_know.setOnClickListener {
-            pref.edit().putString("whatIs", "test").apply()
-            findNavController().navigate(R.id.navigation_tests)
+            val args = Bundle()
+            args.putString("whatIs", "test")
+            findNavController().navigate(R.id.navigation_tests, args)
         }
 
         v.text_switch_translate.setOnClickListener {
@@ -226,4 +315,27 @@ class MainFragment : Fragment() {
 
     }
 
+    private fun returnLang (string: String): String {
+        return activity!!.application.assets.open("lang/$string.json").bufferedReader().use {
+            it.readText()
+        }
+    }
+
+    private fun initLang(str: String, v: View): main {
+        val lang = Gson().fromJson<lang>(str, lang::class.java)
+        (activity as AppCompatActivity?)!!.supportActionBar!!.title = lang.main.text_action_bar
+        v.text_date.text = lang.main.text_date
+        v.text_verse.text = lang.main.text_verse
+        v.text_actions.text = lang.main.text_actions
+        v.text_open_now.text = lang.main.text_open_now
+        v.text_trans_now.text = lang.main.text_trans_now
+        v.text_check_know.text = lang.main.text_check_know
+        v.text_switch_translate.text = lang.main.text_switch_translate
+        return lang.main
+    }
+
+    private fun initLangArch(str: String): archive {
+        val lang = Gson().fromJson<lang>(str, lang::class.java)
+        return lang.archive
+    }
 }

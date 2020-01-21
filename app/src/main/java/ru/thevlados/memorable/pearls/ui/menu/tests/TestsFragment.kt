@@ -9,10 +9,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.tests_fragment.*
 import kotlinx.android.synthetic.main.tests_fragment.view.*
 import ru.thevlados.memorable.pearls.MainActivity
 import ru.thevlados.memorable.pearls.R
+import ru.thevlados.memorable.pearls.lang
 import ru.thevlados.memorable.pearls.ui.test.TestActivity
 import ru.thevlados.memorable.pearls.ui.trane.TraneActivity
 
@@ -29,6 +31,8 @@ class TestsFragment : Fragment() {
     ): View? {
         val v: View = inflater.inflate(R.layout.tests_fragment, container, false)
         pref = activity!!.getSharedPreferences("settings", AppCompatActivity.MODE_PRIVATE)
+
+        initLang(returnLang(pref.getString("lang", "")!!), v)
 
         setHasOptionsMenu(true)
         v.isFocusableInTouchMode = true
@@ -51,10 +55,10 @@ class TestsFragment : Fragment() {
                         }
                     }
                     return@OnKeyListener true
-    }
-}
-false
-})
+            }
+        }
+        false
+        })
         val dayNames = arrayOf(pref.getString("1y", "").toString(),
             pref.getString("2y", "").toString(),
             pref.getString("3y", "").toString(),
@@ -105,6 +109,13 @@ false
             valNow = "detail"
             v.scroll_choose.isVisible = false
             v.scroll_test.isVisible = true
+        }
+        if (arguments != null) {
+            if (arguments!!.getString("whatIs", "") == "trane") {
+                v.card_trane.performClick()
+            } else if (arguments!!.getString("whatIs", "") == "test") {
+                v.card_test.performClick()
+            }
         }
 
         v.btn_trane.setOnClickListener {
@@ -201,7 +212,31 @@ false
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(TestsViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
+    private fun returnLang (string: String): String {
+        return activity!!.application.assets.open("lang/$string.json").bufferedReader().use {
+            it.readText()
+        }
+    }
+
+    private fun initLang(str: String, v: View) {
+        val lang = Gson().fromJson<lang>(str, lang::class.java)
+        (activity as AppCompatActivity?)!!.supportActionBar!!.title = lang.tests.text_action_bar
+        v.text_title.text = lang.tests.text_title
+        v.text_trane.text = lang.tests.text_trane
+        v.text_trane_desc.text = lang.tests.text_trane_desc
+        v.text_test.text = lang.tests.text_test
+        v.text_test_desc.text = lang.tests.text_test_desc
+        v.text_title_trane.text = lang.tests.text_title_trane
+        v.text_desc_trane.text = lang.tests.text_desc_trane
+        v.text_select_year_trane.text = lang.tests.text_select_year_trane
+        v.text_select_quart_trane.text = lang.tests.text_select_quart_trane
+        v.btn_trane.text = lang.tests.btn_trane
+        v.text_title_test.text = lang.tests.text_title_test
+        v.text_desc_test.text = lang.tests.text_desc_test
+        v.text_select_year_test.text = lang.tests.text_select_year_test
+        v.text_select_quart_test.text = lang.tests.text_select_quart_test
+        v.btn_test.text = lang.tests.btn_test
+    }
 }
