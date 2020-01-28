@@ -415,7 +415,7 @@ class ArchiveFragment : Fragment() {
         stateNow = ""
         v.img_music.setImageResource(R.drawable.ic_play_arrow_black_24dp)
         mp = MediaPlayer()
-        val afd = activity!!.assets.openFd("audio/"+pref.getString("season", "")+"/"+pref.getString("q", "")+"/all.mp3")
+        val afd = activity!!.assets.openFd("audio/"+pref.getString("lang", "")+"/"+pref.getString("season", "")+"/"+pref.getString("q", "")+"/all.mp3")
         mp.setDataSource(afd.fileDescriptor,afd.startOffset,afd.length)
         mp.prepare()
         mp.isLooping = true
@@ -682,9 +682,8 @@ class ArchiveFragment : Fragment() {
                             .show()
                     }
                     1 -> {
-                        println("audio/"+pref.getString("season", "")+"/"+pref.getString("q", "")+"/"+pref.getString("v", "")+".mp3")
                         mps = MediaPlayer()
-                        val afd = activity!!.assets.openFd("audio/"+pref.getString("season", "")+"/"+pref.getString("q", "")+"/"+pref.getString("v", "")+".mp3")
+                        val afd = activity!!.assets.openFd("audio/"+pref.getString("lang", "")+"/"+pref.getString("season", "")+"/"+pref.getString("q", "")+"/"+pref.getString("v", "")+".mp3")
                         mps.setDataSource(afd.fileDescriptor,afd.startOffset,afd.length)
                         mps.prepare()
                         mps.isLooping = false

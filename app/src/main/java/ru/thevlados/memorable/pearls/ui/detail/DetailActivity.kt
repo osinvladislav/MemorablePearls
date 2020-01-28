@@ -6,10 +6,9 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.media.MediaPlayer
+import android.os.Build
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -59,7 +58,27 @@ class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
+
         pref = getSharedPreferences("settings", MODE_PRIVATE)
+        when (pref.getString("theme", "")) {
+            "dark" -> {
+                if (Build.VERSION.SDK_INT >= 21) {
+                    val window: Window = this.window
+                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                    window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                    window.statusBarColor = this.resources.getColor(R.color.colorOnSecondary)
+                }
+            }
+            "light" -> {
+                if (Build.VERSION.SDK_INT >= 21) {
+                    val window: Window = this.window
+                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                    window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                    window.statusBarColor = this.resources.getColor(R.color.colorPrimaryVariant)
+                }
+            }
+        }
+
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = intent.getStringExtra("text_link_short")
@@ -168,7 +187,7 @@ class DetailActivity : AppCompatActivity() {
             else -> initLang(pref.getString("lang", "")!!).error
         }
         text_link.text = intent.getStringExtra("text_link_full")
-        val afd = assets.openFd("audio/"+pref.getString("season", "")+"/"+pref.getString("q", "")+"/"+pref.getString("v", "")+".mp3")
+        val afd = assets.openFd("audio/"+pref.getString("lang", "")+"/"+pref.getString("season", "")+"/"+pref.getString("q", "")+"/"+pref.getString("v", "")+".mp3")
         mp.setDataSource(afd.fileDescriptor,afd.startOffset,afd.length)
         mp.prepare()
         mp.isLooping = true
@@ -295,7 +314,7 @@ class DetailActivity : AppCompatActivity() {
                         }
                     }
                 }
-                bottomSheet.group_translate_ru.setOnCheckedChangeListener { _: RadioGroup, i: Int ->
+                bottomSheet.group_translate_en.setOnCheckedChangeListener { _: RadioGroup, i: Int ->
                     when (i) {
                         R.id.radio_kjv -> {
                             text_verse.text = intent.getStringExtra("text_verse_kjv")
@@ -349,7 +368,7 @@ class DetailActivity : AppCompatActivity() {
                         }
                     }
                 }
-                bottomSheet.group_translate_ru.setOnCheckedChangeListener { _: RadioGroup, i: Int ->
+                bottomSheet.group_translate_ua.setOnCheckedChangeListener { _: RadioGroup, i: Int ->
                     when (i) {
                         R.id.radio_ubio -> {
                             text_verse.text = intent.getStringExtra("text_verse_ubio")
@@ -368,7 +387,7 @@ class DetailActivity : AppCompatActivity() {
                         }
                     }
                 }
-                bottomSheet.group_translate_ru.setOnCheckedChangeListener { _: RadioGroup, i: Int ->
+                bottomSheet.group_translate_by.setOnCheckedChangeListener { _: RadioGroup, i: Int ->
                     when (i) {
                         R.id.radio_bbl ->  {
                             text_verse.text = intent.getStringExtra("text_verse_bbl")

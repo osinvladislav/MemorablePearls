@@ -1,8 +1,8 @@
 package ru.thevlados.memorable.pearls.ui.menu.main
 
 import android.annotation.SuppressLint
-import android.content.Intent
-import android.content.SharedPreferences
+import android.content.*
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +12,11 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_start.*
+import kotlinx.android.synthetic.main.archive_fragment.view.*
 import kotlinx.android.synthetic.main.main_fragment.view.*
 import ru.thevlados.memorable.pearls.R
 import ru.thevlados.memorable.pearls.archive
@@ -29,6 +32,7 @@ import java.util.Calendar.*
 class MainFragment : Fragment() {
     private lateinit var viewModel: MainViewModel
     private lateinit var pref: SharedPreferences
+    private lateinit var mps: MediaPlayer
 
     @SuppressLint("SimpleDateFormat", "SetTextI18n")
     override fun onCreateView(
@@ -217,7 +221,10 @@ class MainFragment : Fragment() {
                             }
                             ContextCompat.startActivity(v.context, intent, null)
                         }
-
+                        v.card_mp_today.setOnLongClickListener {
+                            startDialogMenu(v, v.text_verse.text.toString(), v.text_link.text.toString())
+                            true
+                        }
                         v.text_open_now.setOnClickListener {
                             val args = Bundle()
                             args.putString("quart", (index + 1).toString())
@@ -314,6 +321,35 @@ class MainFragment : Fragment() {
         pref.edit().putString("5y", (cY+2).toString()).apply()
 
     }
+
+    private fun startDialogMenu (v: View, textCopy: String, link_short: String) {
+        val items = arrayOf(initLangArch(returnLang(pref.getString("lang", "")!!)).copy,initLangArch(returnLang(pref.getString("lang", "")!!)).listen)
+        MaterialAlertDialogBuilder(context!!)
+            .setItems(items) { _: DialogInterface, i: Int ->
+                when (i) {
+                    0 -> {
+                        val clipboard =
+                            context?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                        val clip = ClipData.newPlainText(link_short, "$textCopy $link_short")
+                        clipboard.setPrimaryClip(clip)
+                        Snackbar.make(v, initLangArch(returnLang(pref.getString("lang", "")!!)).copy_notify, Snackbar.LENGTH_LONG)
+                            .show()
+                    }
+                    1 -> {
+                        mps = MediaPlayer()
+                        val afd = activity!!.assets.openFd("audio/"+pref.getString("lang", "")+"/"+pref.getString("season", "")+"/"+pref.getString("q", "")+"/"+pref.getString("v", "")+".mp3")
+                        mps.setDataSource(afd.fileDescriptor,afd.startOffset,afd.length)
+                        mps.prepare()
+                        mps.isLooping = false
+                        mps.start()
+                    }
+                }
+
+
+            }
+            .show()
+    }
+
 
     private fun returnLang (string: String): String {
         return activity!!.application.assets.open("lang/$string.json").bufferedReader().use {

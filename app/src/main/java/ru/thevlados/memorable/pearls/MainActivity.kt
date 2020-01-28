@@ -130,8 +130,7 @@ data class archive (val text_action_bar: String,
                     val copy_notify: String,
                     val text_music: String)
 
-data class settings (val text_action_bar: String,
-                     val text_notify_audio: String)
+data class settings (val text_action_bar: String)
 
 data class tests (val text_action_bar: String,
                   val text_title: String,
@@ -158,12 +157,16 @@ data class test (val edit_verse: String,
                  val text_end_desc: String,
                  val week: String,
                  val all_right: String,
-                 val all_error: String)
+                 val all_error: String,
+                 val apply_exit: String,
+                 val yes: String,
+                 val no: String)
 
 data class trane (val btn_no: String,
                   val btn_yes: String,
                   val text_end_headline: String,
-                  val text_end_desc: String)
+                  val text_end_desc: String,
+                  val apply_exit: String)
 
 data class finish (val btn_again: String,
                    val btn_end: String)

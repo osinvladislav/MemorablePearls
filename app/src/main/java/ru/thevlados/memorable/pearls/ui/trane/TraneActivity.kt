@@ -1,19 +1,19 @@
 package ru.thevlados.memorable.pearls.ui.trane
 
+import android.annotation.SuppressLint
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
+import android.view.*
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_trane.*
 import kotlinx.android.synthetic.main.main_fragment.text_link
 import kotlinx.android.synthetic.main.main_fragment.text_verse
-import ru.thevlados.memorable.pearls.R
-import ru.thevlados.memorable.pearls.archive
-import ru.thevlados.memorable.pearls.lang
+import ru.thevlados.memorable.pearls.*
 import ru.thevlados.memorable.pearls.ui.menu.archive.week
 import ru.thevlados.memorable.pearls.ui.menu.archive.year
 import kotlin.random.Random
@@ -31,10 +31,29 @@ class TraneActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trane)
+
         val year = intent.getStringExtra("year")
         val season = intent.getStringExtra("season")
         val quart = intent.getStringExtra("quart")
         pref = getSharedPreferences("settings", MODE_PRIVATE)
+        when (pref.getString("theme", "")) {
+            "dark" -> {
+                if (Build.VERSION.SDK_INT >= 21) {
+                    val window: Window = this.window
+                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                    window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                    window.statusBarColor = this.resources.getColor(R.color.colorOnSecondary)
+                }
+            }
+            "light" -> {
+                if (Build.VERSION.SDK_INT >= 21) {
+                    val window: Window = this.window
+                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                    window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                    window.statusBarColor = this.resources.getColor(R.color.colorPrimaryVariant)
+                }
+            }
+        }
 
         supportActionBar?.title = "$quart ${initLang(returnLang(pref.getString("lang", "")!!)).quart}, $year ${initLang(returnLang(pref.getString("lang", "")!!)).year}"
         val jsonString = application.assets.open("$season.json").bufferedReader().use {
@@ -51,27 +70,6 @@ class TraneActivity : AppCompatActivity() {
         val quarter: Array<year> =
             Gson().fromJson<Array<year>>(jsonString, Array<year>::class.java)
         val quartNow = quarter[quart.toInt()-1]
-
-        when (pref.getString("translate", "")) {
-            "radio_rst" -> {
-                translate = "rst"
-            }
-            "radio_bti" -> {
-                translate = "bti"
-            }
-            "radio_nrp" -> {
-                translate = "nrp"
-            }
-            "radio_cslav" -> {
-                translate = "cslav"
-            }
-            "radio_srp" -> {
-                translate = "srp"
-            }
-            "radio_ibl" -> {
-                translate = "ibl"
-            }
-        }
 
         randomValues = returnRandomListOfVerse()
 
@@ -170,7 +168,7 @@ class TraneActivity : AppCompatActivity() {
         layout_btn.visibility = View.GONE
         text_link.visibility = View.VISIBLE
         text_verse.visibility = View.GONE
-        val verse = when (translate) {
+        val verse = when (pref.getString("translate_"+pref.getString("lang", ""), "")) {
             "rst" -> weeks.verse.RST
             "bti" -> weeks.verse.BTI
             "cass" -> weeks.verse.CASS
@@ -178,6 +176,20 @@ class TraneActivity : AppCompatActivity() {
             "cslav" -> weeks.verse.CSLAV
             "srp" -> weeks.verse.SRP
             "ibl" -> weeks.verse.IBL
+            "kjv" -> weeks.verse.KJV
+            "nkjv" -> weeks.verse.NKJV
+            "nasb" -> weeks.verse.NASB
+            "csb" -> weeks.verse.CSB
+            "esv" -> weeks.verse.ESV
+            "gnt" -> weeks.verse.GNT
+            "gw" -> weeks.verse.GW
+            "nirv" -> weeks.verse.NIRV
+            "niv" -> weeks.verse.NIV
+            "nlt" -> weeks.verse.NLT
+            "ubio" -> weeks.verse.UBIO
+            "ukrk" -> weeks.verse.UKRK
+            "utt" -> weeks.verse.UTT
+            "bbl" -> weeks.verse.BBL
             else -> weeks.verse.RST
         }
         text_verse.text = verse
@@ -251,14 +263,44 @@ class TraneActivity : AppCompatActivity() {
         return lang.archive
     }
 
+    private fun returnTrane(str: String): trane {
+        val lang: lang = Gson().fromJson<lang>(str, lang::class.java)
+        return lang.trane
+    }
+
+    private fun returnTest(str: String): test {
+        val lang: lang = Gson().fromJson<lang>(str, lang::class.java)
+        return lang.test
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.close_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
+    @SuppressLint("PrivateResource")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        this.finish()
+        val builder = MaterialAlertDialogBuilder(this, R.style.MaterialAlertDialog_MaterialComponents)
+        builder.setMessage(returnTrane(returnLang(pref.getString("lang", "")!!)).apply_exit)
+        builder.setPositiveButton(returnTest(returnLang(pref.getString("lang", "")!!)).yes) { _: DialogInterface, _: Int ->
+            this.finish()
+        }
+        builder.setNegativeButton(returnTest(returnLang(pref.getString("lang", "")!!)).no) { dialogInterface: DialogInterface, _: Int ->
+            dialogInterface.cancel()
+        }
+        builder.show()
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onBackPressed() {
+        val builder = MaterialAlertDialogBuilder(this, R.style.MaterialAlertDialog_MaterialComponents)
+        builder.setMessage(returnTrane(returnLang(pref.getString("lang", "")!!)).apply_exit)
+        builder.setPositiveButton(returnTest(returnLang(pref.getString("lang", "")!!)).yes) { _: DialogInterface, _: Int ->
+            this.finish()
+        }
+        builder.setNegativeButton(returnTest(returnLang(pref.getString("lang", "")!!)).no) { dialogInterface: DialogInterface, _: Int ->
+            dialogInterface.cancel()
+        }
+        builder.show()
+    }
 }

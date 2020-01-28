@@ -25,7 +25,7 @@
     "radio_ukrk": "Біблія в пер. П.Куліша та І.Пулюя",
     "radio_utt": "Переклад Р. Турконяка",
     "radio_bbl": "Біблія (пераклад В. Сёмухі)",
-    "text_lang": "Select the application language:",
+    "text_lang": "Select the application language (audio MP are only in Russian language):",
     "radio_ru": "Русский",
     "radio_en": "English",
     "radio_ua": "Український",
@@ -90,13 +90,17 @@
 		"text_end_desc": "You have rewritten all the verses of the given quarter correctly. If you want to test your knowledge again, click pass Again. If you want to exit, click Close",
 		"week": "week",
 		"all_right": "That's right!",
-		"all_error": "You made a mistake. Double-check your text again."
+		"all_error": "You made a mistake. Double-check your text again.",
+		"apply_exit": "Finish the test?",
+		"yes": "Yes",
+		"no": "No"
 	},
 	"trane": {
 		"btn_no": "I answered incorrectly",
 		"btn_yes": "I answered correctly",
 		"text_end_headline": "Congratulations, training is over!",
-		"text_end_desc": "You have learned all the verses of the given quarter. If you want to learn PJ again, click Pass again. If you want to exit, click Close"
+		"text_end_desc": "You have learned all the verses of the given quarter. If you want to learn MP again, click Pass again. If you want to exit, click Close",
+		"apply_exit": "Finish the training?"
 	},
 	"finish": {
 		"btn_again": "Pass again",

@@ -1,27 +1,26 @@
 package ru.thevlados.memorable.pearls.ui.test
 
 import android.annotation.SuppressLint
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
+import android.view.*
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.activity_start.*
 import kotlinx.android.synthetic.main.activity_test.*
-import kotlinx.android.synthetic.main.main_fragment.*
 import ru.thevlados.memorable.pearls.R
 import ru.thevlados.memorable.pearls.archive
 import ru.thevlados.memorable.pearls.lang
 import ru.thevlados.memorable.pearls.test
 import ru.thevlados.memorable.pearls.ui.menu.archive.week
 import ru.thevlados.memorable.pearls.ui.menu.archive.year
-import ru.thevlados.memorable.pearls.ui.trane.TraneActivity
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.random.Random
+
 
 class TestActivity : AppCompatActivity() {
     var trueVerse: String = ""
@@ -40,6 +39,24 @@ class TestActivity : AppCompatActivity() {
         val season = intent.getStringExtra("season")
         val quart = intent.getStringExtra("quart")
         pref = getSharedPreferences("settings", MODE_PRIVATE)
+        when (pref.getString("theme", "")) {
+            "dark" -> {
+                if (Build.VERSION.SDK_INT >= 21) {
+                    val window: Window = this.window
+                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                    window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                    window.statusBarColor = this.resources.getColor(R.color.colorOnSecondary)
+                }
+            }
+            "light" -> {
+                if (Build.VERSION.SDK_INT >= 21) {
+                    val window: Window = this.window
+                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                    window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                    window.statusBarColor = this.resources.getColor(R.color.colorPrimaryVariant)
+                }
+            }
+        }
 
         supportActionBar?.title = "$quart ${initLang(returnLang(pref.getString("lang", "")!!)).quart}, $year ${initLang(returnLang(pref.getString("lang", "")!!)).year}"
         val jsonString = application.assets.open("$season.json").bufferedReader().use {
@@ -51,27 +68,6 @@ class TestActivity : AppCompatActivity() {
         val quarter: Array<year> =
             Gson().fromJson<Array<year>>(jsonString, Array<year>::class.java)
         val quartNow = quarter[quart.toInt()-1]
-
-        when (pref.getString("translate", "")) {
-            "radio_rst" -> {
-                translate = "rst"
-            }
-            "radio_bti" -> {
-                translate = "bti"
-            }
-            "radio_nrp" -> {
-                translate = "nrp"
-            }
-            "radio_cslav" -> {
-                translate = "cslav"
-            }
-            "radio_srp" -> {
-                translate = "srp"
-            }
-            "radio_ibl" -> {
-                translate = "ibl"
-            }
-        }
 
         randomValues = returnRandomListOfVerse()
 
@@ -98,6 +94,7 @@ class TestActivity : AppCompatActivity() {
                 }
             }
         }
+
     }
 
     @SuppressLint("SetTextI18n")
@@ -125,7 +122,7 @@ class TestActivity : AppCompatActivity() {
             }
         }
         text_date_desc.text = weeks.num_week.toString() + " " + test.week + ", " + returnDates(weeks.num_week_in_year, year.toInt())[0] + " — " + returnDates(weeks.num_week_in_year, year.toInt())[1]
-        var verse = when (translate) {
+        var verse = when (pref.getString("translate_"+pref.getString("lang", ""), "")) {
             "rst" -> weeks.verse.RST
             "bti" -> weeks.verse.BTI
             "cass" -> weeks.verse.CASS
@@ -133,11 +130,25 @@ class TestActivity : AppCompatActivity() {
             "cslav" -> weeks.verse.CSLAV
             "srp" -> weeks.verse.SRP
             "ibl" -> weeks.verse.IBL
+            "kjv" -> weeks.verse.KJV
+            "nkjv" -> weeks.verse.NKJV
+            "nasb" -> weeks.verse.NASB
+            "csb" -> weeks.verse.CSB
+            "esv" -> weeks.verse.ESV
+            "gnt" -> weeks.verse.GNT
+            "gw" -> weeks.verse.GW
+            "nirv" -> weeks.verse.NIRV
+            "niv" -> weeks.verse.NIV
+            "nlt" -> weeks.verse.NLT
+            "ubio" -> weeks.verse.UBIO
+            "ukrk" -> weeks.verse.UKRK
+            "utt" -> weeks.verse.UTT
+            "bbl" -> weeks.verse.BBL
             else -> weeks.verse.RST
         }
-        trueVerse = verse.replace(" ", "").replace("!", "").replace("?", "").replace(".", "").replace("«", "").replace("»", "").replace("(", "").replace(")", "").replace(",", "").replace(";", "").replace("-", "").replace("—", "").replace(":", "").toLowerCase()
+        trueVerse = verse.replace(" ", "").replace("ё", "е").replace("!", "").replace("?", "").replace(".", "").replace("«", "").replace("»", "").replace("(", "").replace(")", "").replace(",", "").replace(";", "").replace("-", "").replace("—", "").replace(":", "").toLowerCase()
         btn_check.setOnClickListener {
-            checkVerse(edit_verse.text.toString().replace(" ", "").replace("!", "").replace("?", "").replace(".", "").replace("«", "").replace("»", "").replace(",", "").replace(";", "").replace("-", "").replace("—", "").replace(":", "").toLowerCase())
+            checkVerse(edit_verse.text.toString().replace("ё", "е").replace(" ", "").replace("!", "").replace("?", "").replace(".", "").replace("«", "").replace("»", "").replace(",", "").replace(";", "").replace("-", "").replace("—", "").replace(":", "").toLowerCase())
         }
     }
 
@@ -171,6 +182,8 @@ class TestActivity : AppCompatActivity() {
 
 
     private fun checkVerse(getVerse: String) {
+        println(getVerse)
+        println(trueVerse)
         if (getVerse == trueVerse) {
             layout_edit_verse.helperText = test.all_right
             layout_edit_verse.setHelperTextTextAppearance(R.style.ok)
@@ -235,8 +248,29 @@ class TestActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
+    @SuppressLint("PrivateResource")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        this.finish()
+        val builder = MaterialAlertDialogBuilder(this, R.style.MaterialAlertDialog_MaterialComponents)
+        builder.setMessage(returnTest(returnLang(pref.getString("lang", "")!!)).apply_exit)
+        builder.setPositiveButton(returnTest(returnLang(pref.getString("lang", "")!!)).yes) { _: DialogInterface, _: Int ->
+            this.finish()
+        }
+        builder.setNegativeButton(returnTest(returnLang(pref.getString("lang", "")!!)).no) { dialogInterface: DialogInterface, _: Int ->
+            dialogInterface.cancel()
+        }
+        builder.show()
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        val builder = MaterialAlertDialogBuilder(this, R.style.MaterialAlertDialog_MaterialComponents)
+        builder.setMessage(returnTest(returnLang(pref.getString("lang", "")!!)).apply_exit)
+        builder.setPositiveButton(returnTest(returnLang(pref.getString("lang", "")!!)).yes) { _: DialogInterface, _: Int ->
+            this.finish()
+        }
+        builder.setNegativeButton(returnTest(returnLang(pref.getString("lang", "")!!)).no) { dialogInterface: DialogInterface, _: Int ->
+            dialogInterface.cancel()
+        }
+        builder.show()
     }
 }

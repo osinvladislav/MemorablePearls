@@ -4,11 +4,4 @@
     <string name="navigation_archive">Архив</string>
     <string name="navigation_tests">Тесты</string>
     <string name="navigation_settings">Настройки</string>
-
-    <string-array name="quart">
-        <item>1 квартал</item>
-        <item>2 квартал</item>
-        <item>3 квартал</item>
-        <item>4 квартал</item>
-    </string-array>
 </resources>

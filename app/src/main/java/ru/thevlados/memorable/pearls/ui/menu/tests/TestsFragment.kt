@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.tests_fragment.*
 import kotlinx.android.synthetic.main.tests_fragment.view.*
 import ru.thevlados.memorable.pearls.MainActivity
 import ru.thevlados.memorable.pearls.R
+import ru.thevlados.memorable.pearls.archive
 import ru.thevlados.memorable.pearls.lang
 import ru.thevlados.memorable.pearls.ui.test.TestActivity
 import ru.thevlados.memorable.pearls.ui.trane.TraneActivity
@@ -73,6 +74,21 @@ class TestsFragment : Fragment() {
         (adapter as ArrayAdapter<*>).setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         v.spinner_year_trane.adapter = adapter
         v.spinner_year_test.adapter = adapter
+
+        val dayNamesQ = arrayOf(
+            "1 "+initLangArch(returnLang(pref.getString("lang", "")!!)).quart,
+            "2 "+initLangArch(returnLang(pref.getString("lang", "")!!)).quart,
+            "3 "+initLangArch(returnLang(pref.getString("lang", "")!!)).quart,
+            "4 "+initLangArch(returnLang(pref.getString("lang", "")!!)).quart
+        )
+
+        val adapterq = ArrayAdapter<String>(
+            v.context,
+            android.R.layout.simple_spinner_item, dayNamesQ
+        )
+        (adapterq as ArrayAdapter<*>).setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        v.spinner_quart_trane.adapter = adapterq
+        v.spinner_quart_test.adapter = adapterq
 
         v.spinner_year_trane.setSelection(2)
         v.spinner_year_test.setSelection(2)
@@ -238,5 +254,10 @@ class TestsFragment : Fragment() {
         v.text_select_year_test.text = lang.tests.text_select_year_test
         v.text_select_quart_test.text = lang.tests.text_select_quart_test
         v.btn_test.text = lang.tests.btn_test
+    }
+
+    private fun initLangArch(str: String): archive {
+        val lang = Gson().fromJson<lang>(str, lang::class.java)
+        return lang.archive
     }
 }
