@@ -1,9 +1,9 @@
 [
 	{
 		"name_quarter_ru": "Бог – Наш Отец",
-		"name_quarter_en": "",
-		"name_quarter_ua": "",
-		"name_quarter_by": "",
+		"name_quarter_en": "God Is Our Father",
+		"name_quarter_ua": "Бог - Наш Батько",
+		"name_quarter_by": "Бог - Наш Бацька",
 		"start_week": 1,
 		"end_week": 13,
 		"weeks": [
@@ -466,9 +466,9 @@
 	},
 	{
 		"name_quarter_ru": "Христос – Наш Спаситель",
-		"name_quarter_en": "God Is Our Father",
-		"name_quarter_ua": "Бог - Наш Батько",
-		"name_quarter_by": "Бог - Наш Бацька",
+		"name_quarter_en": "Christ Is Our Savior",
+		"name_quarter_ua": "Христос - Наш Спаситель",
+		"name_quarter_by": "Хрыстус – Наш Збаўца",
 		"start_week": 14,
 		"end_week": 26,
 		"weeks": [
@@ -931,9 +931,9 @@
 	},
 	{
 		"name_quarter_ru": "Дух Святой – Наш Помощник",
-		"name_quarter_en": "Christ Is Our Savior",
-		"name_quarter_ua": "Христос - Наш Спаситель",
-		"name_quarter_by": "Хрыстус – Наш Збаўца",
+		"name_quarter_en": "The Holy Spirit Is Our Helper",
+		"name_quarter_ua": "Дух Святий - Наш Помічник",
+		"name_quarter_by": "Дух Святы - Наш Памочнік",
 		"start_week": 27,
 		"end_week": 39,
 		"weeks": [
@@ -1396,9 +1396,9 @@
 	},
 	{
 		"name_quarter_ru": "Человек - Творение",
-		"name_quarter_en": "The Holy Spirit Is Our Helper",
-		"name_quarter_ua": "Дух Святий - Наш Помічник",
-		"name_quarter_by": "Дух Святы - Наш Памочнік",
+		"name_quarter_en": "Man Is A Creature",
+		"name_quarter_ua": "Людина - Творіння",
+		"name_quarter_by": "Чалавек - Тварэнне",
 		"start_week": 40,
 		"end_week": 52,
 		"weeks": [
