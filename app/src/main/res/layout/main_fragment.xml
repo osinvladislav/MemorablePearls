@@ -40,7 +40,7 @@
                 android:focusable="true"
                 android:fontFamily="@font/roboto_medium"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="@color/color_04"
+                app:cardBackgroundColor="@color/color_4"
                 app:cardCornerRadius="8dp"
                 app:cardUseCompatPadding="true"
                 app:contentPadding="10dp">

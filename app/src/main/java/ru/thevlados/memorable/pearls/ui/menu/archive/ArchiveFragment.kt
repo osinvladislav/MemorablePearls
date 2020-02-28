@@ -54,7 +54,11 @@ class ArchiveFragment : Fragment() {
                             valNow = "quart"
                             scroll_quarters.visibility = View.VISIBLE
                             scroll_weeks.visibility = View.GONE
+                            scroll_weeks.scrollTo(0, 0)
                             mp.stop()
+                            try {
+                                if (mps.isPlaying) mps.stop()
+                            } catch (e: Exception) {}
                         }
                         "quart" -> {
                             valNow = "year"
@@ -159,9 +163,25 @@ class ArchiveFragment : Fragment() {
 
             funJsonRU(v, quart)
         }
+        v.card_season_6.setOnClickListener {
+            (activity as MainActivity?)?.resetActionBar(childAction = true)
+            setHasOptionsMenu(true)
+            valNow = "quart"
+            val lol = v.text_season_sixth.text.split(" ")
+
+            val jsonString = returnJson(lol[0]+"s")
+            pref.edit().putString("season", lol[0]+"s").apply()
+
+            val quart: Array<year> =
+                Gson().fromJson<Array<year>>(jsonString, Array<year>::class.java)
+
+            pref.edit().putString("s", pref.getString("6y", "")).apply()
+
+            funJsonRU(v, quart)
+        }
 
         if (arguments != null) {
-            v.card_season_3.performClick()
+            v.card_season_4.performClick()
             when (arguments!!.getString("quart", "")) {
                 "1" -> v.card_q_1.performClick()
                 "2" -> v.card_q_2.performClick()
@@ -186,7 +206,11 @@ class ArchiveFragment : Fragment() {
                     valNow = "quart"
                     scroll_quarters.visibility = View.VISIBLE
                     scroll_weeks.visibility = View.GONE
+                    scroll_weeks.scrollTo(0, 0)
                     mp.stop()
+                    try {
+                        if (mps.isPlaying) mps.stop()
+                    } catch (e: Exception) {}
                 } else if (valNow == "quart") {
                     valNow = "year"
                     scroll_quarters.visibility = View.GONE
@@ -430,67 +454,67 @@ class ArchiveFragment : Fragment() {
                 stateNow = "play"
             }
         }
-        v.card_mp_1.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_1.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_"+(n_q+1), "color", context!!.packageName)))
         v.card_mp_1.setOnClickListener {
             pref.edit().putString("v", "1").apply()
             startActivity(this, quart, n_q, 0, v)
         }
-        v.card_mp_2.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_2.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_"+(n_q+1), "color", context!!.packageName)))
         v.card_mp_2.setOnClickListener {
             pref.edit().putString("v", "2").apply()
             startActivity(this, quart, n_q, 1, v)
         }
-        v.card_mp_3.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_3.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_"+(n_q+1), "color", context!!.packageName)))
         v.card_mp_3.setOnClickListener {
             pref.edit().putString("v", "3").apply()
             startActivity(this, quart, n_q, 2, v)
         }
-        v.card_mp_4.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_4.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_"+(n_q+1), "color", context!!.packageName)))
         v.card_mp_4.setOnClickListener {
             pref.edit().putString("v", "4").apply()
             startActivity(this, quart, n_q, 3, v)
         }
-        v.card_mp_5.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_5.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_"+(n_q+1), "color", context!!.packageName)))
         v.card_mp_5.setOnClickListener {
             pref.edit().putString("v", "5").apply()
             startActivity(this, quart, n_q, 4, v)
         }
-        v.card_mp_6.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_6.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_"+(n_q+1), "color", context!!.packageName)))
         v.card_mp_6.setOnClickListener {
             pref.edit().putString("v", "6").apply()
             startActivity(this, quart, n_q, 5, v)
         }
-        v.card_mp_7.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_7.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_"+(n_q+1), "color", context!!.packageName)))
         v.card_mp_7.setOnClickListener {
             pref.edit().putString("v", "7").apply()
             startActivity(this, quart, n_q, 6, v)
         }
-        v.card_mp_8.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_8.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_"+(n_q+1), "color", context!!.packageName)))
         v.card_mp_8.setOnClickListener {
             pref.edit().putString("v", "8").apply()
             startActivity(this, quart, n_q, 7, v)
         }
-        v.card_mp_9.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_9.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_"+(n_q+1), "color", context!!.packageName)))
         v.card_mp_9.setOnClickListener {
             pref.edit().putString("v", "9").apply()
             startActivity(this, quart, n_q, 8, v)
         }
-        v.card_mp_10.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_10.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_"+(n_q+1), "color", context!!.packageName)))
         v.card_mp_10.setOnClickListener {
             pref.edit().putString("v", "10").apply()
             startActivity(this, quart, n_q, 9, v)
         }
-        v.card_mp_11.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_11.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_"+(n_q+1), "color", context!!.packageName)))
         v.card_mp_11.setOnClickListener {
             pref.edit().putString("v", "11").apply()
             startActivity(this, quart, n_q, 10, v)
         }
-        v.card_mp_12.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_12.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_"+(n_q+1), "color", context!!.packageName)))
         v.card_mp_12.setOnClickListener {
             pref.edit().putString("v", "12").apply()
             startActivity(this, quart, n_q, 11, v)
         }
-        v.card_mp_13.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_0"+(n_q+1), "color", context!!.packageName)))
+        v.card_mp_13.setCardBackgroundColor(resources.getColor(resources.getIdentifier("color_"+(n_q+1), "color", context!!.packageName)))
         v.card_mp_13.setOnClickListener {
             pref.edit().putString("v", "13").apply()
             startActivity(this, quart, n_q, 12, v)
@@ -682,6 +706,9 @@ class ArchiveFragment : Fragment() {
                             .show()
                     }
                     1 -> {
+                        try {
+                            if (mps.isPlaying) mps.stop()
+                        } catch (e: Exception) {}
                         mps = MediaPlayer()
                         val afd = activity!!.assets.openFd("audio/"+pref.getString("lang", "")+"/"+pref.getString("season", "")+"/"+pref.getString("q", "")+"/"+pref.getString("v", "")+".mp3")
                         mps.setDataSource(afd.fileDescriptor,afd.startOffset,afd.length)
@@ -706,6 +733,26 @@ class ArchiveFragment : Fragment() {
                 v.card_season_2.setCardBackgroundColor(resources.getColor(R.color.color_05))
                 v.text_season_second.text = "5 " + archive.season
                 v.text_year_second.text = pref.getString("2y", "") + " " + archive.year
+                v.card_season_3.setCardBackgroundColor(resources.getColor(R.color.color_06))
+                v.text_season_third.text = "6 " + archive.season
+                v.text_year_third.text = pref.getString("3y", "") + " " + archive.year
+                v.card_season_4.setCardBackgroundColor(resources.getColor(R.color.color_01))
+                v.text_season_fourth.text = "1 " + archive.season
+                v.text_year_fourth.text = pref.getString("4y", "") + " " + archive.year
+                v.card_season_5.setCardBackgroundColor(resources.getColor(R.color.color_02))
+                v.text_season_fifth.text = "2 " + archive.season
+                v.text_year_fifth.text = pref.getString("5y", "") + " " + archive.year
+                v.card_season_6.setCardBackgroundColor(resources.getColor(R.color.color_03))
+                v.text_season_sixth.text = "3 " + archive.season
+                v.text_year_sixth.text = pref.getString("6y", "") + " " + archive.year
+            }
+            "2s" -> {
+                v.card_season_1.setCardBackgroundColor(resources.getColor(R.color.color_05))
+                v.text_season_first.text = "5 " + archive.season
+                v.text_year_first.text = pref.getString("1y", "") + " " + archive.year
+                v.card_season_2.setCardBackgroundColor(resources.getColor(R.color.color_06))
+                v.text_season_second.text = "6 " + archive.season
+                v.text_year_second.text = pref.getString("2y", "") + " " + archive.year
                 v.card_season_3.setCardBackgroundColor(resources.getColor(R.color.color_01))
                 v.text_season_third.text = "1 " + archive.season
                 v.text_year_third.text = pref.getString("3y", "") + " " + archive.year
@@ -715,10 +762,13 @@ class ArchiveFragment : Fragment() {
                 v.card_season_5.setCardBackgroundColor(resources.getColor(R.color.color_03))
                 v.text_season_fifth.text = "3 " + archive.season
                 v.text_year_fifth.text = pref.getString("5y", "") + " " + archive.year
+                v.card_season_6.setCardBackgroundColor(resources.getColor(R.color.color_04))
+                v.text_season_sixth.text = "4 " + archive.season
+                v.text_year_sixth.text = pref.getString("6y", "") + " " + archive.year
             }
-            "2s" -> {
-                v.card_season_1.setCardBackgroundColor(resources.getColor(R.color.color_05))
-                v.text_season_first.text = "5 " + archive.season
+            "3s" -> {
+                v.card_season_1.setCardBackgroundColor(resources.getColor(R.color.color_06))
+                v.text_season_first.text = "6 " + archive.season
                 v.text_year_first.text = pref.getString("1y", "") + " " + archive.year
                 v.card_season_2.setCardBackgroundColor(resources.getColor(R.color.color_01))
                 v.text_season_second.text = "1 " + archive.season
@@ -732,8 +782,11 @@ class ArchiveFragment : Fragment() {
                 v.card_season_5.setCardBackgroundColor(resources.getColor(R.color.color_04))
                 v.text_season_fifth.text = "4 " + archive.season
                 v.text_year_fifth.text = pref.getString("5y", "") + " " + archive.year
+                v.card_season_6.setCardBackgroundColor(resources.getColor(R.color.color_05))
+                v.text_season_sixth.text = "5 " + archive.season
+                v.text_year_sixth.text = pref.getString("6y", "") + " " + archive.year
             }
-            "3s" -> {
+            "4s" -> {
                 v.card_season_1.setCardBackgroundColor(resources.getColor(R.color.color_01))
                 v.text_season_first.text = "1 " + archive.season
                 v.text_year_first.text = pref.getString("1y", "") + " " + archive.year
@@ -749,8 +802,11 @@ class ArchiveFragment : Fragment() {
                 v.card_season_5.setCardBackgroundColor(resources.getColor(R.color.color_05))
                 v.text_season_fifth.text = "5 " + archive.season
                 v.text_year_fifth.text = pref.getString("5y", "") + " " + archive.year
+                v.card_season_6.setCardBackgroundColor(resources.getColor(R.color.color_06))
+                v.text_season_sixth.text = "6 " + archive.season
+                v.text_year_sixth.text = pref.getString("6y", "") + " " + archive.year
             }
-            "4s" -> {
+            "5s" -> {
                 v.card_season_1.setCardBackgroundColor(resources.getColor(R.color.color_02))
                 v.text_season_first.text = "2 " + archive.season
                 v.text_year_first.text = pref.getString("1y", "") + " " + archive.year
@@ -763,11 +819,14 @@ class ArchiveFragment : Fragment() {
                 v.card_season_4.setCardBackgroundColor(resources.getColor(R.color.color_05))
                 v.text_season_fourth.text = "5 " + archive.season
                 v.text_year_fourth.text = pref.getString("4y", "") + " " + archive.year
-                v.card_season_5.setCardBackgroundColor(resources.getColor(R.color.color_01))
-                v.text_season_fifth.text = "1 " + archive.season
+                v.card_season_5.setCardBackgroundColor(resources.getColor(R.color.color_06))
+                v.text_season_fifth.text = "6 " + archive.season
                 v.text_year_fifth.text = pref.getString("5y", "") + " " + archive.year
+                v.card_season_6.setCardBackgroundColor(resources.getColor(R.color.color_01))
+                v.text_season_sixth.text = "1 " + archive.season
+                v.text_year_sixth.text = pref.getString("6y", "") + " " + archive.year
             }
-            "5s" -> {
+            "6s" -> {
                 v.card_season_1.setCardBackgroundColor(resources.getColor(R.color.color_03))
                 v.text_season_first.text = "3 " + archive.season
                 v.text_year_first.text = pref.getString("1y", "") + " " + archive.year
@@ -777,12 +836,15 @@ class ArchiveFragment : Fragment() {
                 v.card_season_3.setCardBackgroundColor(resources.getColor(R.color.color_05))
                 v.text_season_third.text = "5 " + archive.season
                 v.text_year_third.text = pref.getString("3y", "") + " " + archive.year
-                v.card_season_4.setCardBackgroundColor(resources.getColor(R.color.color_01))
-                v.text_season_fourth.text = "1 " + archive.season
+                v.card_season_4.setCardBackgroundColor(resources.getColor(R.color.color_06))
+                v.text_season_fourth.text = "6 " + archive.season
                 v.text_year_fourth.text = pref.getString("4y", "") + " " + archive.year
-                v.card_season_5.setCardBackgroundColor(resources.getColor(R.color.color_02))
-                v.text_season_fifth.text = "2 " + archive.season
+                v.card_season_5.setCardBackgroundColor(resources.getColor(R.color.color_01))
+                v.text_season_fifth.text = "1 " + archive.season
                 v.text_year_fifth.text = pref.getString("5y", "") + " " + archive.year
+                v.card_season_6.setCardBackgroundColor(resources.getColor(R.color.color_02))
+                v.text_season_sixth.text = "2 " + archive.season
+                v.text_year_sixth.text = pref.getString("6y", "") + " " + archive.year
             }
         }
     }

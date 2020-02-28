@@ -247,6 +247,52 @@
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_season_6"
+                style="@style/Widget.MaterialComponents.CardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/roboto_medium"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardBackgroundColor="@color/color_06"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="10dp">
+
+                <LinearLayout
+                    android:id="@+id/layout_season_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="6dp">
+
+                    <TextView
+                        android:id="@+id/text_year_sixth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:fontFamily="@font/roboto_condensed_bold"
+                        android:text=""
+                        android:textColor="@color/color_text"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/text_season_sixth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text=""
+                        android:textColor="@color/color_text"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
     </ScrollView>
 
@@ -272,7 +318,7 @@
                 android:focusable="true"
                 android:fontFamily="@font/roboto_medium"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="@color/color_01"
+                app:cardBackgroundColor="@color/color_1"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
                 app:cardUseCompatPadding="true"
@@ -327,7 +373,7 @@
                 android:focusable="true"
                 android:fontFamily="@font/roboto_medium"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="@color/color_02"
+                app:cardBackgroundColor="@color/color_2"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
                 app:cardUseCompatPadding="true"
@@ -382,7 +428,7 @@
                 android:focusable="true"
                 android:fontFamily="@font/roboto_medium"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="@color/color_03"
+                app:cardBackgroundColor="@color/color_3"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
                 app:cardUseCompatPadding="true"
@@ -437,7 +483,7 @@
                 android:focusable="true"
                 android:fontFamily="@font/roboto_medium"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="@color/color_04"
+                app:cardBackgroundColor="@color/color_4"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
                 app:cardUseCompatPadding="true"
@@ -1215,7 +1261,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_mp_13"
                 style="@style/Widget.MaterialComponents.CardView"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="-8dp"
                 android:clickable="true"

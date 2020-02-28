@@ -83,20 +83,24 @@ class MainFragment : Fragment() {
             if (cal.get(WEEK_OF_YEAR) in it.start_week..it.end_week) {
                 when (index) {
                     0 -> {
-                        v.card_mp_today.setCardBackgroundColor(resources.getColor(R.color.color_01))
+                        v.card_mp_today.setCardBackgroundColor(resources.getColor(R.color.color_1))
                         pref.edit().putString("q", "1q").apply()
+                        pref.edit().putString("qq", "1q").apply()
                     }
                     1 -> {
-                        v.card_mp_today.setCardBackgroundColor(resources.getColor(R.color.color_02))
+                        v.card_mp_today.setCardBackgroundColor(resources.getColor(R.color.color_2))
                         pref.edit().putString("q", "2q").apply()
+                        pref.edit().putString("qq", "2q").apply()
                     }
                     2 -> {
-                        v.card_mp_today.setCardBackgroundColor(resources.getColor(R.color.color_03))
+                        v.card_mp_today.setCardBackgroundColor(resources.getColor(R.color.color_3))
                         pref.edit().putString("q", "3q").apply()
+                        pref.edit().putString("qq", "3q").apply()
                     }
                     3 -> {
-                        v.card_mp_today.setCardBackgroundColor(resources.getColor(R.color.color_04))
+                        v.card_mp_today.setCardBackgroundColor(resources.getColor(R.color.color_4))
                         pref.edit().putString("q", "4q").apply()
+                        pref.edit().putString("qq", "4q").apply()
                     }
                 }
                 it.weeks.forEach { item: week ->
@@ -307,18 +311,23 @@ class MainFragment : Fragment() {
                     pref.edit().putString("seas", "5s").apply()
                     break@loop
                 }
+                2022 -> {
+                    pref.edit().putString("seas", "6s").apply()
+                    break@loop
+                }
                 else -> {
-                    i -= 5
+                    i -= 6
                     continue@loop
                 }
             }
         }
 
-        pref.edit().putString("1y", (cY-2).toString()).apply()
-        pref.edit().putString("2y", (cY-1).toString()).apply()
-        pref.edit().putString("3y", cY.toString()).apply()
-        pref.edit().putString("4y", (cY+1).toString()).apply()
-        pref.edit().putString("5y", (cY+2).toString()).apply()
+        pref.edit().putString("1y", (cY-3).toString()).apply()
+        pref.edit().putString("2y", (cY-2).toString()).apply()
+        pref.edit().putString("3y", (cY-1).toString()).apply()
+        pref.edit().putString("4y", cY.toString()).apply()
+        pref.edit().putString("5y", (cY+1).toString()).apply()
+        pref.edit().putString("6y", (cY+2).toString()).apply()
 
     }
 

@@ -64,7 +64,8 @@ class TestsFragment : Fragment() {
             pref.getString("2y", "").toString(),
             pref.getString("3y", "").toString(),
             pref.getString("4y", "").toString(),
-            pref.getString("5y", "").toString()
+            pref.getString("5y", "").toString(),
+            pref.getString("6y", "").toString()
         )
 
         val adapter = ArrayAdapter<String>(
@@ -90,10 +91,10 @@ class TestsFragment : Fragment() {
         v.spinner_quart_trane.adapter = adapterq
         v.spinner_quart_test.adapter = adapterq
 
-        v.spinner_year_trane.setSelection(2)
-        v.spinner_year_test.setSelection(2)
+        v.spinner_year_trane.setSelection(3)
+        v.spinner_year_test.setSelection(3)
 
-        when (pref.getString("q", "")) {
+        when (pref.getString("qq", "")) {
             "1q"-> {
                 v.spinner_quart_trane.setSelection(0)
                 v.spinner_quart_test.setSelection(0)
@@ -159,45 +160,60 @@ class TestsFragment : Fragment() {
                 when (item) {
                     1 -> str = "4s"
                     2 -> str = "5s"
-                    3 -> str = "1s"
-                    4 -> str = "2s"
-                    5 -> str = "3s"
+                    3 -> str = "6s"
+                    4 -> str = "1s"
+                    5 -> str = "2s"
+                    6 -> str = "3s"
                 }
             }
             "2s" -> {
                 when (item) {
                     1 -> str = "5s"
+                    2 -> str = "6s"
+                    3 -> str = "1s"
+                    4 -> str = "2s"
+                    5 -> str = "3s"
+                    6 -> str = "4s"
+                }
+            }
+            "3s" -> {
+                when (item) {
+                    1 -> str = "6s"
                     2 -> str = "1s"
                     3 -> str = "2s"
                     4 -> str = "3s"
                     5 -> str = "4s"
+                    6 -> str = "5s"
                 }
             }
-            "3s" -> {
+            "4s" -> {
                 when (item) {
                     1 -> str = "1s"
                     2 -> str = "2s"
                     3 -> str = "3s"
                     4 -> str = "4s"
                     5 -> str = "5s"
+                    6 -> str = "6s"
                 }
             }
-            "4s" -> {
+            "5s" -> {
                 when (item) {
                     1 -> str = "2s"
                     2 -> str = "3s"
                     3 -> str = "4s"
                     4 -> str = "5s"
-                    5 -> str = "1s"
+                    5 -> str = "6s"
+                    6 -> str = "1s"
                 }
             }
-            "5s" -> {
+            "6s" -> {
                 when (item) {
                     1 -> str = "3s"
                     2 -> str = "4s"
                     3 -> str = "5s"
-                    4 -> str = "1s"
-                    5 -> str = "2s"
+                    4 -> str = "6s"
+                    5 -> str = "1s"
+                    6 -> str = "2s"
                 }
             }
         }

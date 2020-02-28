@@ -69,7 +69,7 @@
 		"text_trane": "Train",
 		"text_trane_desc": "Training Memorable Pearls. Improves verse memorization.",
 		"text_test": "Test your knowledge",
-		"text_test_desc": "Testing your knowledge of Memorable Gems. Helps to reinforce knowledge and to understand the weak points.",
+		"text_test_desc": "Testing your knowledge of Memorable Pearls. Helps to reinforce knowledge and to understand the weak points.",
 		"text_title_trane": "Training",
 		"text_desc_trane": "Training Memorable Pearls. Improves memorization of poems by means of. Select the year and quarter. After clicking the «Run» button, you will be taken to a new window. You will be given a link to a random verse, and you will have to figure out for yourself what kind of verse it is. Then click on the card with the link of the verse. If you answer correctly, press the button, I answered it correctly. If you answer incorrectly, click the I answered incorrectly button. After you complete all 12 verses, the verses that you answered incorrectly will be shown. And so it will be until you answer all the questions correctly. Case and punctuation are not taken into account. The verses will be displayed in the translation that you selected in the settings.",
 		"text_select_year_trane": "Select a year:",
@@ -82,7 +82,7 @@
 		"btn_test": "Run"
 	},
 	"test": {
-		"edit_verse": "Memorable Pearls",
+		"edit_verse": "Memorable Pearl",
 		"edit_verse_hint": "The сase of letters and punctuation marks except for dots, question marks, and exclamation marks are not taken into account.",
 		"btn_check": "Check",
 		"btn_next": "Go to the next Memorable Pearls",

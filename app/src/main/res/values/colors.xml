@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#7e57c2</color>
-    <color name="colorPrimaryVariant">#4d2c91</color>
+    <color name="colorPrimary">#ffa000</color>
+    <color name="colorPrimaryVariant">#c67100</color>
     <color name="colorSecondary">#ff8a65</color>
     <color name="colorSecondaryVariant">#c75b39</color>
     <color name="colorOnPrimary">#ffffff</color>
     <color name="colorOnSecondary">#000000</color>
-    <color name="colorAccent">#FF5C57</color>
-    <color name="color_01">#99C45F</color>
-    <color name="color_02">#836DA1</color>
-    <color name="color_03">#00AEBD</color>
-    <color name="color_04">#AE7E71</color>
+    <color name="colorAccent">#ef5350</color>
+    <color name="color_1">#99C45F</color>
+    <color name="color_2">#836DA1</color>
+    <color name="color_3">#00AEBD</color>
+    <color name="color_4">#AE7E71</color>
+    <color name="color_01">#ba68c8</color>
+    <color name="color_02">#9575cd</color>
+    <color name="color_03">#5c6bc0</color>
+    <color name="color_04">#2196f3</color>
+    <color name="color_05">#00bcd4</color>
+    <color name="color_06">#4db6ac </color>
     <color name="color_text">#FDFDFE</color>
     <color name="color_text_light">#797979</color>
-    <color name="color_05">#E6B525</color>
     <color name="color_error">#F44336</color>
     <color name="color_ok">#4CAF50</color>
     <color name="dark_back">#121212</color>
