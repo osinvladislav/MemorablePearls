@@ -70,7 +70,9 @@ class MainActivity : AppCompatActivity() {
             supportActionBar?.setDisplayHomeAsUpEnabled(false)
         }
     }
+
 }
+
 
 data class lang (val app_name: String, val start: start, val main: main, val archive: archive, val settings: settings, val tests: tests, val test: test, val trane: trane, val finish: finish)
 

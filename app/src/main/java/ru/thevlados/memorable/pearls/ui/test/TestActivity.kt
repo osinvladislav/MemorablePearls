@@ -14,7 +14,6 @@ import kotlinx.android.synthetic.main.activity_test.*
 import ru.thevlados.memorable.pearls.R
 import ru.thevlados.memorable.pearls.archive
 import ru.thevlados.memorable.pearls.lang
-import ru.thevlados.memorable.pearls.test
 import ru.thevlados.memorable.pearls.ui.menu.archive.week
 import ru.thevlados.memorable.pearls.ui.menu.archive.year
 import java.text.SimpleDateFormat

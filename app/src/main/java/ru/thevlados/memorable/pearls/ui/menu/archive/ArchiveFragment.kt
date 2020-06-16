@@ -727,122 +727,86 @@ class ArchiveFragment : Fragment() {
     private fun initSeason(v: View) {
         when (pref.getString("seas", "")) {
             "1s" -> {
-                v.card_season_1.setCardBackgroundColor(resources.getColor(R.color.color_04))
                 v.text_season_first.text = "4 " + archive.season
                 v.text_year_first.text = pref.getString("1y", "") + " " + archive.year
-                v.card_season_2.setCardBackgroundColor(resources.getColor(R.color.color_05))
                 v.text_season_second.text = "5 " + archive.season
                 v.text_year_second.text = pref.getString("2y", "") + " " + archive.year
-                v.card_season_3.setCardBackgroundColor(resources.getColor(R.color.color_06))
                 v.text_season_third.text = "6 " + archive.season
                 v.text_year_third.text = pref.getString("3y", "") + " " + archive.year
-                v.card_season_4.setCardBackgroundColor(resources.getColor(R.color.color_01))
                 v.text_season_fourth.text = "1 " + archive.season
                 v.text_year_fourth.text = pref.getString("4y", "") + " " + archive.year
-                v.card_season_5.setCardBackgroundColor(resources.getColor(R.color.color_02))
                 v.text_season_fifth.text = "2 " + archive.season
                 v.text_year_fifth.text = pref.getString("5y", "") + " " + archive.year
-                v.card_season_6.setCardBackgroundColor(resources.getColor(R.color.color_03))
                 v.text_season_sixth.text = "3 " + archive.season
                 v.text_year_sixth.text = pref.getString("6y", "") + " " + archive.year
             }
             "2s" -> {
-                v.card_season_1.setCardBackgroundColor(resources.getColor(R.color.color_05))
                 v.text_season_first.text = "5 " + archive.season
                 v.text_year_first.text = pref.getString("1y", "") + " " + archive.year
-                v.card_season_2.setCardBackgroundColor(resources.getColor(R.color.color_06))
                 v.text_season_second.text = "6 " + archive.season
                 v.text_year_second.text = pref.getString("2y", "") + " " + archive.year
-                v.card_season_3.setCardBackgroundColor(resources.getColor(R.color.color_01))
                 v.text_season_third.text = "1 " + archive.season
                 v.text_year_third.text = pref.getString("3y", "") + " " + archive.year
-                v.card_season_4.setCardBackgroundColor(resources.getColor(R.color.color_02))
                 v.text_season_fourth.text = "2 " + archive.season
                 v.text_year_fourth.text = pref.getString("4y", "") + " " + archive.year
-                v.card_season_5.setCardBackgroundColor(resources.getColor(R.color.color_03))
                 v.text_season_fifth.text = "3 " + archive.season
                 v.text_year_fifth.text = pref.getString("5y", "") + " " + archive.year
-                v.card_season_6.setCardBackgroundColor(resources.getColor(R.color.color_04))
                 v.text_season_sixth.text = "4 " + archive.season
                 v.text_year_sixth.text = pref.getString("6y", "") + " " + archive.year
             }
             "3s" -> {
-                v.card_season_1.setCardBackgroundColor(resources.getColor(R.color.color_06))
                 v.text_season_first.text = "6 " + archive.season
                 v.text_year_first.text = pref.getString("1y", "") + " " + archive.year
-                v.card_season_2.setCardBackgroundColor(resources.getColor(R.color.color_01))
                 v.text_season_second.text = "1 " + archive.season
                 v.text_year_second.text = pref.getString("2y", "") + " " + archive.year
-                v.card_season_3.setCardBackgroundColor(resources.getColor(R.color.color_02))
                 v.text_season_third.text = "2 " + archive.season
                 v.text_year_third.text = pref.getString("3y", "") + " " + archive.year
-                v.card_season_4.setCardBackgroundColor(resources.getColor(R.color.color_03))
                 v.text_season_fourth.text = "3 " + archive.season
                 v.text_year_fourth.text = pref.getString("4y", "") + " " + archive.year
-                v.card_season_5.setCardBackgroundColor(resources.getColor(R.color.color_04))
                 v.text_season_fifth.text = "4 " + archive.season
                 v.text_year_fifth.text = pref.getString("5y", "") + " " + archive.year
-                v.card_season_6.setCardBackgroundColor(resources.getColor(R.color.color_05))
                 v.text_season_sixth.text = "5 " + archive.season
                 v.text_year_sixth.text = pref.getString("6y", "") + " " + archive.year
             }
             "4s" -> {
-                v.card_season_1.setCardBackgroundColor(resources.getColor(R.color.color_01))
                 v.text_season_first.text = "1 " + archive.season
                 v.text_year_first.text = pref.getString("1y", "") + " " + archive.year
-                v.card_season_2.setCardBackgroundColor(resources.getColor(R.color.color_02))
                 v.text_season_second.text = "2 " + archive.season
                 v.text_year_second.text = pref.getString("2y", "") + " " + archive.year
-                v.card_season_3.setCardBackgroundColor(resources.getColor(R.color.color_03))
                 v.text_season_third.text = "3 " + archive.season
                 v.text_year_third.text = pref.getString("3y", "") + " " + archive.year
-                v.card_season_4.setCardBackgroundColor(resources.getColor(R.color.color_04))
                 v.text_season_fourth.text = "4 " + archive.season
                 v.text_year_fourth.text = pref.getString("4y", "") + " " + archive.year
-                v.card_season_5.setCardBackgroundColor(resources.getColor(R.color.color_05))
                 v.text_season_fifth.text = "5 " + archive.season
                 v.text_year_fifth.text = pref.getString("5y", "") + " " + archive.year
-                v.card_season_6.setCardBackgroundColor(resources.getColor(R.color.color_06))
                 v.text_season_sixth.text = "6 " + archive.season
                 v.text_year_sixth.text = pref.getString("6y", "") + " " + archive.year
             }
             "5s" -> {
-                v.card_season_1.setCardBackgroundColor(resources.getColor(R.color.color_02))
                 v.text_season_first.text = "2 " + archive.season
                 v.text_year_first.text = pref.getString("1y", "") + " " + archive.year
-                v.card_season_2.setCardBackgroundColor(resources.getColor(R.color.color_03))
                 v.text_season_second.text = "3 " + archive.season
                 v.text_year_second.text = pref.getString("2y", "") + " " + archive.year
-                v.card_season_3.setCardBackgroundColor(resources.getColor(R.color.color_04))
                 v.text_season_third.text = "4 " + archive.season
                 v.text_year_third.text = pref.getString("3y", "") + " " + archive.year
-                v.card_season_4.setCardBackgroundColor(resources.getColor(R.color.color_05))
                 v.text_season_fourth.text = "5 " + archive.season
                 v.text_year_fourth.text = pref.getString("4y", "") + " " + archive.year
-                v.card_season_5.setCardBackgroundColor(resources.getColor(R.color.color_06))
                 v.text_season_fifth.text = "6 " + archive.season
                 v.text_year_fifth.text = pref.getString("5y", "") + " " + archive.year
-                v.card_season_6.setCardBackgroundColor(resources.getColor(R.color.color_01))
                 v.text_season_sixth.text = "1 " + archive.season
                 v.text_year_sixth.text = pref.getString("6y", "") + " " + archive.year
             }
             "6s" -> {
-                v.card_season_1.setCardBackgroundColor(resources.getColor(R.color.color_03))
                 v.text_season_first.text = "3 " + archive.season
                 v.text_year_first.text = pref.getString("1y", "") + " " + archive.year
-                v.card_season_2.setCardBackgroundColor(resources.getColor(R.color.color_04))
                 v.text_season_second.text = "4 " + archive.season
                 v.text_year_second.text = pref.getString("2y", "") + " " + archive.year
-                v.card_season_3.setCardBackgroundColor(resources.getColor(R.color.color_05))
                 v.text_season_third.text = "5 " + archive.season
                 v.text_year_third.text = pref.getString("3y", "") + " " + archive.year
-                v.card_season_4.setCardBackgroundColor(resources.getColor(R.color.color_06))
                 v.text_season_fourth.text = "6 " + archive.season
                 v.text_year_fourth.text = pref.getString("4y", "") + " " + archive.year
-                v.card_season_5.setCardBackgroundColor(resources.getColor(R.color.color_01))
                 v.text_season_fifth.text = "1 " + archive.season
                 v.text_year_fifth.text = pref.getString("5y", "") + " " + archive.year
-                v.card_season_6.setCardBackgroundColor(resources.getColor(R.color.color_02))
                 v.text_season_sixth.text = "2 " + archive.season
                 v.text_year_sixth.text = pref.getString("6y", "") + " " + archive.year
             }
